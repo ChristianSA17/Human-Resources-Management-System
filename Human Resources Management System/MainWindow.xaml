@@ -5,8 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Human_Resources_Management_System"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="HR Management System - Login" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <Rectangle Fill="#343030" />
 
     </Grid>
 </Window>
