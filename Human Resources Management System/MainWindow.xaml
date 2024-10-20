@@ -29,6 +29,7 @@
                 <TextBlock TextAlignment="Center" FontSize="15" Foreground="#383838">Don't have an account? 
             <Hyperlink NavigateUri="#">Create a new account</Hyperlink>
             </TextBlock>
+                <Button Margin="100,50,100,6" Padding="5,20,5,20" >LOGIN</Button>
                 
             </StackPanel>
         </Grid>
