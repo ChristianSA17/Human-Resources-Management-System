@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Human_Resources_Management_System"
         mc:Ignorable="d"
-        Title="HR Management System - Login" Height="450" Width="800">
+        Title="HR Management System - Login" Height="832" Width="1280">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -16,26 +16,27 @@
         <Grid Grid.Column="1" >
             <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
                 
-            
-            <TextBlock FontSize="35" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,50">Login to your account</TextBlock>
-                <TextBlock
-                 FontWeight="Black"   
-                    >USERNAME</TextBlock>
-                <TextBox Margin="6,6,6,6"></TextBox>
-                <TextBlock
-                  FontWeight="Black"     
-                    >PASSWORD</TextBlock>
-                <TextBox Margin="6,6,6,6"></TextBox>
-                <TextBlock TextAlignment="Center" FontSize="15" Foreground="#383838">Don't have an account? 
-            <Hyperlink NavigateUri="#">Create a new account</Hyperlink>
-            </TextBlock>
-                <Button Margin="100,50,100,6" Padding="5,20,5,20" >LOGIN</Button>
+                <TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,0">Login to your account</TextBlock>
+
+                <TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838">Don't have an account? 
+                    <Hyperlink NavigateUri="#">Create a new account</Hyperlink>
+                </TextBlock>
+
+                <TextBlock FontSize="15" >Username</TextBlock>
+                
+                <TextBox Margin="0,6,6,0"></TextBox>
+
+                <TextBlock FontSize="15" >Password</TextBlock>
+                
+                <TextBox Margin="0,6,6,0"></TextBox>
+
+                <TextBlock><Hyperlink NavigateUri="#">Forgot Password?</Hyperlink> </TextBlock> 
+
+                <Button Padding="5,20,5,20" >LOGIN</Button>
                 
             </StackPanel>
         </Grid>
-        <Grid Grid.Column="0">
-            <TextBlock FontSize="50" Foreground="DarkSeaGreen">Hello</TextBlock>
-        </Grid>
+   
     </Grid>
     
 </Window>
