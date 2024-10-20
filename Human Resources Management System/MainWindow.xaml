@@ -33,6 +33,9 @@
                 
             </StackPanel>
         </Grid>
+        <Grid Grid.Column="0">
+            <TextBlock FontSize="50" Foreground="DarkSeaGreen">Hello</TextBlock>
+        </Grid>
     </Grid>
     
 </Window>
