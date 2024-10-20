@@ -13,6 +13,9 @@
         </Grid.ColumnDefinitions>
 
         <Rectangle Fill="#343030" />
-
+        <Grid Grid.Column="1">
+            <TextBlock FontSize="50" Foreground="red">Hello</TextBlock>
+        </Grid>
     </Grid>
+    
 </Window>
