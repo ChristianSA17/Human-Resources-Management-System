@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Human_Resources_Management_System.UserControls"
+        xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
         Title="HR Management System - Login" Height="832" Width="1280">
     <Grid>
@@ -13,6 +14,15 @@
         </Grid.ColumnDefinitions>
 
         <Rectangle Fill="#343030" />
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\companylogo.svg" Width="200" Height="200"/>
+            <TextBlock 
+                TextAlignment="Center"
+                Foreground="#DCD1D1"
+                FontSize="25"
+             >Welcome to AgencyName!
+            </TextBlock>
+        </StackPanel>
 
         <local:Login Grid.Column="1"/>
 
