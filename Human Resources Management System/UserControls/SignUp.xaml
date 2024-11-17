@@ -15,7 +15,7 @@
             <TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,0">Create your account</TextBlock>
 
             <TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838">Already have an account?
-        <Hyperlink x:Name="LoginHyperlink" Click="LoginHyperlink_Click">Login</Hyperlink>
+        <Hyperlink Click="LoginHyperlink_Click">Login</Hyperlink>
             </TextBlock>
 
             <TextBlock FontSize="15" >Username</TextBlock>

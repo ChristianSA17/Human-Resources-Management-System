@@ -27,7 +27,8 @@ namespace Human_Resources_Management_System.UserControls
 
         private void SignupHyperlink_Click(object sender, RoutedEventArgs e)
         {
-
+            var loginandsignup = (LoginAndSignup)Application.Current.MainWindow;
+            loginandsignup.SignupHyperlink();
         }
     }
 }

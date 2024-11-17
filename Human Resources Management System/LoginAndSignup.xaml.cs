@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Human_Resources_Management_System.UserControls;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -21,6 +22,22 @@ namespace Human_Resources_Management_System
             InitializeComponent();
         }
 
-      
+        public void LoginHyperlink()
+        {
+            LoginUserControl.Visibility = Visibility.Visible;
+            SignupUserControl.Visibility = Visibility.Collapsed;
+        }
+
+        public void SignupHyperlink()
+        {
+            LoginUserControl.Visibility = Visibility.Collapsed;
+            SignupUserControl.Visibility = Visibility.Visible;
+           
+        }
+
+        private void Login_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

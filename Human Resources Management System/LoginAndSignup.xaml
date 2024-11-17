@@ -24,7 +24,8 @@
             </TextBlock>
         </StackPanel>
 
-        <local:Login Grid.Column="1"/>
+        <local:Login x:Name="LoginUserControl"  Grid.Column="1" Visibility="Visible"/>
+        <local:SignUp x:Name="SignupUserControl" Grid.Column="1" Visibility="Collapsed"/>
 
     </Grid>
     

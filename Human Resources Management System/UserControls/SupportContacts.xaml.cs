@@ -16,19 +16,13 @@ using System.Windows.Shapes;
 namespace Human_Resources_Management_System.UserControls
 {
     /// <summary>
-    /// Interaction logic for SignUp.xaml
+    /// Interaction logic for SupportContacts.xaml
     /// </summary>
-    public partial class SignUp : UserControl
+    public partial class SupportContacts : UserControl
     {
-        public SignUp()
+        public SupportContacts()
         {
             InitializeComponent();
-        }
-
-        private void LoginHyperlink_Click(object sender, RoutedEventArgs e)
-        {
-          var loginandsignup = (LoginAndSignup)Application.Current.MainWindow;
-            loginandsignup.LoginHyperlink();
         }
     }
 }

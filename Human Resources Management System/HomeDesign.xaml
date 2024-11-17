@@ -3,9 +3,24 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Human_Resources_Management_System"
+        xmlns:local="clr-namespace:Human_Resources_Management_System.UserControls"
+        xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
+     
         mc:Ignorable="d"
-        Title="HomeDesign" Height="450" Width="800">
+        Title="HomeDesign" Height="498" Width="800">
+    
+    <!-- Custom Button Style to lessen code redundacy-->
+    <Window.Resources>
+        <Style x:Key="SideMenuButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="#343030"/>
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+        
+    </Window.Resources>
+    
     <Grid Background="#343030">
 
         <Grid.ColumnDefinitions>
@@ -13,20 +28,66 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <Grid Grid.Column="0">
+            <StackPanel >
+                <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\companylogo.svg" Width="80" Height="60" Margin="10,50,10,10" />
+
+                <TextBlock HorizontalAlignment="Center" Foreground="#DCD1D1" FontSize="15"> AgencyName
+                </TextBlock>
+
+                <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20">Main Menu</TextBlock>
+
+                <Button Style="{StaticResource SideMenuButtonStyle}" >
+                    <StackPanel  Orientation="Horizontal">
+                        <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\dashboard 1.svg" Width="20" Height="20"/>
+                        <TextBlock Text="Dashboard" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource SideMenuButtonStyle}" >
+                    <StackPanel Orientation="Horizontal">
+                        <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\application form.svg" Width="20" Height="20"/>
+                        <TextBlock Text="Application Form" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button Style="{StaticResource SideMenuButtonStyle}" >
+                    <StackPanel Orientation="Horizontal">
+                        <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\profile.svg" Width="20" Height="20"/>
+                        <TextBlock Text="View Profile" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+
+                <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20">Tools</TextBlock>
+
+                <Button Style="{StaticResource SideMenuButtonStyle}" >
+                    <StackPanel Orientation="Horizontal">
+                    <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\support.svg" Width="20" Height="20"/>
+                    <TextBlock Text="View Profile" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                 </Button>
+                <Button Style="{StaticResource SideMenuButtonStyle}" >Sign Out</Button>
+
+            </StackPanel>
+
+        </Grid>
+
         <Grid Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="34*"/>
+                <ColumnDefinition Width="581*"/>
+            </Grid.ColumnDefinitions>
 
-            <Border  BorderBrush="#5F5F5F" BorderThickness="2,0,0,0" ></Border>
+            <Border  BorderBrush="#5F5F5F" BorderThickness="2,0,0,0" Grid.ColumnSpan="2" ></Border>
 
-            <Border CornerRadius="5" Height="30" Width="120" Margin="0,20,30,0" Background="#484545" HorizontalAlignment="Right" VerticalAlignment="Top">
-                <TextBlock>Hello</TextBlock>
+            <Border CornerRadius="5" Height="30" Width="120" Margin="0,20,30,0" Background="#484545" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1">
+                <TextBlock Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center" >AdminName</TextBlock>
             </Border>
 
-            <Border CornerRadius="5" Margin="30,0,30,15" Height="350" Background="#484545" VerticalAlignment="Bottom" >
-                
-                
+            <Border CornerRadius="5" Margin="30,0,30,15" Height="398" Background="#484545" VerticalAlignment="Bottom" Grid.ColumnSpan="2" >
+              <local:SupportContacts/>
+
             </Border>
 
-        
+
         </Grid>
 
     </Grid>
