@@ -27,7 +27,7 @@
 
             <TextBlock><Hyperlink NavigateUri="#">Forgot Password?</Hyperlink></TextBlock>
 
-            <Button Padding="5,20,5,20" >LOGIN</Button>
+            <Button Padding="5,20,5,20" Click="LoginButton_Click" >LOGIN</Button>
 
         </StackPanel>
     </Grid>

@@ -25,10 +25,18 @@ namespace Human_Resources_Management_System.UserControls
             InitializeComponent();
         }
 
+        /*Function to ng hyperlink na para mapunta sa Signup. Bali trinitrigger nito yung function na nasa LoginAndSignup window para mahide yung login na usercontrol at mashow yung signup na usercontrol*/
         private void SignupHyperlink_Click(object sender, RoutedEventArgs e)
         {
             var loginandsignup = (LoginAndSignup)Application.Current.MainWindow;
             loginandsignup.SignupHyperlink();
+        }
+
+        /*Function para mabuksan yung HomeDesign na window (hindi pa final, for experimental lang para makita yung design */ 
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {   
+            HomeDesign homeDesign = new HomeDesign();
+            homeDesign.Show();
         }
     }
 }

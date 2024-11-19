@@ -25,6 +25,7 @@ namespace Human_Resources_Management_System.UserControls
             InitializeComponent();
         }
 
+        /*Function to ng hyperlink na para mapunta sa login. Bali trinitrigger nito yung function na nasa LoginAndSignup window para mahide yung signup na usercontrol at mashow yung login na usercontrol*/
         private void LoginHyperlink_Click(object sender, RoutedEventArgs e)
         {
           var loginandsignup = (LoginAndSignup)Application.Current.MainWindow;

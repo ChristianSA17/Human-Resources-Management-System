@@ -3,15 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Human_Resources_Management_System.UserControls"
+        xmlns:local="clr-namespace:Human_Resources_Management_System.UserControls" 
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
         Title="HR Management System - Login" Height="832" Width="1280">
+        <!-- Sa xmlns namespace nag add ng UserControls sa dulo para magamit yung mga user controls sa window na to same sa ibang windows form, then yung sharpvectors parang import package para makapag add ng svg na image dito.-->
+        
     <Grid>
+        <!-- Eto is para sa arrangement ng grids which merong 2 column yung grid. Makikita naman sa design yung hatian ng grid 1% sa grid 0 at 2% sa grid 1. Di ko rin alam kung pano nahati ng ayus yan HAHAHAHAH pero gumana kaya d ko na ginalaw.   -->
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
+        
+        <!-- -->
 
         <Rectangle Fill="#343030" />
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
@@ -24,6 +29,7 @@
             </TextBlock>
         </StackPanel>
 
+        <!-- ganto tinatawag yung usercontrol local:(name ng usercontrol) tas grid assignment yung Grid.Column="1" para mapunta yung content sa 2nd column ng grid then yung name is ginamit sa functions sa code behind then yun visibility is by default yung login is visible then naka hide yung signup -->
         <local:Login x:Name="LoginUserControl"  Grid.Column="1" Visibility="Visible"/>
         <local:SignUp x:Name="SignupUserControl" Grid.Column="1" Visibility="Collapsed"/>
 

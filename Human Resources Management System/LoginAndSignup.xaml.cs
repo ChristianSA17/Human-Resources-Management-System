@@ -22,7 +22,8 @@ namespace Human_Resources_Management_System
             InitializeComponent();
         }
 
-        public void LoginHyperlink()
+        /* Function para mashow yung login usercontrol at mahide yung signup user control, then vise versa sa function na nasa baba*/
+        public void LoginHyperlink() 
         {
             LoginUserControl.Visibility = Visibility.Visible;
             SignupUserControl.Visibility = Visibility.Collapsed;
