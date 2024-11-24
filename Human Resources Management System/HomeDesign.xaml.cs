@@ -26,7 +26,7 @@ namespace Human_Resources_Management_System
         }
 
         
-
+        //ito yung para mapakita yung user control window sa grid row 1. pag mag seselect ka ng section sa grid row 0//
         private void DashboardBtn_Click(object sender, RoutedEventArgs e)
         {
             ContentDisplay.Content = new Dashboard();
