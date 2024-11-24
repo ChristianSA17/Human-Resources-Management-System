@@ -25,7 +25,7 @@ namespace Human_Resources_Management_System
             InitializeComponent();
         }
 
-      
+        
 
         private void DashboardBtn_Click(object sender, RoutedEventArgs e)
         {
