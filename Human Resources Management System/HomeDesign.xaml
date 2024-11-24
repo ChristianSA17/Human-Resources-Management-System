@@ -7,7 +7,7 @@
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
      
         mc:Ignorable="d"
-        Title="HomeDesign" Height="498" Width="800">
+        Title="HomeDesign" Height="515" Width="820">
     
     <!-- Custom Button Style to lessen code redundacy-->
     <Window.Resources>
@@ -30,41 +30,41 @@
 
         <Grid Grid.Column="0">
             <StackPanel >
-                <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\companylogo.svg" Width="80" Height="60" Margin="10,50,10,10" />
+                <svgc:SvgViewbox Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\companylogo.svg" Width="80" Height="60" Margin="10,50,10,10" />
 
                 <TextBlock HorizontalAlignment="Center" Foreground="#DCD1D1" FontSize="15"> AgencyName
                 </TextBlock>
 
                 <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20">Main Menu</TextBlock>
 
-                <Button Style="{StaticResource SideMenuButtonStyle}" >
+                <Button x:Name="DashboardBtn" Style="{StaticResource SideMenuButtonStyle}" Click="DashboardBtn_Click" >
                     <StackPanel  Orientation="Horizontal">
-                        <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\dashboard 1.svg" Width="20" Height="20"/>
+                        <svgc:SvgViewbox Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\dashboard 1.svg" Width="20" Height="20"/>
                         <TextBlock Text="Dashboard" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource SideMenuButtonStyle}" >
+                <Button x:Name="ApplicationFormBtn" Style="{StaticResource SideMenuButtonStyle}" Click="ApplicationFormBtn_Click" >
                     <StackPanel Orientation="Horizontal">
-                        <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\application form.svg" Width="20" Height="20"/>
+                        <svgc:SvgViewbox Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\application form.svg" Width="20" Height="20"/>
                         <TextBlock Text="Application Form" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button Style="{StaticResource SideMenuButtonStyle}" >
+                <Button x:Name="ProfileBtn" Style="{StaticResource SideMenuButtonStyle}" Click="ProfileBtn_Click">
                     <StackPanel Orientation="Horizontal">
-                        <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\profile.svg" Width="20" Height="20"/>
+                        <svgc:SvgViewbox Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\profile.svg" Width="20" Height="20"/>
                         <TextBlock Text="View Profile" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
 
                 <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20">Tools</TextBlock>
 
-                <Button Style="{StaticResource SideMenuButtonStyle}" >
+                <Button x:Name="SupportBtn" Style="{StaticResource SideMenuButtonStyle}" Click="SupportBtn_Click">
                     <StackPanel Orientation="Horizontal">
-                    <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\support.svg" Width="20" Height="20"/>
-                    <TextBlock Text="View Profile" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        <svgc:SvgViewbox Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\support.svg" Width="20" Height="20"/>
+                    <TextBlock Text="Support" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                  </Button>
-                <Button Style="{StaticResource SideMenuButtonStyle}" >Sign Out</Button>
+                <Button x:Name="ExitBtn" Style="{StaticResource SideMenuButtonStyle}">Sign Out</Button>
 
             </StackPanel>
 
@@ -79,13 +79,14 @@
             <Border  BorderBrush="#5F5F5F" BorderThickness="2,0,0,0" Grid.ColumnSpan="2" >
 
                 <StackPanel>
-                    <Border CornerRadius="5" Height="30" Width="120" Margin="0,20,30,0" Background="#484545" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1">
+                    <Border CornerRadius="5" Height="30" Width="120" Margin="0,20,30,20" Background="#484545" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1">
                         <TextBlock Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center" >AdminName</TextBlock>
                     </Border>
 
                     <Border CornerRadius="5" Margin="30,0,30,15" Height="398" Background="#484545" Grid.ColumnSpan="2" >
-                        <local:SupportContacts/>
 
+                        <ContentControl x:Name="ContentDisplay" />
+                        
                     </Border>
                 </StackPanel>
 

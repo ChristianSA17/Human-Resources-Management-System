@@ -23,7 +23,7 @@
 
             <TextBlock FontSize="15" >Password</TextBlock>
 
-            <TextBox Margin="0,6,6,0"></TextBox>
+            <PasswordBox Margin="0,6,6,0" PasswordChar="*"></PasswordBox>
 
             <TextBlock><Hyperlink NavigateUri="#">Forgot Password?</Hyperlink></TextBlock>
 

@@ -20,7 +20,7 @@
 
         <Rectangle Fill="#343030" />
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-            <svgc:SvgViewbox Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\companylogo.svg" Width="200" Height="200"/>
+            <svgc:SvgViewbox Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\companylogo.svg" Width="200" Height="200"/>
             <TextBlock 
                 TextAlignment="Center"
                 Foreground="#DCD1D1"

@@ -37,6 +37,7 @@ namespace Human_Resources_Management_System.UserControls
         {   
             HomeDesign homeDesign = new HomeDesign();
             homeDesign.Show();
+            
         }
     }
 }

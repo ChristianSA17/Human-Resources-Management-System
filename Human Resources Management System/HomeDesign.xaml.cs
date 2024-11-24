@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Human_Resources_Management_System.UserControls;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,5 +24,29 @@ namespace Human_Resources_Management_System
         {
             InitializeComponent();
         }
+
+      
+
+        private void DashboardBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDisplay.Content = new Dashboard();
+        }
+
+        private void ApplicationFormBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDisplay.Content = new ApplicationForm();
+        }
+
+        private void ProfileBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDisplay.Content = new Profile();
+        }
+
+        private void SupportBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDisplay.Content = new SupportContacts();
+        }
+
+        
     }
 }
