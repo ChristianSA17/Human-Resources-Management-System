@@ -7,28 +7,55 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="100" />
+    
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="70" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0" Background="DimGray" Margin="0,0,0,25">
-            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="20,0,0,0">
-                <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Imageperson.webp" Width="50" Height="50" VerticalAlignment="Top" Margin="0,0,25,0"/>
-
-                <!-- Button to Select a New Image -->
-                <Button Content="Change Image" Width="120" Height="50"/>
-            </StackPanel>
+            <TextBlock FontSize="30" Margin="20,0,0,0">My Profile</TextBlock>
         </Grid>
 
         <Grid Grid.Row="1" Background="DimGray">
-            
+            <Border BorderBrush="White" BorderThickness="2" Margin="5,12,5,250">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,20">
+                    <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Imageperson.webp" Width="50" Height="50" VerticalAlignment="Top" Margin="0,0,25,0"/>-->
+
+                    <!-- Button to Select a New Image -->
+                    <!--<Button Content="Change Image" Width="120" Height="50" BorderBrush="Black"/>
+                    <Button Content="Delete Image" Width="120" Height="50" Margin="10,0,0,0" BorderBrush="Black"/>
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="White" BorderThickness="2" Margin="5,130,5,138">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="2,0,8,0" Height="112">
+                    <TextBlock Height="26" Margin="20,0,0,55">Personal Information</TextBlock>
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="White" BorderThickness="2" Margin="5,242,5,19">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" >
+                    <Button Content="Time In" Width="120" Height="50" BorderBrush="Black"/>
+                    <Button Content="Time Out" Width="120" Height="50" Margin="10,0,0,0" BorderBrush="Black"/>
+                </StackPanel>
+            </Border>
+                 
+        </Grid>-->
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="10" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="DimGray">
+            <TextBlock FontSize="20" Margin="20,0,0,0">My Profile</TextBlock>
         </Grid>
-        
-        
+
     </Grid>
-       
     
-    
+
+
+
 </UserControl>

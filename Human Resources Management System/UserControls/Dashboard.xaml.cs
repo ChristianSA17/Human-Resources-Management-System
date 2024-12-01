@@ -23,6 +23,8 @@ namespace Human_Resources_Management_System.UserControls
         public Dashboard()
         {
             InitializeComponent();
+
+
         }
     }
 }

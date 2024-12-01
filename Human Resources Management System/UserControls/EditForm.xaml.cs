@@ -16,14 +16,13 @@ using System.Windows.Shapes;
 namespace Human_Resources_Management_System.UserControls
 {
     /// <summary>
-    /// Interaction logic for ApplicationForm.xaml
+    /// Interaction logic for Edit_Form.xaml
     /// </summary>
-    public partial class ApplicationForm : UserControl
+    public partial class Edit_Form : UserControl
     {
-        public ApplicationForm()
+        public Edit_Form()
         {
             InitializeComponent();
-            
         }
 
         private void ShowCalendar_Click(object sender, RoutedEventArgs e)
@@ -63,7 +62,7 @@ namespace Human_Resources_Management_System.UserControls
 
         private void OpenEditForm_Click(object sender, RoutedEventArgs e)
         {
-           
+
         }
     }
 }

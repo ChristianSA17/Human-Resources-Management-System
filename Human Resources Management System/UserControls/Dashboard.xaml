@@ -7,6 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Foreground="White">DASHBOARD</TextBlock>
+        <TextBlock Foreground="DarkViolet"  HorizontalAlignment="Right" Margin="0,5,10,0" FontSize="20">Web-Based Human Resource Management System</TextBlock>
+        <TextBlock HorizontalAlignment="Right" Margin="0,40,10,0" Foreground="DarkViolet">A meeting place for employers and candidates</TextBlock>
+        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="46,107,46,10">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </UserControl>

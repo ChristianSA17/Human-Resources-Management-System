@@ -7,7 +7,8 @@
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
      
         mc:Ignorable="d"
-        Title="HomeDesign" Height="515" Width="820">
+        ResizeMode="NoResize"
+        Title="HomeDesign" Height="750" Width="1200">
     
     <!-- Custom Button Style to lessen code redundacy-->
     <Window.Resources>
@@ -83,7 +84,7 @@
                         <TextBlock Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center" >AdminName</TextBlock>
                     </Border>
 
-                    <Border CornerRadius="5" Margin="30,0,30,15" Height="398" Background="#484545" Grid.ColumnSpan="2" >
+                    <Border CornerRadius="5" Margin="30,0,30,15" Height="590" Background="#484545" Grid.ColumnSpan="2" >
 
                         <ContentControl x:Name="ContentDisplay" />
                         
