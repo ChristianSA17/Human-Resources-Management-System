@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
 
-    
-        <!--<Grid.RowDefinitions>
+
+    <!--<Grid.RowDefinitions>
             <RowDefinition Height="70" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
@@ -22,8 +22,8 @@
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,20">
                     <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Imageperson.webp" Width="50" Height="50" VerticalAlignment="Top" Margin="0,0,25,0"/>-->
 
-                    <!-- Button to Select a New Image -->
-                    <!--<Button Content="Change Image" Width="120" Height="50" BorderBrush="Black"/>
+    <!-- Button to Select a New Image -->
+    <!--<Button Content="Change Image" Width="120" Height="50" BorderBrush="Black"/>
                     <Button Content="Delete Image" Width="120" Height="50" Margin="10,0,0,0" BorderBrush="Black"/>
                 </StackPanel>
             </Border>
@@ -45,40 +45,112 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="10" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="220" />
+            <RowDefinition Height="1" />
             <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="DimGray">
-            <TextBlock FontSize="20" Margin="20,0,0,0">My Profile</TextBlock>
+        <Grid Grid.Row="0" Background="#3B3B3B">
+            <TextBlock FontSize="20" Margin="50,0,0,0" Foreground="LightGray">Profile Settings</TextBlock>
         </Grid>
 
-        <Grid Grid.Row="1" Background="#343030"/>
+        <Grid Grid.Row="1" Background="LightGray"/>
 
-        <Grid Grid.Row="2" Background="DimGray">
-            <Border BorderBrush="White" BorderThickness="1">
-                <StackPanel>
-                    <TextBlock>Hello</TextBlock>
- 
-                </StackPanel>
-            </Border>
-            <Border BorderBrush="White" BorderThickness="1" Margin="50,200,50,200">
-                <StackPanel>
-                    
-                </StackPanel>
-            </Border>
-            <Border BorderBrush="White" BorderThickness="1" >
-                <StackPanel>
-                    
-                </StackPanel>
-            </Border>
+        <Grid Grid.Row="2" Background="#3B3B3B">
+            <StackPanel>
+                <TextBlock Foreground="LightGray" Margin="15,20,0,0">Profile Picture</TextBlock>
+            </StackPanel>
+            <StackPanel Margin="0,30,0,0">
+                <Border Width="150" Height="150" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Background="DarkGray" CornerRadius="75" BorderBrush="Black" BorderThickness="2">
+                    <!-- Image inside the circle -->
+                    <Image Name="ProfileImage" Stretch="UniformToFill" >
+                        <Image.Clip>
+                            <EllipseGeometry RadiusX="75" RadiusY="75" Center="75,75" />
+                        </Image.Clip>
+                    </Image>
+                </Border>
+
+                <!-- Button for uploading image -->
+                <Button Background="#141414" Foreground="LightGray" Content="Upload Image" Width="120" Height="30" 
+                VerticalAlignment="Bottom" HorizontalAlignment="Center" 
+                Margin="0,5,0,20" Click="UploadImageButton_Click" />
+            </StackPanel>
         </Grid>
-
-
+        <Grid Grid.Row="3" Background="LightGray"/>
+        <Grid Grid.Row="4" Background="#3B3B3B">
+            <TextBlock Foreground="LightGray" Margin="15,20,0,0">Basic Information</TextBlock>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,68,0,0">
+                <TextBlock Foreground="LightGray">First Name</TextBlock>
+                <TextBox 
+                 IsReadOnly="True" 
+                 BorderThickness="1" 
+                 Background="Transparent" 
+                 Foreground="Black" 
+                 FontSize="16" 
+                 VerticalAlignment="Center" 
+                 HorizontalAlignment="Center" 
+                 Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,112,0,0">
+                <TextBlock Foreground="LightGray">Contact No.</TextBlock>
+                <TextBox 
+                 IsReadOnly="True" 
+                 BorderThickness="1" 
+                 Background="Transparent" 
+                 Foreground="Black" 
+                 FontSize="16" 
+                 VerticalAlignment="Center" 
+                 HorizontalAlignment="Center" 
+                 Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="282,68,0,0">
+                <TextBlock Foreground="LightGray">Last Name</TextBlock>
+                <TextBox 
+                 IsReadOnly="True" 
+                 BorderThickness="1" 
+                 Background="Transparent" 
+                 Foreground="Black" 
+                 FontSize="16" 
+                 VerticalAlignment="Center" 
+                 HorizontalAlignment="Center" 
+                 Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="282,112,0,0">
+                <TextBlock Foreground="LightGray">Email</TextBlock>
+                <TextBox 
+                 IsReadOnly="True" 
+                 BorderThickness="1" 
+                 Background="Transparent" 
+                 Foreground="Black" 
+                 FontSize="16" 
+                 VerticalAlignment="Center" 
+                 HorizontalAlignment="Center" 
+                 Width="250" />
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,68,153,0">
+                <TextBlock Foreground="LightGray">M.I</TextBlock>
+                <TextBox 
+                 IsReadOnly="True" 
+                 BorderThickness="1" 
+                 Background="Transparent" 
+                 Foreground="Black" 
+                 FontSize="16" 
+                 VerticalAlignment="Center" 
+                 HorizontalAlignment="Center" 
+                 Width="100" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,23,10">
+                <Button Margin="0,0,30,0" Width="100" Height="25" Foreground="LightGray" Background="#141414">Edit</Button>
+                <Button Margin="0,0,0,0" Width="100" Height="25" Foreground="LightGray" Background="#141414">Save</Button>
+            </StackPanel>
+        </Grid>
 
 
     </Grid>
-    
+
 
 
 
