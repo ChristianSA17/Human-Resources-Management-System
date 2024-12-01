@@ -23,7 +23,7 @@
             </Border>
         </Grid>
 
-        <Grid Grid.Row="1" Background="Black"/>
+        <Grid Grid.Row="1" Background="#343030"/>
 
         <Grid Grid.Row="2" Background="DimGray" >
 

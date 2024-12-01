@@ -53,6 +53,30 @@
             <TextBlock FontSize="20" Margin="20,0,0,0">My Profile</TextBlock>
         </Grid>
 
+        <Grid Grid.Row="1" Background="#343030"/>
+
+        <Grid Grid.Row="2" Background="DimGray">
+            <Border BorderBrush="White" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock>Hello</TextBlock>
+ 
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="White" BorderThickness="1" Margin="50,200,50,200">
+                <StackPanel>
+                    
+                </StackPanel>
+            </Border>
+            <Border BorderBrush="White" BorderThickness="1" >
+                <StackPanel>
+                    
+                </StackPanel>
+            </Border>
+        </Grid>
+
+
+
+
     </Grid>
     
 
