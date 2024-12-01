@@ -23,8 +23,15 @@ namespace Human_Resources_Management_System.UserControls
         public Dashboard()
         {
             InitializeComponent();
+            SetCurrentDate();
 
+        }
 
+        private void SetCurrentDate()
+        {
+            // Set the current date on the Calendar
+            RealTimeCalendar.SelectedDate = DateTime.Now;
+            RealTimeCalendar.DisplayDate = DateTime.Now;
         }
     }
 }

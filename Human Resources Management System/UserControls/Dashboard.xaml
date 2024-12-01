@@ -7,14 +7,28 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock Foreground="DarkViolet"  HorizontalAlignment="Right" Margin="0,5,10,0" FontSize="20">Web-Based Human Resource Management System</TextBlock>
-        <TextBlock HorizontalAlignment="Right" Margin="0,40,10,0" Foreground="DarkViolet">A meeting place for employers and candidates</TextBlock>
-        <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="46,107,46,10">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="1" />
+            <RowDefinition Height="2*" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Background="#3B3B3B">
+            <TextBlock FontSize="20" Margin="30,0,0,0" Foreground="LightGray">Dashboard</TextBlock>
+        </Grid>
+        <Grid Grid.Row="1" />
+        <Grid Grid.Row="2" Background="#3B3B3B">
+            <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,229,23">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+            <Calendar Name="RealTimeCalendar" 
+                  VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,10,15,0" Width="190" Background="#141414" BorderBrush="Black"/>
+
+        </Grid>
+
+
     </Grid>
 </UserControl>
