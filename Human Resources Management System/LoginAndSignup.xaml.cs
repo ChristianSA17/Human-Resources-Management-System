@@ -20,20 +20,19 @@ namespace Human_Resources_Management_System
         public LoginAndSignup()
         {
             InitializeComponent();
+            ContentDisplay.Content = new Login();
         }
 
         /* Function para mashow yung login usercontrol at mahide yung signup user control, then vise versa sa function na nasa baba*/
         public void LoginHyperlink() 
         {
-            LoginUserControl.Visibility = Visibility.Visible;
-            SignupUserControl.Visibility = Visibility.Collapsed;
+            ContentDisplay.Content = new Login();
         }
 
         public void SignupHyperlink()
         {
-            LoginUserControl.Visibility = Visibility.Collapsed;
-            SignupUserControl.Visibility = Visibility.Visible;
-           
+            ContentDisplay.Content = new SignUp();
+
         }
 
         private void Login_Loaded(object sender, RoutedEventArgs e)

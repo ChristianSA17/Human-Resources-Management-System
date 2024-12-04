@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Human_Resources_Management_System.UserControls" 
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
-        Title="HR Management System - Login" Height="750" Width="1200">
+        Title="HR Management System - Login" Height="750" Width="1200" WindowStartupLocation="CenterScreen">
         <!-- Sa xmlns namespace nag add ng UserControls sa dulo para magamit yung mga user controls sa window na to same sa ibang windows form, then yung sharpvectors parang import package para makapag add ng svg na image dito.-->
         
     <Grid>
@@ -29,10 +29,10 @@
             </TextBlock>
         </StackPanel>
 
+        <Grid Grid.Column="1">
         <!-- ganto tinatawag yung usercontrol local:(name ng usercontrol) tas grid assignment yung Grid.Column="1" para mapunta yung content sa 2nd column ng grid then yung name is ginamit sa functions sa code behind then yun visibility is by default yung login is visible then naka hide yung signup -->
-        <local:Login x:Name="LoginUserControl"  Grid.Column="1" Visibility="Visible"/>
-        <local:SignUp x:Name="SignupUserControl" Grid.Column="1" Visibility="Collapsed"/>
-
+        <ContentControl x:Name="ContentDisplay" />
+        </Grid>
     </Grid>
     
 </Window>

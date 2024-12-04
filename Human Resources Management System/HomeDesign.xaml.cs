@@ -23,6 +23,7 @@ namespace Human_Resources_Management_System
         public HomeDesign()
         {
             InitializeComponent();
+            ContentDisplay.Content = new Dashboard();
         }
 
         
@@ -47,6 +48,23 @@ namespace Human_Resources_Management_System
             ContentDisplay.Content = new SupportContacts();
         }
 
-        
+        private void SignOutBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            LoginAndSignup loginAndSignup = new LoginAndSignup();
+            MessageBoxResult boxResult = System.Windows.MessageBox.Show("Are you sure you want to Sign Out?", "Close Window?", System.Windows.MessageBoxButton.YesNo);
+            if(boxResult == System.Windows.MessageBoxResult.Yes)
+            {
+                loginAndSignup.Show();
+                this.Close();
+
+            }
+        }
+
+        private void PayrollBtn_Click(object sender, RoutedEventArgs e)
+        {
+
+            ContentDisplay.Content = new Payroll();
+        }
     }
 }

@@ -19,15 +19,15 @@
             </TextBlock>
 
             <TextBlock FontSize="15" >Username</TextBlock>
-            <TextBox Margin="0,6,6,0"></TextBox>
+            <TextBox Name="Username" Margin="0,6,6,0"></TextBox>
 
             <TextBlock FontSize="15" >Password</TextBlock>
-            <TextBox Margin="0,6,6,0"></TextBox>
+            <TextBox Name="Password" Margin="0,6,6,0"></TextBox>
 
             <TextBlock FontSize="15" >Confirm Password</TextBlock>
-            <TextBox Margin="0,6,6,6"></TextBox>
+            <TextBox Name="CPassword" Margin="0,6,6,6"></TextBox>
 
-            <Button Padding="5,20,5,20" >LOGIN</Button>
+            <Button Padding="5,20,5,20" Click="SignUpBtn_Click" >SIGN UP</Button>
 
         </StackPanel>
     </Grid>

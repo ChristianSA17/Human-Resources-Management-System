@@ -15,12 +15,15 @@
         <Grid Grid.Row="0" Background="#3B3B3B">
             <TextBlock FontSize="20" Margin="30,0,0,0" Foreground="LightGray">Dashboard</TextBlock>
         </Grid>
-        <Grid Grid.Row="1" />
+        <Grid Grid.Row="1" Background="LightGray"/>
         <Grid Grid.Row="2" Background="#3B3B3B">
-            <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,229,23">
+            <ListView x:Name="ListViewUsers" Margin="10,10,229,23">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn/>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
+                        <GridViewColumn Header="Username" DisplayMemberBinding="{Binding Username}"/>
+                        <GridViewColumn Header="Password" DisplayMemberBinding="{Binding Password}"/>
+                        
                     </GridView>
                 </ListView.View>
             </ListView>

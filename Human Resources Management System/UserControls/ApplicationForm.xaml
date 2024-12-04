@@ -6,53 +6,54 @@
              xmlns:local="clr-namespace:Human_Resources_Management_System.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+     
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="10"/>
+            <RowDefinition Height="1"/>
             <RowDefinition Height="2*" />
 
         </Grid.RowDefinitions>
 
-        <Grid Grid.Row="0" Background="DimGray" >
+        <Grid Grid.Row="0" Background="#3B3B3B" >
 
             <Border>
                 <StackPanel>
-                    <TextBlock FontSize="20" Margin="20,0,0,0">Application Form</TextBlock>
+                    <TextBlock FontSize="20" Margin="20,0,0,0" Foreground="LightGray">Application Form</TextBlock>
                 </StackPanel>
             </Border>
         </Grid>
 
-        <Grid Grid.Row="1" Background="#343030"/>
+        <Grid Grid.Row="1" Background="LightGray"/>
 
-        <Grid Grid.Row="2" Background="DimGray" >
+        <Grid Grid.Row="2" Background="#3B3B3B" >
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
-                <TextBlock  FontSize="14">First Name <Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="190" Height="20"/>
+                <TextBlock  Foreground="LightGray" FontSize="14">First Name <Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="190" Height="20"/>
             </StackPanel>
 
             <!-- Surname TextBox -->
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,150,0">
-                <TextBlock  FontSize="14"> Surname <Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="190" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray"> Surname <Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="190" Height="20"/>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="300,10,0,0">
-                <TextBlock  FontSize="14"> Middle Initial <Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="190" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray"> Middle Initial <Span Foreground="red">*</Span></TextBlock>
+                <TextBox  Foreground="LightGray" Background="Transparent" Width="190" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,30,0">
-                <TextBlock>Sex<Span Foreground="Red">*</Span></TextBlock>
-                <ComboBox  Width="90" Height="22" >
-                    <ComboBoxItem>Male</ComboBoxItem>
-                    <ComboBoxItem>Female</ComboBoxItem>
+                <TextBlock Foreground="LightGray">Sex<Span Foreground="Red">*</Span></TextBlock>
+                <ComboBox Width="90" Height="22" >
+                    <ComboBoxItem >Male</ComboBoxItem>
+                    <ComboBoxItem >Female</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0">
-                <TextBlock>Date of Birth<Span Foreground="Red">*</Span></TextBlock>
+                <TextBlock Foreground="LightGray">Date of Birth<Span Foreground="Red">*</Span></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBox Name="DateTextBox" Width="150" Height="30">
+                    <TextBox Foreground="LightGray" Background="Transparent" Name="DateTextBox" Width="150" Height="30">
                     </TextBox>
 
                     <!-- Button with Calendar Icon -->
@@ -67,32 +68,32 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="220,55,0,0">
-                <TextBlock  FontSize="14">Age <Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="50" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Age <Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="50" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,55,0,0">
-                <TextBlock  FontSize="14">Email <Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="200" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Email <Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="200" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,55,60,0">
-                <TextBlock  FontSize="14">Address <Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="200" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Address <Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="200" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,100,0,0">
-                <TextBlock  FontSize="14">Contact No. <Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="180" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Contact No. <Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="180" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="210,100,0,0">
-                <TextBlock  FontSize="14">Requirements <Span Foreground="red">*</Span></TextBlock>
-                <ComboBox  Width="200" Height="22" >
-                    <ComboBoxItem>Complete</ComboBoxItem>
-                    <ComboBoxItem>Incomplete</ComboBoxItem>
+                <TextBlock  FontSize="14" Foreground="LightGray">Requirements <Span Foreground="red">*</Span></TextBlock>
+                <ComboBox Width="200" Height="22" >
+                    <ComboBoxItem Foreground="LightGray">Complete</ComboBoxItem>
+                    <ComboBoxItem Foreground="LightGray">Incomplete</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="300,95,0,0">
-                <TextBlock>Date Hired<Span Foreground="Red">*</Span></TextBlock>
+                <TextBlock Foreground="LightGray">Date Hired<Span Foreground="Red">*</Span></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBox Name="HiredDateTextBox" Width="150" Height="30">
+                    <TextBox Foreground="LightGray" Background="Transparent" Name="HiredDateTextBox" Width="150" Height="30">
                     </TextBox>
 
                     <!-- Button with Calendar Icon -->
@@ -107,50 +108,50 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,100,0,0">
-                <TextBlock  FontSize="14">Shuttle Code<Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="100" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Shuttle Code<Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="100" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10,150,650,0">
-                <TextBlock  FontSize="14">Applicant's Signature<Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="150" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Applicant's Signature<Span Foreground="red">*</Span></TextBlock>
+                <Button Height="20" Click="OpenSignature_Click" >GET YOUR SIGNATURE</Button>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,150,300,75">
-                <TextBlock  FontSize="14">Authorized Signatory<Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="150" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Authorized Signatory<Span Foreground="red">*</Span></TextBlock>
+                <TextBox Background="Transparent" Width="150" Height="20"/>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,216,0,0">
-                <TextBlock FontSize="15">Emergency Contact</TextBlock>
-                <TextBlock  FontSize="14">First Name<Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="150" Height="20"/>
+                <TextBlock FontSize="15" Foreground="LightGray">Emergency Contact</TextBlock>
+                <TextBlock  FontSize="14" Foreground="LightGray">First Name<Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="150" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,280,0,0">
-                <TextBlock  FontSize="14">Contact No.<Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="150" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Contact No.<Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="150" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,242,0,0">
-                <TextBlock  FontSize="14">Surname<Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="150" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Surname<Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="150" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,280,0,0">
-                <TextBlock  FontSize="14">Address</TextBlock>
-                <TextBox Width="150" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Address</TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="150" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,242,0,0">
-                <TextBlock  FontSize="14">Middle Initial<Span Foreground="red">*</Span></TextBlock>
-                <TextBox Width="100" Height="20"/>
+                <TextBlock  FontSize="14" Foreground="LightGray">Middle Initial<Span Foreground="red">*</Span></TextBlock>
+                <TextBox Foreground="LightGray" Background="Transparent" Width="100" Height="20"/>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,280,0,0">
-                <TextBlock  FontSize="14">Sex<Span Foreground="red">*</Span></TextBlock>
+                <TextBlock  FontSize="14" Foreground="LightGray">Sex<Span Foreground="red">*</Span></TextBlock>
                 <ComboBox  Width="100" Height="22" >
-                    <ComboBoxItem>Male</ComboBoxItem>
-                    <ComboBoxItem>Female</ComboBoxItem>
+                    <ComboBoxItem Foreground="LightGray">Male</ComboBoxItem>
+                    <ComboBoxItem Foreground="LightGray">Female</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,50">
-                <Button Margin="300,0,20,0" Height="25">Upload Photo</Button>
-                <Button Margin="0,0,20,0" Height="25" Click="OpenEditForm_Click">Edit Form</Button>
-                <Button Margin="0,0,0,0" Height="25">Confirm</Button>
+                <Button Margin="300,0,20,0" Height="25" Background="#3B3B3B" Foreground="LightGray">Upload Photo</Button>
+                <Button Margin="0,0,20,0" Background="#3B3B3B" Height="25" Click="OpenEditForm_Click" Foreground="LightGray">Edit Form</Button>
+                <Button Margin="0,0,0,0" Height="25" Background="#3B3B3B" Foreground="LightGray">Confirm</Button>
             </StackPanel>
 
 

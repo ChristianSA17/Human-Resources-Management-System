@@ -7,8 +7,7 @@
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
      
         mc:Ignorable="d"
-        ResizeMode="NoResize"
-        Title="HomeDesign" Height="750" Width="1200">
+        Title="HomeDesign" Height="750" Width="1200" WindowStartupLocation="CenterScreen">
     
     <!-- Custom Button Style to lessen code redundacy-->
     <Window.Resources>
@@ -38,7 +37,7 @@
 
                 <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20">Main Menu</TextBlock>
 
-                <Button x:Name="DashboardBtn" Style="{StaticResource SideMenuButtonStyle}" Click="DashboardBtn_Click" >
+                <Button x:Name="DashboardBtn" Margin="0,0,30,0" Style="{StaticResource SideMenuButtonStyle}" Click="DashboardBtn_Click" >
                     <StackPanel  Orientation="Horizontal">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeDashboardIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="Dashboard" Margin="5,0,0,0" VerticalAlignment="Center"/>
@@ -50,22 +49,28 @@
                         <TextBlock Text="Application Form" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="ProfileBtn" Style="{StaticResource SideMenuButtonStyle}" Click="ProfileBtn_Click">
+                <Button x:Name="ProfileBtn" Margin="0,0,30,0" Style="{StaticResource SideMenuButtonStyle}" Click="ProfileBtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeProfileIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="View Profile" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
+                <Button x:Name="PayrollBtn" Margin="0,0,55,0" Style="{StaticResource SideMenuButtonStyle}" Click="PayrollBtn_Click" >
+                    <StackPanel  Orientation="Horizontal">
+                        <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeDashboardIcon.png" Width="20" Height="20"/>
+                        <TextBlock Text="Payroll" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Button>
 
                 <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20">Tools</TextBlock>
 
-                <Button x:Name="SupportBtn" Style="{StaticResource SideMenuButtonStyle}" Click="SupportBtn_Click">
+                <Button x:Name="SupportBtn" Margin="0,0,60,0" Style="{StaticResource SideMenuButtonStyle}" Click="SupportBtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeSupportIcon.png" Width="20" Height="20"/>
                     <TextBlock Text="Support" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                  </Button>
-                <Button x:Name="ExitBtn" Style="{StaticResource SideMenuButtonStyle}">Sign Out</Button>
+                <Button x:Name="ExitBtn" Margin="0,0,80,0" Style="{StaticResource SideMenuButtonStyle}" Click="SignOutBtn_Click">Sign Out</Button>
 
             </StackPanel>
 
@@ -88,6 +93,7 @@
 
                         <ContentControl x:Name="ContentDisplay" />
                         
+
                     </Border>
                 </StackPanel>
 

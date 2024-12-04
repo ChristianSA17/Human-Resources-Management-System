@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MongoDB.Driver;
 
 namespace Human_Resources_Management_System.UserControls
 {
@@ -20,10 +21,14 @@ namespace Human_Resources_Management_System.UserControls
     /// </summary>
     public partial class Dashboard : UserControl
     {
+        private readonly MongoDbConnection _connection;
         public Dashboard()
         {
             InitializeComponent();
             SetCurrentDate();
+            _connection = new MongoDbConnection();
+            LoadData();
+
 
         }
 
@@ -32,6 +37,13 @@ namespace Human_Resources_Management_System.UserControls
             // Set the current date on the Calendar
             RealTimeCalendar.SelectedDate = DateTime.Now;
             RealTimeCalendar.DisplayDate = DateTime.Now;
+        }
+
+        private void LoadData()
+        {
+           var usersCollection = _connection.GetUsersCollection();
+            List<UsersModel> users = usersCollection.Find(FilterDefinition<UsersModel>.Empty).ToList();
+            ListViewUsers.ItemsSource = users;
         }
     }
 }

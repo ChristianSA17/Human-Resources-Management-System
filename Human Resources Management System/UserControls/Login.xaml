@@ -6,28 +6,29 @@
              xmlns:local="clr-namespace:Human_Resources_Management_System.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    
+
     <!-- Login Content -->
     <Grid>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
-            <TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,0">Login to your account</TextBlock>
+            <TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,10">Login to your account</TextBlock>
 
-            <TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838">Don't have an account? 
-            <Hyperlink Click="SignupHyperlink_Click" >Create a new account</Hyperlink>
-            </TextBlock>
+            <TextBlock FontSize="15">Username</TextBlock>
 
-            <TextBlock FontSize="15" >Username</TextBlock>
-
-            <TextBox Margin="0,6,6,0"></TextBox>
+            <TextBox x:Name="LoginTextBox" Margin="0,6,6,0"></TextBox>
 
             <TextBlock FontSize="15" >Password</TextBlock>
 
-            <PasswordBox Margin="0,6,6,0" PasswordChar="*"></PasswordBox>
+            <PasswordBox x:Name="LoginPasswordBox" Margin="0,6,6,0" PasswordChar="*"></PasswordBox>
 
             <TextBlock><Hyperlink NavigateUri="#">Forgot Password?</Hyperlink></TextBlock>
 
-            <Button Padding="5,20,5,20" Click="LoginButton_Click" >LOGIN</Button>
+            <Button Margin="0,20,0,0" Padding="0,20,0,20" Click="LoginButton_Click" Background="#FFDDDDDD" IsDefault="True" FontSize="25" Width="249">LOGIN
+            </Button>
+
+            <TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838" Margin="0,25,0,0">Don't have an account? 
+<Hyperlink Click="SignupHyperlink_Click" >Create a new account</Hyperlink>
+            </TextBlock>
 
         </StackPanel>
     </Grid>

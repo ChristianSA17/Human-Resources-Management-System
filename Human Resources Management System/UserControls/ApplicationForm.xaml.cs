@@ -23,6 +23,7 @@ namespace Human_Resources_Management_System.UserControls
         public ApplicationForm()
         {
             InitializeComponent();
+            Signature signature = new Signature();
             
         }
 
@@ -63,7 +64,20 @@ namespace Human_Resources_Management_System.UserControls
 
         private void OpenEditForm_Click(object sender, RoutedEventArgs e)
         {
-           
+            
+        }
+
+        private void OpenSignature_Click(object sender, RoutedEventArgs e)
+        {
+            Signature signature = new Signature();
+            Window hostWindow = new Window
+            {
+                Content = signature,
+                Width = 400,
+                Height = 300,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            hostWindow.Show(); // Display the UserControl within a window
         }
     }
 }
