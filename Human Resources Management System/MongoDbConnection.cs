@@ -21,31 +21,7 @@ namespace Human_Resources_Management_System
         {
             return _database.GetCollection<UsersModel>("Users");
         }
-        public async Task AddUserAsync(UsersModel user)
-        {
-            try
-            {
-                // Hash the password before storing it
-                user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
-                var collection = GetUsersCollection();
-                await collection.InsertOneAsync(user);
-            }
-            catch (Exception ex)
-            {
-                // Log or handle exception as needed
-                throw new ApplicationException("Failed to add user to the collection.", ex);
-            }
-        }
-        public bool VerifyPassword(string email, string plainTextPassword)
-        {
-            var collection = GetUsersCollection();
-            var user = collection.Find(u => u.Password == email).FirstOrDefault(); // Synchronous version
-
-            if (user == null)
-                return false; // User not found
-
-            return BCrypt.Net.BCrypt.Verify(plainTextPassword, user.Password);
-        }
+        
 
 
     }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
@@ -13,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Security.Cryptography;
 
 
 namespace Human_Resources_Management_System.UserControls
@@ -36,30 +38,61 @@ namespace Human_Resources_Management_System.UserControls
             loginandsignup.LoginHyperlink();
         }
 
-        private async void SignUpBtn_Click(object sender, RoutedEventArgs e)
+        private void SignUpBtn_Click(object sender, RoutedEventArgs e)
         {
            
             try
             {
-                var newUser = new UsersModel
+                var username = SignupUsername.Text;
+                var password = SignupPassword.Password;
+                var Cpassword = SignupCPassword.Password;
+
+                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
                 {
-                   
-                    Username = Username.Text,
-                    Password = Password.Text,
-                    
-                };
+                    MessageBox.Show("Fill up all the fields.");
+                    return;
+                }
 
-                await _connection.AddUserAsync(newUser);
+                if (password != Cpassword)
+                {
+                    MessageBox.Show("Passwords do not match.");
+                    return;
+                }
 
-                MessageBox.Show("User added successfully!");
-                var loginandsignup = (LoginAndSignup)Application.Current.MainWindow;
-                loginandsignup.LoginHyperlink();
+
+                var userCollection = _connection.GetUsersCollection();
+
+                // Checks if user already exists.
+                if (userCollection.AsQueryable().Any(u => u.Username == username))
+                {
+                    MessageBox.Show("The username already exist.");
+                    return;
+
+                }
+
+                var hashedPassword = HashPassword(password);
+
+                var newUser = new UsersModel {Username = username, Password = hashedPassword};
+                userCollection.InsertOne(newUser);
+
+
+
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error adding user: {ex.Message}");
             }
         
+        }
+
+        private string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(bytes);
+            }
         }
     }
 }

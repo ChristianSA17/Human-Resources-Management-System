@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MongoDB.Driver;
+using System.Security.Cryptography;
 
 namespace Human_Resources_Management_System.UserControls
 {
@@ -53,8 +54,10 @@ namespace Human_Resources_Management_System.UserControls
             } 
 
             var userCollection = _connection.GetUsersCollection();
-            
-            var user = userCollection.AsQueryable().FirstOrDefault(u => u.Username == username && u.Password == password);
+
+            var hashedPassword = HashPassword(password);
+
+            var user = userCollection.AsQueryable().FirstOrDefault(u => u.Username == username && u.Password == hashedPassword);
             
             if (user != null )
             {
@@ -68,13 +71,15 @@ namespace Human_Resources_Management_System.UserControls
                 MessageBox.Show("Invalid username or password");
             }
 
-           
+        }
 
-
-
-
-
-
+        private string HashPassword(string password)
+        {
+            using (var sha256 = SHA256.Create())
+            {
+                var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return Convert.ToBase64String(bytes);
+            }
         }
     }
 }
