@@ -61,10 +61,11 @@ namespace Human_Resources_Management_System.UserControls
             
             if (user != null )
             {
-                HomeDesign homeDesign = new HomeDesign();
+                var homeDesign = new HomeDesign(username);
                 homeDesign.Show();
+                LoginPasswordBox.Password = string.Empty;
                 Window parentWindow = Window.GetWindow(this);
-                parentWindow.Close();
+                parentWindow.Hide();
             }
             else
             {

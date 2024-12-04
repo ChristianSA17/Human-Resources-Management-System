@@ -20,10 +20,11 @@ namespace Human_Resources_Management_System
     /// </summary>
     public partial class HomeDesign : Window
     {
-        public HomeDesign()
+        public HomeDesign(string username)
         {
             InitializeComponent();
             ContentDisplay.Content = new Dashboard();
+            UsernameText.Text = $"{username}";
         }
 
         
@@ -51,11 +52,11 @@ namespace Human_Resources_Management_System
         private void SignOutBtn_Click(object sender, RoutedEventArgs e)
         {
 
-            LoginAndSignup loginAndSignup = new LoginAndSignup();
+            Window parentWindow = Application.Current.MainWindow;
             MessageBoxResult boxResult = System.Windows.MessageBox.Show("Are you sure you want to Sign Out?", "Close Window?", System.Windows.MessageBoxButton.YesNo);
             if(boxResult == System.Windows.MessageBoxResult.Yes)
             {
-                loginAndSignup.Show();
+                parentWindow.Show();
                 this.Close();
 
             }
