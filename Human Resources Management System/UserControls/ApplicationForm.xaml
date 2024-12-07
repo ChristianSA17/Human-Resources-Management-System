@@ -5,8 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Human_Resources_Management_System.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-     
+             d:DesignHeight="450" d:DesignWidth="1200">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -28,26 +28,27 @@
 
         <Grid Grid.Row="2" Background="#3B3B3B" >
 
+
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
                 <TextBlock  Foreground="LightGray" FontSize="14">First Name <Span Foreground="red">*</Span></TextBlock>
                 <TextBox Foreground="LightGray" Background="Transparent" Width="190" Height="20"/>
             </StackPanel>
 
             <!-- Surname TextBox -->
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,150,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220,11,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray"> Surname <Span Foreground="red">*</Span></TextBlock>
                 <TextBox Foreground="LightGray" Background="Transparent" Width="190" Height="20"/>
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="300,10,0,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="433,10,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray"> Middle Initial <Span Foreground="red">*</Span></TextBlock>
                 <TextBox  Foreground="LightGray" Background="Transparent" Width="190" Height="20"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,30,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="640,10,0,0">
                 <TextBlock Foreground="LightGray">Sex<Span Foreground="Red">*</Span></TextBlock>
                 <ComboBox Width="90" Height="22" >
-                    <ComboBoxItem >Male</ComboBoxItem>
-                    <ComboBoxItem >Female</ComboBoxItem>
+                    <ComboBoxItem Content="Male" />
+                    <ComboBoxItem Content="Female" />
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0">
@@ -71,11 +72,11 @@
                 <TextBlock  FontSize="14" Foreground="LightGray">Age <Span Foreground="red">*</Span></TextBlock>
                 <TextBox Foreground="LightGray" Background="Transparent" Width="50" Height="20"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,55,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="287,54,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Email <Span Foreground="red">*</Span></TextBlock>
                 <TextBox Foreground="LightGray" Background="Transparent" Width="200" Height="20"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,55,60,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="516,54,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Address <Span Foreground="red">*</Span></TextBlock>
                 <TextBox Foreground="LightGray" Background="Transparent" Width="200" Height="20"/>
             </StackPanel>
@@ -90,7 +91,7 @@
                     <ComboBoxItem Foreground="LightGray">Incomplete</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="300,95,0,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="433,96,0,0">
                 <TextBlock Foreground="LightGray">Date Hired<Span Foreground="Red">*</Span></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                     <TextBox Foreground="LightGray" Background="Transparent" Name="HiredDateTextBox" Width="150" Height="30">
@@ -107,17 +108,17 @@
                     </Popup>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="650,100,0,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="640,100,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Shuttle Code<Span Foreground="red">*</Span></TextBlock>
                 <TextBox Foreground="LightGray" Background="Transparent" Width="100" Height="20"/>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10,150,650,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,150,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Applicant's Signature<Span Foreground="red">*</Span></TextBlock>
                 <Button Height="20" Click="OpenSignature_Click" >GET YOUR SIGNATURE</Button>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,150,300,75">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="170,150,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Authorized Signatory<Span Foreground="red">*</Span></TextBlock>
-                <TextBox Background="Transparent" Width="150" Height="20"/>
+                <Button Height="20" Click="AuthoritySig_Click" >GET YOUR SIGNATURE</Button>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,216,0,0">
@@ -148,8 +149,16 @@
                     <ComboBoxItem Foreground="LightGray">Female</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,50">
-                <Button Margin="300,0,20,0" Height="25" Background="#3B3B3B" Foreground="LightGray">Upload Photo</Button>
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,15,136,0" >
+                <Border Height="190" Width="200" Background="LightGray" CornerRadius="5"  BorderBrush="Black" BorderThickness="1">
+                    <Image x:Name="UploadedImage" Stretch="Uniform" />
+                </Border>
+
+                <!-- Upload Button -->
+                <Button Content="Upload Image" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="100" Click="FormUploadButton_Click"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,50" Grid.ColumnSpan="2">
+
                 <Button Margin="0,0,20,0" Background="#3B3B3B" Height="25" Click="OpenEditForm_Click" Foreground="LightGray">Edit Form</Button>
                 <Button Margin="0,0,0,0" Height="25" Background="#3B3B3B" Foreground="LightGray">Confirm</Button>
             </StackPanel>

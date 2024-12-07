@@ -17,11 +17,11 @@
         </Grid>
         <Grid Grid.Row="1" Background="LightGray"/>
         <Grid Grid.Row="2" Background="#3B3B3B">
-            <StackPanel Background="LightGray" Margin="10,10,170,374">
+            <StackPanel Background="LightGray" Height="40" Width="620" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0">
                 <TextBox x:Name="SearchTextBox" 
                  Width="520" Margin="10"
                  Text="Seacrh Here..."
-                         TextChanged='SearchTextBox_TextChanged'
+                 TextChanged='SearchTextBox_TextChanged'
                  />
             </StackPanel>
             <ListView Name="ItemListView" Grid.Row="1" d:ItemsSource="{Binding}" Margin="10,70,170,10">
@@ -31,6 +31,31 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,154,32,0">
+                <StackPanel x:Name="Total_Employee" Orientation="Horizontal">
+                    <TextBlock Foreground="LightGray">Total Employee:</TextBlock>
+                    <TextBox
+                        IsReadOnly="True"
+                        Background="Transparent"
+                        Width="50"
+                        BorderThickness="0"
+                        Focusable="False"
+                        />
+
+
+                </StackPanel>
+                <StackPanel x:Name="Total_Payroll" Orientation="Horizontal" Margin="0,25,0,0">
+                    <TextBlock Foreground="LightGray">Total Payroll:</TextBlock>
+                    <TextBox
+                        IsReadOnly="True"
+                        Background="Transparent"
+                         Width="50"
+                        BorderThickness="0"
+                        Focusable="False"
+                        />
+
+                </StackPanel>
+            </StackPanel>
 
         </Grid>
     </Grid>

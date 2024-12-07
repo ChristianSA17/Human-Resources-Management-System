@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -68,6 +69,37 @@ namespace Human_Resources_Management_System.UserControls
         }
 
         private void OpenSignature_Click(object sender, RoutedEventArgs e)
+        {
+            Signature signature = new Signature();
+            Window hostWindow = new Window
+            {
+                Content = signature,
+                Width = 400,
+                Height = 300,
+                WindowStartupLocation = WindowStartupLocation.CenterScreen
+            };
+            hostWindow.Show(); // Display the UserControl within a window
+        }
+
+        private void FormUploadButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Open a file dialog to select an image
+            OpenFileDialog openFileDialog = new OpenFileDialog
+            {
+                Filter = "Image Files (*.png;*.jpg;*.jpeg;*.bmp)|*.png;*.jpg;*.jpeg;*.bmp"
+            };
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                // Load the selected image into the Image control
+                BitmapImage bitmap = new BitmapImage(new System.Uri(openFileDialog.FileName));
+
+                // Set the source of the Image control to the loaded image
+                UploadedImage.Source = bitmap;
+            }
+        }
+
+        private void AuthoritySig_Click(object sender, RoutedEventArgs e)
         {
             Signature signature = new Signature();
             Window hostWindow = new Window

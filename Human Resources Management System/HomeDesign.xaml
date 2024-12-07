@@ -7,7 +7,7 @@
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
      
         mc:Ignorable="d"
-        Title="HomeDesign" Height="750" Width="1200" WindowStartupLocation="CenterScreen">
+        Title="HomeDesign" Height="750" Width="1500" WindowStartupLocation="CenterScreen">
     
     <!-- Custom Button Style to lessen code redundacy-->
     <Window.Resources>
@@ -85,8 +85,21 @@
             <Border  BorderBrush="#5F5F5F" BorderThickness="2,0,0,0" Grid.ColumnSpan="2" >
 
                 <StackPanel>
-                    <Border CornerRadius="5" Height="30" Width="120" Margin="0,20,30,20" Background="#484545" HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1">
-                        <TextBlock x:Name="UsernameText" Foreground="white" HorizontalAlignment="Center" VerticalAlignment="Center" >AdminName</TextBlock>
+                    <Border CornerRadius="5" Height="30" Width="150" Margin="0,20,30,20" Background="#484545" 
+        HorizontalAlignment="Right" VerticalAlignment="Top" Grid.Column="1">
+                        <Grid>
+                            <!-- Small Ellipse for the icon -->
+                            <Ellipse Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"
+                 Stroke="White" StrokeThickness="1">
+                                <Ellipse.Fill>
+                                    <ImageBrush x:Name="UserIconBrush" Stretch="UniformToFill" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+
+                            <!-- TextBlock for the username -->
+                            <TextBlock x:Name="UsernameText" Foreground="White" VerticalAlignment="Center" 
+                   HorizontalAlignment="Left" Margin="30,0,0,0" Text="AdminName" />
+                        </Grid>
                     </Border>
 
                     <Border CornerRadius="5" Margin="30,0,30,15" Height="590" Background="#484545" Grid.ColumnSpan="2" >

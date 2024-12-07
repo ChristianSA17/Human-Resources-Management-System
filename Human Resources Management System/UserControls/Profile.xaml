@@ -130,7 +130,7 @@
                  HorizontalAlignment="Center" 
                  Width="250" />
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,68,153,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="547,68,0,0">
                 <TextBlock Foreground="LightGray">M.I</TextBlock>
                 <TextBox 
                  IsReadOnly="True" 
