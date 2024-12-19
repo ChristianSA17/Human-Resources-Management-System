@@ -20,11 +20,11 @@ namespace Human_Resources_Management_System
     /// </summary>
     public partial class HomeDesign : Window
     {
-        public HomeDesign(string username)
+        public HomeDesign()
         {
             InitializeComponent();
             ContentDisplay.Content = new Dashboard();
-            UsernameText.Text = $"{username}";
+            
         }
 
         

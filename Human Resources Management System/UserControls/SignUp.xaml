@@ -7,16 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <!-- Login Content -->
-    <Grid>
-        <StackPanel 
+    
+        <!--<StackPanel 
             VerticalAlignment="Center" 
             HorizontalAlignment="Center">
 
             <TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,0">Create your account</TextBlock>
-
-            <TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838">Already have an account?
-        <Hyperlink Click="LoginHyperlink_Click">Login</Hyperlink>
-            </TextBlock>
 
             <TextBlock FontSize="15" >Username</TextBlock>
             <TextBox x:Name="SignupUsername" Margin="0,6,6,0"></TextBox>
@@ -28,6 +24,55 @@
             <PasswordBox x:Name="SignupCPassword" Margin="0,6,6,6"></PasswordBox>
 
             <Button Padding="5,20,5,20" Click="SignUpBtn_Click" >SIGN UP</Button>
+            <TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838"><Run Text="Already have an account? "/><Hyperlink Click="LoginHyperlink_Click"><Run Text="Login"/></Hyperlink></TextBlock>
+
+        </StackPanel>-->
+    <Grid>
+
+
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+           
+            <TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,0">Create your account</TextBlock>
+            
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <TextBlock>First Name</TextBlock>
+                    <TextBox x:Name="SignUpFirstName" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <TextBlock>Last Name</TextBlock>
+                    <TextBox x:Name="SignUpLastName" Width="200"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical"  Margin="10">
+                    <TextBlock>Middle Name</TextBlock>
+                    <TextBox x:Name="SignUpMiddleName" Width="100"/>
+                </StackPanel>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0">
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <TextBlock>Email</TextBlock>
+                    <TextBox x:Name="SignUpEmail" Width="540"/>
+                </StackPanel>
+                <StackPanel Orientation="Vertical" Margin="10">
+                    <TextBlock>Contact No.</TextBlock>
+                    <TextBox x:Name="SignUpContactNo" Width="540"/>
+                </StackPanel>
+                <StackPanel>
+                    <TextBlock FontSize="15" >Username</TextBlock>
+                    <TextBox x:Name="SignupUsername" Margin="0,6,6,0"></TextBox>
+                </StackPanel>
+                <StackPanel>
+                     <TextBlock FontSize="15" >Password</TextBlock>
+                     <PasswordBox x:Name="SignupPassword" Margin="0,6,6,0"></PasswordBox>
+
+                     <TextBlock FontSize="15" >Confirm Password</TextBlock>
+                     <PasswordBox x:Name="SignupCPassword" Margin="0,6,6,6"></PasswordBox>
+                </StackPanel>
+
+            </StackPanel>
+            <Button Padding="5,20,5,20" Click="SignUpBtn_Click" >SIGN UP</Button>
+            <TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838"><Run Text="Already have an account? "/><Hyperlink Click="LoginHyperlink_Click"><Run Text="Login"/></Hyperlink></TextBlock>
+
 
         </StackPanel>
     </Grid>

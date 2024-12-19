@@ -61,7 +61,8 @@ namespace Human_Resources_Management_System.UserControls
             
             if (user != null )
             {
-                var homeDesign = new HomeDesign(username);
+                var homeDesign = new HomeDesign();
+                homeDesign.DataContext = user;
                 homeDesign.Show();
                 LoginPasswordBox.Password = string.Empty;
                 Window parentWindow = Window.GetWindow(this);

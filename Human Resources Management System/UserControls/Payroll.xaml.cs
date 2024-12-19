@@ -33,11 +33,11 @@ namespace Human_Resources_Management_System.UserControls
             InitializeComponent();
             Items = new ObservableCollection<Item>
             {
-                new Item { Name = "Apple" },
-                new Item { Name = "Banana" },
+                new Item { Name = "Ben" },
+                new Item { Name = "Bill" },
                 new Item { Name = "Cherry" },
-                new Item { Name = "Date" },
-                new Item { Name = "Elderberry" },
+                new Item { Name = "Dante" },
+                new Item { Name = "Luffy" },
             };
 
             // Set up CollectionView for filtering

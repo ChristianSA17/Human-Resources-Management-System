@@ -155,12 +155,12 @@
                 </Border>
 
                 <!-- Upload Button -->
-                <Button Content="Upload Image" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="100" Click="FormUploadButton_Click"/>
+                <Button Content="Upload Image" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="100" Click="FormUploadButton_Click" Background="#141414" Foreground="LightGray"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,50" Grid.ColumnSpan="2">
 
-                <Button Margin="0,0,20,0" Background="#3B3B3B" Height="25" Click="OpenEditForm_Click" Foreground="LightGray">Edit Form</Button>
-                <Button Margin="0,0,0,0" Height="25" Background="#3B3B3B" Foreground="LightGray">Confirm</Button>
+                <Button Margin="0,0,20,0" Background="#141414" Height="25" Click="OpenEditForm_Click" Foreground="LightGray">Edit Form</Button>
+                <Button Margin="0,0,0,0" Height="25" Foreground="LightGray" Background="#141414">Confirm</Button>
             </StackPanel>
 
 

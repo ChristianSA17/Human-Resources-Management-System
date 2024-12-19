@@ -44,5 +44,61 @@ namespace Human_Resources_Management_System.UserControls
                 }
             }
         }
+
+        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_1(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void TextBox_TextChanged_2(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            FirstNameTextBox.IsReadOnly = false;
+            LastNameTextbox.IsReadOnly = false;
+            MiddleNameTextBox.IsReadOnly = false;
+            ContactNoTextBox.IsReadOnly = false;
+            EmailTextBox.IsReadOnly = false;
+
+            EditButton.Visibility = Visibility.Collapsed;
+            CancelButton.Visibility = Visibility.Visible;
+
+
+        }
+
+        private void CancelEditButton_Click(object sender, RoutedEventArgs e)
+        {
+            FirstNameTextBox.IsReadOnly = true;
+            LastNameTextbox.IsReadOnly = true;
+            MiddleNameTextBox.IsReadOnly = true;
+            ContactNoTextBox.IsReadOnly = true;
+            EmailTextBox.IsReadOnly = true;
+
+            EditButton.Visibility = Visibility.Visible;
+            CancelButton.Visibility = Visibility.Collapsed;
+        }
+
+        private void SaveButton_Click(object sender, RoutedEventArgs e)
+        {
+            var firstName = FirstNameTextBox.Text;
+            var lastName = LastNameTextbox.Text;
+            var middleName = MiddleNameTextBox.Text;
+            var contactNo = ContactNoTextBox.Text;
+            var email = EmailTextBox.Text;
+
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(middleName) || string.IsNullOrWhiteSpace(contactNo) || string.IsNullOrWhiteSpace(email))
+            {
+                MessageBox.Show("Fill up all the fields.");
+                return;
+            }
+        }
     }
 }

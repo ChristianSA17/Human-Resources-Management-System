@@ -85,34 +85,40 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,68,0,0">
                 <TextBlock Foreground="LightGray">First Name</TextBlock>
                 <TextBox 
+                 x:Name="FirstNameTextBox"
+                 Text="{Binding FirstName}"
                  IsReadOnly="True" 
                  BorderThickness="1" 
                  Background="Transparent" 
-                 Foreground="Black" 
+                 Foreground="White" 
                  FontSize="16" 
                  VerticalAlignment="Center" 
                  HorizontalAlignment="Center" 
-                 Width="250" />
+                 Width="250" TextChanged="TextBox_TextChanged_2" />
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,112,0,0">
                 <TextBlock Foreground="LightGray">Contact No.</TextBlock>
                 <TextBox 
+                 x:Name="ContactNoTextBox"
+                 Text="{Binding ContactNo}"
                  IsReadOnly="True" 
                  BorderThickness="1" 
                  Background="Transparent" 
-                 Foreground="Black" 
+                 Foreground="White" 
                  FontSize="16" 
                  VerticalAlignment="Center" 
                  HorizontalAlignment="Center" 
-                 Width="250" />
+                 Width="250" TextChanged="TextBox_TextChanged_1" />
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="282,68,0,0">
                 <TextBlock Foreground="LightGray">Last Name</TextBlock>
                 <TextBox 
+                 x:Name="LastNameTextbox"
+                 Text="{Binding LastName}"
                  IsReadOnly="True" 
                  BorderThickness="1" 
                  Background="Transparent" 
-                 Foreground="Black" 
+                 Foreground="White" 
                  FontSize="16" 
                  VerticalAlignment="Center" 
                  HorizontalAlignment="Center" 
@@ -121,31 +127,37 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="282,112,0,0">
                 <TextBlock Foreground="LightGray">Email</TextBlock>
                 <TextBox 
+                 x:Name="EmailTextBox"
+                 Text="{Binding Email}"
                  IsReadOnly="True" 
                  BorderThickness="1" 
                  Background="Transparent" 
-                 Foreground="Black" 
+                 Foreground="White" 
                  FontSize="16" 
-                 VerticalAlignment="Center" 
-                 HorizontalAlignment="Center" 
-                 Width="250" />
+                 Width="350" />
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="547,68,0,0">
-                <TextBlock Foreground="LightGray">M.I</TextBlock>
+                <TextBlock Foreground="LightGray">Middle Name</TextBlock>
                 <TextBox 
+                 x:Name="MiddleNameTextBox"   
+                 Text="{Binding MiddleName}"
                  IsReadOnly="True" 
                  BorderThickness="1" 
                  Background="Transparent" 
-                 Foreground="Black" 
+                 Foreground="White" 
                  FontSize="16" 
                  VerticalAlignment="Center" 
                  HorizontalAlignment="Center" 
-                 Width="100" />
+                 Width="240" TextChanged="TextBox_TextChanged" />
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,23,10">
-                <Button Margin="0,0,30,0" Width="100" Height="25" Foreground="LightGray" Background="#141414">Edit</Button>
-                <Button Margin="0,0,0,0" Width="100" Height="25" Foreground="LightGray" Background="#141414">Save</Button>
+                
+                <Button x:Name="EditButton"  Margin="0,0,30,0" Width="100" Height="25" Foreground="LightGray" Background="#141414" Click="EditButton_Click">Edit</Button>
+                <Button x:Name="CancelButton" Visibility="Collapsed" Margin="0,0,30,0" Width="100" Height="25" Foreground="LightGray" Background="#141414" Click="CancelEditButton_Click"> Cancel Edit</Button>
+                
+                <Button Margin="0,0,0,0" Width="100" Height="25" Foreground="LightGray" Background="#141414" Click="SaveButton_Click">Save</Button>
             </StackPanel>
+            
         </Grid>
 
 

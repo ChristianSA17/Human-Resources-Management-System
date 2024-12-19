@@ -43,11 +43,16 @@ namespace Human_Resources_Management_System.UserControls
            
             try
             {
+                var firstName = SignUpFirstName.Text;
+                var lastName = SignUpLastName.Text;
+                var middleName = SignUpMiddleName.Text;
+                var contactNo = SignUpContactNo.Text;
+                var email = SignUpEmail.Text;
                 var username = SignupUsername.Text;
                 var password = SignupPassword.Password;
                 var Cpassword = SignupCPassword.Password;
 
-                if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+                if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(middleName) || string.IsNullOrWhiteSpace(contactNo) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(Cpassword))
                 {
                     MessageBox.Show("Fill up all the fields.");
                     return;
@@ -72,8 +77,11 @@ namespace Human_Resources_Management_System.UserControls
 
                 var hashedPassword = HashPassword(password);
 
-                var newUser = new UsersModel {Username = username, Password = hashedPassword};
+                var newUser = new UsersModel {FirstName = firstName, LastName = lastName, MiddleName = middleName, ContactNo = contactNo, Email = email, Username = username, Password = hashedPassword};
                 userCollection.InsertOne(newUser);
+
+                var loginandsignup = (LoginAndSignup)Application.Current.MainWindow;
+                loginandsignup.LoginHyperlink();
 
 
 
@@ -82,6 +90,7 @@ namespace Human_Resources_Management_System.UserControls
             catch (Exception ex)
             {
                 MessageBox.Show($"Error adding user: {ex.Message}");
+                return;
             }
         
         }

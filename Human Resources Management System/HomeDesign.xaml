@@ -8,7 +8,7 @@
      
         mc:Ignorable="d"
         Title="HomeDesign" Height="750" Width="1500" WindowStartupLocation="CenterScreen">
-    
+
     <!-- Custom Button Style to lessen code redundacy-->
     <Window.Resources>
         <Style x:Key="SideMenuButtonStyle" TargetType="Button">
@@ -18,9 +18,9 @@
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
             <Setter Property="Foreground" Value="White"/>
         </Style>
-        
+
     </Window.Resources>
-    
+
     <Grid Background="#343030">
 
         <Grid.ColumnDefinitions>
@@ -67,9 +67,9 @@
                 <Button x:Name="SupportBtn" Margin="0,0,60,0" Style="{StaticResource SideMenuButtonStyle}" Click="SupportBtn_Click">
                     <StackPanel Orientation="Horizontal">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeSupportIcon.png" Width="20" Height="20"/>
-                    <TextBlock Text="Support" Margin="5,0,0,0" VerticalAlignment="Center"/>
+                        <TextBlock Text="Support" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
-                 </Button>
+                </Button>
                 <Button x:Name="ExitBtn" Margin="0,0,80,0" Style="{StaticResource SideMenuButtonStyle}" Click="SignOutBtn_Click">Sign Out</Button>
 
             </StackPanel>
@@ -97,22 +97,22 @@
                             </Ellipse>
 
                             <!-- TextBlock for the username -->
-                            <TextBlock x:Name="UsernameText" Foreground="White" VerticalAlignment="Center" 
-                   HorizontalAlignment="Left" Margin="30,0,0,0" Text="AdminName" />
+                            <TextBlock x:Name="UsernameText" Text="{Binding Username}" Foreground="White" VerticalAlignment="Bottom" 
+                   HorizontalAlignment="Left" Margin="30,0,0,7" />
                         </Grid>
                     </Border>
 
                     <Border CornerRadius="5" Margin="30,0,30,15" Height="590" Background="#484545" Grid.ColumnSpan="2" >
 
                         <ContentControl x:Name="ContentDisplay" />
-                        
+
 
                     </Border>
                 </StackPanel>
 
 
             </Border>
-            
+
 
         </Grid>
 
