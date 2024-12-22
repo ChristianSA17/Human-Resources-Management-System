@@ -41,7 +41,7 @@ namespace Human_Resources_Management_System
 
         private void ProfileBtn_Click(object sender, RoutedEventArgs e)
         {
-            ContentDisplay.Content = new Profile();
+            ContentDisplay.Content = new Profile(UsernameText.Text);
         }
 
         private void SupportBtn_Click(object sender, RoutedEventArgs e)

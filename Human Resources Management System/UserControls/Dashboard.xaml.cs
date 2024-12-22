@@ -29,7 +29,6 @@ namespace Human_Resources_Management_System.UserControls
             _connection = new MongoDbConnection();
             LoadData();
 
-
         }
 
         private void SetCurrentDate()

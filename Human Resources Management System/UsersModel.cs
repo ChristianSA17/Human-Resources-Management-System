@@ -35,5 +35,8 @@ namespace Human_Resources_Management_System
         //for password
         [BsonElement("Password")]
         public string Password { get; set; }
+        //for profile image
+        [BsonElement("ProfileImage")]
+        public byte[] ProfileImage { get; set; }
     }
 }
