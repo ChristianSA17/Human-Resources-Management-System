@@ -39,4 +39,14 @@ namespace Human_Resources_Management_System
         [BsonElement("ProfileImage")]
         public byte[] ProfileImage { get; set; }
     }
+
+    public class PeoplesModel
+    {
+        // for ID
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string Id { get; set; }
+
+
+    }
 }

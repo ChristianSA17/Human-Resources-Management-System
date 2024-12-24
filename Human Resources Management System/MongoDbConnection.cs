@@ -21,7 +21,12 @@ namespace Human_Resources_Management_System
         {
             return _database.GetCollection<UsersModel>("Users");
         }
-        
+
+        public IMongoCollection<PeoplesModel> GetPeoplesCollection()
+        {
+            return _database.GetCollection<PeoplesModel>("Peoples");
+        }
+
 
 
     }
