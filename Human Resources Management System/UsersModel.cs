@@ -46,7 +46,63 @@ namespace Human_Resources_Management_System
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string Id { get; set; }
-
+        // for First Name
+        [BsonElement("FirstName")]
+        public string FirstName { get; set; }
+        //for Surname
+        [BsonElement("Surname")]
+        public string Surname { get; set; }
+        //for Middle Name
+        [BsonElement("MiddleName")]
+        public string MiddleName { get; set; }
+        // for Sex
+        [BsonElement("Sex")]
+        public string Sex { get; set; }
+        // for Birthday
+        [BsonElement("Birthday")]
+        public string Birthday { get; set; }
+        // for Age
+        [BsonElement("Age")]
+        public string Age { get; set; }
+        // for Email
+        [BsonElement("Email")]
+        public string Email { get; set; }
+        // for Address
+        [BsonElement("Address")]
+        public string Address { get; set; }
+        // for Contact no.
+        [BsonElement("ContactNo")]
+        public string ContactNo { get; set; }
+        // for Requirements
+        [BsonElement("Requirements")]
+        public string Requirements { get; set; }
+        // for Date hired
+        [BsonElement("DateHired")]
+        public string DateHired { get; set; }
+        // for Shuttle code
+        [BsonElement("ShuttleCode")]
+        public string ShuttleCode { get; set; }
+        // for Emegerncy Contact First Name
+        [BsonElement("ContactsFirstName")]
+        public string ContactsFirstName { get; set; }
+        // for Emergency Contact Surname
+        [BsonElement("ContactsSurname")]
+        public string ContactsSurname { get; set; }
+        // for Emergency Contact Middle Name
+        [BsonElement("ContactsMiddleName")]
+        public string ContactsMiddleName { get; set; }
+        // for Emergency Contact No.
+        [BsonElement("ContactsNo")]
+        public string ContactsNo { get; set; }
+        // for Emergency Contact Sex
+        [BsonElement("ContactsSex")]
+        public string ContactsSex { get; set; }
+        // for Emergencty Contact Address 
+        [BsonElement("ContactsAddress")]
+        public string ContactsAddress { get; set; }
+        // for Profile Picture
+        [BsonElement("ProfileImage")]
+        public byte[] ProfileImage { get; set; }
 
     }
 }

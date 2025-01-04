@@ -52,7 +52,7 @@ namespace Human_Resources_Management_System.UserControls
                 var password = SignupPassword.Password;
                 var Cpassword = SignupCPassword.Password;
 
-                if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) || string.IsNullOrWhiteSpace(middleName) || string.IsNullOrWhiteSpace(contactNo) || string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(Cpassword))
+                if (new[] {firstName, lastName, middleName, contactNo, email, username, password, Cpassword }.Any(string.IsNullOrWhiteSpace))
                 {
                     MessageBox.Show("Fill up all the fields.");
                     return;
