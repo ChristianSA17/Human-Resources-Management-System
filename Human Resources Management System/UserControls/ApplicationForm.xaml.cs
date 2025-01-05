@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MongoDB.Driver;
+using System.IO;
 
 namespace Human_Resources_Management_System.UserControls
 {
@@ -23,6 +24,9 @@ namespace Human_Resources_Management_System.UserControls
     public partial class ApplicationForm : UserControl
     {
         private readonly MongoDbConnection _connection;
+        private DateTime? _selectedBirthDate; // Declaring this field for the calender function
+        private DateTime? _selectedHiredDate;
+        private byte[] _uploadedImageBytes;
         public ApplicationForm()
         {
             InitializeComponent();
@@ -44,11 +48,13 @@ namespace Human_Resources_Management_System.UserControls
         }
 
         // Set the selected date in the TextBox when a date is selected
-        private void Calendar_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        private void BirthDateCalendar_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (Calendar.SelectedDate.HasValue)
+            if (BirthDateCalendar.SelectedDate.HasValue)
             {
-                BirthDateTextBox.Text = Calendar.SelectedDate.Value.ToString("yyyy-MM-dd");
+                _selectedBirthDate = BirthDateCalendar.SelectedDate.Value;
+                BirthDateTextBox.Text = BirthDateCalendar.SelectedDate.Value.ToString("yyyy-MM-dd");
+                
             }
 
             // Close the popup when a date is selected
@@ -59,6 +65,7 @@ namespace Human_Resources_Management_System.UserControls
         {
             if (HiredDate.SelectedDate.HasValue)
             {
+                _selectedHiredDate = HiredDate.SelectedDate.Value;
                 HiredDateTextBox.Text = HiredDate.SelectedDate.Value.ToString("yyyy-MM-dd");
             }
 
@@ -99,6 +106,15 @@ namespace Human_Resources_Management_System.UserControls
 
                 // Set the source of the Image control to the loaded image
                 UploadedImage.Source = bitmap;
+
+                // Convert the image to a byte array
+                using (MemoryStream stream = new MemoryStream())
+                {
+                    BitmapEncoder encoder = new PngBitmapEncoder();
+                    encoder.Frames.Add(BitmapFrame.Create(bitmap));
+                    encoder.Save(stream);
+                    _uploadedImageBytes = stream.ToArray(); // Store the byte array
+                }
             }
         }
 
@@ -139,6 +155,11 @@ namespace Human_Resources_Management_System.UserControls
                 string selectedRequirements = null;
                 string selectedEmergencyContactsSex = null;
 
+                //
+                var dateofBirth = _selectedBirthDate.Value;
+                var dateHired = _selectedHiredDate.Value;
+
+
                 //takes the item from the comboboxes and add to the string containers above
                 if (ApplicantsSex.SelectedItem is ComboBoxItem sexItem)
                 {
@@ -176,9 +197,43 @@ namespace Human_Resources_Management_System.UserControls
                     return;
                 }
 
+                // Validate the selected date
+                if (!_selectedBirthDate.HasValue)
+                {
+                    MessageBox.Show("Please select a Date of Birth.");
+                    return;
+                }
+
+                if (!_selectedHiredDate.HasValue)
+                {
+                    MessageBox.Show("Please select a Date Hired.");
+                    return;
+                }
+
                 var peoplesCollection = _connection.GetPeoplesCollection();
 
-                var newPerson = new PeoplesModel { FirstName = firstName, Surname = surname, MiddleName = middleName, Age = age, Email = email, Address = address, ContactNo = contactNo, ShuttleCode = shuttleCode, ContactsFirstName = emergencyName, ContactsSurname = emergencySurname, ContactsMiddleName = emergencyMiddleName, ContactsNo = emergencyContact, ContactsAddress = emergencyAddress, Sex = selectedSex, Requirements = selectedRequirements, ContactsSex = selectedEmergencyContactsSex};
+                var newPerson = new PeoplesModel { 
+                    FirstName = firstName, 
+                    Surname = surname, 
+                    MiddleName = middleName, 
+                    Age = age, 
+                    Email = email, 
+                    Address = address, 
+                    ContactNo = contactNo, 
+                    ShuttleCode = shuttleCode, 
+                    ContactsFirstName = emergencyName, 
+                    ContactsSurname = emergencySurname, 
+                    ContactsMiddleName = emergencyMiddleName, 
+                    ContactsNo = emergencyContact, 
+                    ContactsAddress = emergencyAddress, 
+                    Sex = selectedSex, 
+                    Requirements = selectedRequirements, 
+                    ContactsSex = selectedEmergencyContactsSex,
+                    Birthday = dateofBirth,
+                    DateHired = dateHired,
+                    ProfileImage = _uploadedImageBytes
+
+                };
                 peoplesCollection.InsertOne(newPerson);
 
                 MessageBox.Show("Person added successfully!");

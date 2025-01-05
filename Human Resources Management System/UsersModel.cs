@@ -60,7 +60,7 @@ namespace Human_Resources_Management_System
         public string Sex { get; set; }
         // for Birthday
         [BsonElement("Birthday")]
-        public string Birthday { get; set; }
+        public DateTime Birthday { get; set; }
         // for Age
         [BsonElement("Age")]
         public string Age { get; set; }
@@ -78,7 +78,7 @@ namespace Human_Resources_Management_System
         public string Requirements { get; set; }
         // for Date hired
         [BsonElement("DateHired")]
-        public string DateHired { get; set; }
+        public DateTime DateHired { get; set; }
         // for Shuttle code
         [BsonElement("ShuttleCode")]
         public string ShuttleCode { get; set; }

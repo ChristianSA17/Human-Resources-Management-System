@@ -63,7 +63,7 @@
 
                     <!-- Popup for Calendar -->
                     <Popup Name="CalendarPopup" Placement="Bottom" PlacementTarget="{Binding ElementName=ApplicantsBirthday}" StaysOpen="False">
-                        <Calendar Name="Calendar" SelectedDatesChanged="Calendar_SelectedDateChanged"/>
+                        <Calendar x:Name="BirthDateCalendar" SelectedDatesChanged="BirthDateCalendar_SelectedDateChanged"/>
                     </Popup>
                 </StackPanel>
             </StackPanel>
@@ -102,7 +102,7 @@
 
                     <!-- Popup for Calendar -->
                     <Popup Name="HiredDatePopup" Placement="Bottom" PlacementTarget="{Binding ElementName=ApplicantsDateHired}" StaysOpen="False">
-                        <Calendar Name="HiredDate" SelectedDatesChanged="Hired_SelectedDateChanged"/>
+                        <Calendar x:Name="HiredDate" SelectedDatesChanged="Hired_SelectedDateChanged"/>
                     </Popup>
                 </StackPanel>
             </StackPanel>
