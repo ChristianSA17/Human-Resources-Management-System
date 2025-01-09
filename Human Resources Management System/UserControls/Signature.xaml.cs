@@ -23,6 +23,9 @@ namespace Human_Resources_Management_System.UserControls
     /// </summary>
     public partial class Signature : UserControl
     {
+        public string SignatureType { get; set; }
+        public byte[] _applicantsSignature { get; set; }
+        public byte[] _authorizeSignature { get; set; }
         public Signature()
         {
             InitializeComponent();
@@ -70,8 +73,62 @@ namespace Human_Resources_Management_System.UserControls
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-            Window parentWindow = Window.GetWindow(this);
-            parentWindow.Close();
+            if (SignatureCanvas.Strokes.Count == 0)
+            {
+                MessageBox.Show("Please provide a signature before confirming.");
+                return;
+            }
+
+            if (SignatureType == "Applicants")
+            {
+                _applicantsSignature = CaptureSignature();
+            }
+            else if (SignatureType == "Authorization")
+            {
+                _authorizeSignature = CaptureSignature();
+            }
+
+            // Close or hide the signature control
+            this.Visibility = Visibility.Hidden;
+        }
+
+
+        private byte[] CaptureSignature()
+        {
+            double width = SignatureCanvas.ActualWidth;
+            double height = SignatureCanvas.ActualHeight;
+
+            // Ensure width and height are valid
+            if (width == 0 || height == 0)
+            {
+                MessageBox.Show("InkCanvas size is invalid.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return null;
+            }
+
+            // Create a RenderTargetBitmap
+            RenderTargetBitmap renderBitmap = new RenderTargetBitmap(
+                (int)width, (int)height,
+                96, 96, PixelFormats.Pbgra32);
+
+            // Render the InkCanvas content
+            DrawingVisual drawingVisual = new DrawingVisual();
+            using (DrawingContext context = drawingVisual.RenderOpen())
+            {
+                VisualBrush brush = new VisualBrush(SignatureCanvas);
+                context.DrawRectangle(brush, null, new Rect(new Point(), new Size(width, height)));
+            }
+
+            renderBitmap.Render(drawingVisual);
+
+            // Encode the bitmap to a PNG byte array
+            PngBitmapEncoder encoder = new PngBitmapEncoder();
+            encoder.Frames.Add(BitmapFrame.Create(renderBitmap));
+
+            using (MemoryStream memoryStream = new MemoryStream())
+            {
+                encoder.Save(memoryStream);
+                return memoryStream.ToArray(); // Return the byte array representing the signature
+            }
         }
     }
 }

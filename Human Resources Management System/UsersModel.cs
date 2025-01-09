@@ -103,6 +103,12 @@ namespace Human_Resources_Management_System
         // for Profile Picture
         [BsonElement("ProfileImage")]
         public byte[] ProfileImage { get; set; }
+        // for applicants signature
+        [BsonElement("ApplicantSignature")]
+        public byte[] ApplicantSignature { get; set; }
+        // for authorize signature
+        [BsonElement("AuthorizeSignature")]
+        public byte[] AuthorizeSignature { get; set; }
 
     }
 }

@@ -27,6 +27,8 @@ namespace Human_Resources_Management_System.UserControls
         private DateTime? _selectedBirthDate; // Declaring this field for the calender function
         private DateTime? _selectedHiredDate;
         private byte[] _uploadedImageBytes;
+        private byte[] _applicantsSignature;
+        private byte[] _authorizeSignature;
         public ApplicationForm()
         {
             InitializeComponent();
@@ -81,6 +83,8 @@ namespace Human_Resources_Management_System.UserControls
         private void OpenSignature_Click(object sender, RoutedEventArgs e)
         {
             Signature signature = new Signature();
+            signature.SignatureType = "Applicants";
+
             Window hostWindow = new Window
             {
                 Content = signature,
@@ -88,8 +92,17 @@ namespace Human_Resources_Management_System.UserControls
                 Height = 300,
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
-            hostWindow.Show(); // Display the UserControl within a window
+
+            // Show the signature window modally, so the main window waits until it is closed
+            hostWindow.ShowDialog(); // Wait until the user closes the window
+
+            // After the signature window is closed, we retrieve the signature data
+            if (signature._applicantsSignature != null)
+            {
+                _applicantsSignature = signature._applicantsSignature; // Store the signature byte array in the main window
+            }
         }
+
 
         private void FormUploadButton_Click(object sender, RoutedEventArgs e)
         {
@@ -120,7 +133,11 @@ namespace Human_Resources_Management_System.UserControls
 
         private void AuthoritySig_Click(object sender, RoutedEventArgs e)
         {
+            // Create the signature control
             Signature signature = new Signature();
+            signature.SignatureType = "Authorization"; // Set the signature type
+
+            // Create and show the signature window modally
             Window hostWindow = new Window
             {
                 Content = signature,
@@ -128,8 +145,17 @@ namespace Human_Resources_Management_System.UserControls
                 Height = 300,
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
-            hostWindow.Show(); // Display the UserControl within a window
+
+            // Show the window modally so the main window waits for it to close
+            hostWindow.ShowDialog();
+
+            // After the signature window is closed, retrieve the authorization signature data
+            if (signature._authorizeSignature != null)
+            {
+                _authorizeSignature = signature._authorizeSignature; // Store the authorization signature in the main window
+            }
         }
+
 
         private void ConfirmApplicationButton_Click(object sender, RoutedEventArgs e)
         {
@@ -238,7 +264,9 @@ namespace Human_Resources_Management_System.UserControls
                     ContactsSex = selectedEmergencyContactsSex,
                     Birthday = dateofBirth,
                     DateHired = dateHired,
-                    ProfileImage = _uploadedImageBytes
+                    ProfileImage = _uploadedImageBytes,
+                    ApplicantSignature = _applicantsSignature,
+
 
                 };
                 peoplesCollection.InsertOne(newPerson);
