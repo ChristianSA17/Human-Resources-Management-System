@@ -8,28 +8,45 @@
              d:DesignHeight="450" d:DesignWidth="800">
 
     <!-- Login Content -->
-    <Grid>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+<Grid>
+<StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
-            <TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,10">Login to your account</TextBlock>
+<TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,10">Login to your account</TextBlock>
 
-            <TextBlock FontSize="15">Username</TextBlock>
+<TextBlock FontSize="15">Username</TextBlock>
 
-            <TextBox x:Name="LoginTextBox" Margin="0,6,6,0"></TextBox>
+<TextBox x:Name="LoginTextBox" Margin="0,6,30,0" Width="470" Height="20"></TextBox>
 
-            <TextBlock FontSize="15" >Password</TextBlock>
+<TextBlock FontSize="15" >Password</TextBlock>
+            <StackPanel Orientation="Vertical" Margin="10">
+                <!-- StackPanel for Password Field -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                    <!-- PasswordBox -->
+                    <PasswordBox x:Name="LoginPasswordBox" Margin="0,6,6,0" PasswordChar="*" Width="470" Height="20" />
 
-            <PasswordBox x:Name="LoginPasswordBox" Margin="0,6,6,0" PasswordChar="*"></PasswordBox>
+                    <!-- TextBox for visible password (initially hidden) -->
+                    <TextBox x:Name="PasswordTextBox" Margin="0,6,6,0" Width="470" Height="20" Visibility="Collapsed" />
 
-            <TextBlock><Hyperlink NavigateUri="#">Forgot Password?</Hyperlink></TextBlock>
+                    <!-- Eye Icon -->
+                    <Button Content="👁" Width="30" Height="30" Click="TogglePasswordVisibility_Click" />
+                </StackPanel>
+
+                <!-- Forgot Password Link -->
+                <TextBlock Margin="0,6,6,0">
+        <Hyperlink Click="ForgotPassword_Click">Forgot Password?</Hyperlink>
+                </TextBlock>
+            </StackPanel>
+
+
+
 
             <Button Margin="0,20,0,0" Padding="0,20,0,20" Click="LoginButton_Click" Background="#FFDDDDDD" IsDefault="True" FontSize="25" Width="249">LOGIN
-            </Button>
+</Button>
 
-            <TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838" Margin="0,25,0,0">Don't have an account? 
+<TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838" Margin="0,25,0,0">Don't have an account?
 <Hyperlink Click="SignupHyperlink_Click" >Create a new account</Hyperlink>
-            </TextBlock>
+</TextBlock>
 
-        </StackPanel>
-    </Grid>
+</StackPanel>
+</Grid>
 </UserControl>

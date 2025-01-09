@@ -83,5 +83,29 @@ namespace Human_Resources_Management_System.UserControls
                 return Convert.ToBase64String(bytes);
             }
         }
+        private void TogglePasswordVisibility_Click(object sender, RoutedEventArgs e)
+        {
+            // Check if the password is currently hidden
+            if (LoginPasswordBox.Visibility == Visibility.Visible)
+            {
+                // Show the password in the TextBox
+                PasswordTextBox.Text = LoginPasswordBox.Password;
+                PasswordTextBox.Visibility = Visibility.Visible;
+                LoginPasswordBox.Visibility = Visibility.Collapsed;
+            }
+            else
+            {
+                // Hide the password in the PasswordBox
+                LoginPasswordBox.Password = PasswordTextBox.Text;
+                LoginPasswordBox.Visibility = Visibility.Visible;
+                PasswordTextBox.Visibility = Visibility.Collapsed;
+            }
+        }
+        private void ForgotPassword_Click(object sender, RoutedEventArgs e)
+        {
+            var loginandsignup = (LoginAndSignup)Application.Current.MainWindow;
+            loginandsignup.ForgotPassHyperlink();
+        }
+
     }
 }

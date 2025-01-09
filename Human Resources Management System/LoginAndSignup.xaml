@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Human_Resources_Management_System.UserControls" 
         xmlns:svgc="http://sharpvectors.codeplex.com/svgc/"
         mc:Ignorable="d"
-        Title="HR Management System - Login" Height="750" Width="1200" WindowStartupLocation="CenterScreen">
+        Title="HR Management System - Login" Height="750" Width="1200" WindowStartupLocation="CenterScreen" Icon="/realcompanylogo.png">
         <!-- Sa xmlns namespace nag add ng UserControls sa dulo para magamit yung mga user controls sa window na to same sa ibang windows form, then yung sharpvectors parang import package para makapag add ng svg na image dito.-->
         
     <Grid>

@@ -31,9 +31,9 @@
 
 
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-           
-            <TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,0">Create your account</TextBlock>
-            
+
+            <TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,0" Text="Create your account"/>
+
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock>First Name</TextBlock>

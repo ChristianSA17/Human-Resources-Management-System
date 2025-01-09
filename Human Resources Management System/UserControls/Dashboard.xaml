@@ -20,10 +20,25 @@
             <ListView x:Name="ListViewUsers" Margin="10,10,229,23">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}"/>
-                        <GridViewColumn Header="Username" DisplayMemberBinding="{Binding Username}"/>
-                        <GridViewColumn Header="Password" DisplayMemberBinding="{Binding Password}"/>
-                        
+                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"/>
+                        <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Surname}"/>
+                        <GridViewColumn Header="Middle Name" DisplayMemberBinding="{Binding MiddleName}"/>
+                        <GridViewColumn Header="Sex" DisplayMemberBinding="{Binding Sex}"/>
+                        <GridViewColumn Header="Birthday" DisplayMemberBinding="{Binding Birthday,StringFormat=MM-dd-yyyy}"/>
+                        <GridViewColumn Header="Age" DisplayMemberBinding="{Binding Age}"/>
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"/>
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}"/>
+                        <GridViewColumn Header="Contact No" DisplayMemberBinding="{Binding ContactNo}"/>
+                        <GridViewColumn Header="Requirements" DisplayMemberBinding="{Binding Requirements}"/>
+                        <GridViewColumn Header="Date Hired" DisplayMemberBinding="{Binding DateHired, StringFormat=MM-dd-yyyy}"/>
+                        <GridViewColumn Header="Shuttle Code" DisplayMemberBinding="{Binding ShuttleCode}"/>
+                        <GridViewColumn Header="Picture">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding ProfileImage}" Width="50" Height="50" Stretch="UniformToFill"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
@@ -41,6 +56,10 @@
                 </Grid>
                 <Grid Grid.Row="1" Background="LightGray"/>
                 <Grid Grid.Row="2" Background="#141414">
+                    <ListBox x:Name="NotesListBox" Background="#141414" Foreground="White" 
+                             BorderThickness="0" FontSize="12" Margin="5">
+                        <!-- Dynamic Content will be added here -->
+                    </ListBox>
 
                 </Grid>
             </Grid>

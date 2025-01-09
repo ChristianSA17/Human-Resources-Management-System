@@ -39,5 +39,13 @@ namespace Human_Resources_Management_System
         {
 
         }
+
+        public void ForgotPassHyperlink()
+        {
+            ContentDisplay.Content = new ForgotPass();
+
+        }
+
+
     }
 }

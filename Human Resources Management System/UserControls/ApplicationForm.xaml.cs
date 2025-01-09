@@ -180,7 +180,7 @@ namespace Human_Resources_Management_System.UserControls
 
                 if (string.IsNullOrEmpty(selectedSex))
                 {
-                    MessageBox.Show("Please select a gender.");
+                    MessageBox.Show("Please select a sex.");
                     return;
                 }
 
@@ -189,6 +189,13 @@ namespace Human_Resources_Management_System.UserControls
                     MessageBox.Show("Please select a requirements info.");
                     return;
                 }
+
+                if (string.IsNullOrEmpty(selectedEmergencyContactsSex))
+                {
+                    MessageBox.Show("Please select a sex for the emergency contact.");
+                    return;
+                }
+
 
 
                 //checks all the textbox is empty or whitespace
