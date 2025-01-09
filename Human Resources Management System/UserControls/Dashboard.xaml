@@ -56,10 +56,14 @@
                 </Grid>
                 <Grid Grid.Row="1" Background="LightGray"/>
                 <Grid Grid.Row="2" Background="#141414">
-                    <ListBox x:Name="NotesListBox" Background="#141414" Foreground="White" 
-                             BorderThickness="0" FontSize="12" Margin="5">
-                        <!-- Dynamic Content will be added here -->
-                    </ListBox>
+                    <TextBox x:Name="NotesTextBox" 
+                             Background="Black" 
+                             Foreground="LightGray" 
+                             TextWrapping="Wrap" 
+                             AcceptsReturn="True" 
+                             IsReadOnly="True" 
+                             VerticalScrollBarVisibility="Auto"
+                             Margin="5" />
 
                 </Grid>
             </Grid>

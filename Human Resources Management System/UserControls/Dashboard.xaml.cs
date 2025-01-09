@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -13,7 +14,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Threading;
 using MongoDB.Driver;
+using SharpVectors.Dom.Events;
 
 namespace Human_Resources_Management_System.UserControls
 {
@@ -23,17 +26,18 @@ namespace Human_Resources_Management_System.UserControls
     public partial class Dashboard : UserControl
     {
         private readonly MongoDbConnection _connection;
-        private ObservableCollection<string> Notes { get; set; } = new ObservableCollection<string>();
+        private DispatcherTimer _updateTimer; // Simplified to DispatcherTimer
+        private List<Event> _events;
         public Dashboard()
         {
+
             InitializeComponent();
             SetCurrentDate();
             _connection = new MongoDbConnection();
             LoadData();
-            NotesListBox.ItemsSource = Notes;
+            HolidayEvents(); // Ensure events are initialized
+            StartUpdateTimer();
 
-            // Populate the Notes initially and schedule updates
-            UpdateNotes();
 
         }
 
@@ -50,39 +54,88 @@ namespace Human_Resources_Management_System.UserControls
             List<PeoplesModel> users = peoplesCollection.Find(FilterDefinition<PeoplesModel>.Empty).ToList();
             ListViewUsers.ItemsSource = users;
         }
-        private void UpdateNotes()
+
+        private void HolidayEvents()
         {
-            Notes.Clear();
-
-            // Example events - Replace this with real event-fetching logic
-            var today = DateTime.Now;
-            var events = new[]
+            // Example events (replace with your data source)
+            _events = new List<Event>
             {
-                new { Date = new DateTime(today.Year, 2, 14), Name = "Valentine's Day" },
-                new { Date = new DateTime(today.Year, 12, 25), Name = "Christmas" },
-            };
-
-            foreach (var ev in events)
-            {
-                if (ev.Date >= today)
-                {
-                    Notes.Add($"{ev.Name} is on {ev.Date:MMMM dd}");
-                }
-            }
-
-            // Set to automatically refresh notes every day
-            var nextUpdate = DateTime.Today.AddDays(1).Subtract(DateTime.Now);
-            var timer = new System.Windows.Threading.DispatcherTimer
-            {
-                Interval = nextUpdate,
-                IsEnabled = true,
-            };
-            timer.Tick += (sender, e) =>
-            {
-                timer.Stop();
-                UpdateNotes();
+                new Event { Name = "Valentine's Day", Date = new DateTime(DateTime.Now.Year, 2, 14) },
+                new Event { Name = "Christmas", Date = new DateTime(DateTime.Now.Year, 12, 25) },
+                new Event { Name = "Halloween", Date = new DateTime(DateTime.Now.Year, 10, 31) },
+                new Event { Name = "New Year", Date = new DateTime(DateTime.Now.Year, 1, 1) },
+                new Event { Name = "Lunar New Year", Date = new DateTime(DateTime.Now.Year, 1, 29) },
+                new Event { Name = "Labour Day", Date = new DateTime(DateTime.Now.Year, 5, 1) },
+                new Event { Name = "Holy Saturday", Date = new DateTime(DateTime.Now.Year, 4, 19) },
+                new Event { Name = "Sembreak Starts", Date = new DateTime(DateTime.Now.Year, 2, 1) },
+                new Event { Name = "Back to School(2nd Sem)", Date = new DateTime(DateTime.Now.Year, 2, 24) }
             };
         }
 
+        private void StartUpdateTimer()
+        {
+            _updateTimer = new DispatcherTimer
+            {
+                Interval = TimeSpan.FromSeconds(1)
+            };
+            _updateTimer.Tick += UpdateNotes;
+            _updateTimer.Start();
+        }
+
+        private void UpdateNotes(object sender, EventArgs e)
+        {
+            if (_events == null)
+            {
+                NotesTextBox.Text = "No events available.";
+                return;
+            }
+
+            DateTime today = DateTime.Now.Date;
+            DateTime rangeEnd = today.AddDays(60);
+
+            // Adjust event dates to the current or next year for recurring events
+            var adjustedEvents = _events.Select(ev =>
+            {
+                DateTime adjustedDate = new DateTime(today.Year, ev.Date.Month, ev.Date.Day);
+
+                // If the event has already passed this year, move it to next year
+                if (adjustedDate < today)
+                {
+                    adjustedDate = adjustedDate.AddYears(1);
+                }
+
+                Console.WriteLine($"Event: {ev.Name}, Original Date: {ev.Date}, Adjusted Date: {adjustedDate}");
+
+                return new Event { Name = ev.Name, Date = adjustedDate };
+            }).ToList();
+
+            // Filter events within the next 60 days
+            var upcomingEvents = adjustedEvents
+                .Where(ev => ev.Date >= today && ev.Date <= rangeEnd)
+                .OrderBy(ev => ev.Date)
+                .ToList();
+
+            // Update the NotesTextBox
+            NotesTextBox.Text = upcomingEvents.Any()
+                ? string.Join(Environment.NewLine, upcomingEvents.Select(ev => $"{ev.Date:MMMM dd}: {ev.Name}"))
+                : "No upcoming events.";
+
+            Console.WriteLine("Upcoming Events:");
+            foreach (var ev in upcomingEvents)
+            {
+                Console.WriteLine($"{ev.Date:MMMM dd}: {ev.Name}");
+            }
+
+        }
+
     }
+    public class Event
+    {
+        public string Name { get; set; }
+        public DateTime Date { get; set; }
+    }
+
+
+
+
 }
