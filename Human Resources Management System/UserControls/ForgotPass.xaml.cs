@@ -36,5 +36,10 @@ namespace Human_Resources_Management_System.UserControls
             var loginandsignup = (LoginAndSignup)Application.Current.MainWindow;
             loginandsignup.LoginHyperlink();
         }
+
+        private void Send_OTPBtn(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

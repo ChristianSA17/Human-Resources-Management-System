@@ -90,6 +90,8 @@ namespace Human_Resources_Management_System.UserControls
 
             // Close or hide the signature control
             this.Visibility = Visibility.Hidden;
+            
+
         }
 
 

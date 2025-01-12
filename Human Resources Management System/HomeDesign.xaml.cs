@@ -24,15 +24,88 @@ namespace Human_Resources_Management_System
         {
             InitializeComponent();
             ContentDisplay.Content = new Dashboard();
-            
+            DashboardBtn.MouseEnter += HoverDashboardBtn;
+            DashboardBtn.MouseLeave += HoverDashboardBtn_Leave;
+            ApplicationFormBtn.MouseEnter += HoverAppFormBtn;
+            ApplicationFormBtn.MouseLeave += HoverAppFormBtn_Leave;
+            ProfileBtn.MouseEnter += HoverProfileBtn;
+            ProfileBtn.MouseLeave += HoverProfileBtn_Leave;
+            PayrollBtn.MouseEnter += HoverPrBtn;
+            PayrollBtn.MouseLeave += HoverPrBtn_Leave;
+            SupportBtn.MouseEnter += HoverSupportBtn;
+            SupportBtn.MouseLeave += HoverSupportBtn_Leave;
+            ExitBtn.MouseEnter += HoverExitBtn;
+            ExitBtn.MouseLeave += HoverExitBtn_Leave;
         }
 
         
         //ito yung para mapakita yung user control window sa grid row 1. pag mag seselect ka ng section sa grid row 0//
+        private void HoverDashboardBtn(object sender, RoutedEventArgs e)
+        {
+            
+            DashboardBtn.Foreground = Brushes.Black;
+            
+
+        }
+        private void HoverDashboardBtn_Leave(object sender, RoutedEventArgs e)
+        {
+            DashboardBtn.Background = (Brush)new BrushConverter().ConvertFromString("#343030");
+            DashboardBtn.Foreground = Brushes.White;
+
+        }
+        private void HoverAppFormBtn(object sender, RoutedEventArgs e)
+        {
+            ApplicationFormBtn.Foreground = Brushes.Black;
+        }
+        private void HoverAppFormBtn_Leave(object sender, RoutedEventArgs e)
+        {
+            ApplicationFormBtn.Background = (Brush)new BrushConverter().ConvertFromString("#343030");
+            ApplicationFormBtn.Foreground = Brushes.White;
+        }
+        private void HoverProfileBtn(object sender, RoutedEventArgs e)
+        {
+            ProfileBtn.Foreground = Brushes.Black;
+        }
+        private void HoverProfileBtn_Leave(object sender, RoutedEventArgs e)
+        {
+            ProfileBtn.Background = (Brush)new BrushConverter().ConvertFromString("#343030");
+            ProfileBtn.Foreground = Brushes.White;
+        }
+        private void HoverPrBtn(object sender, RoutedEventArgs e)
+        {
+            PayrollBtn.Foreground = Brushes.Black;
+        }
+        private void HoverPrBtn_Leave(object sender, RoutedEventArgs e)
+        {
+            PayrollBtn.Background = (Brush)new BrushConverter().ConvertFromString("#343030");
+            PayrollBtn.Foreground = Brushes.White;
+        }
+        private void HoverSupportBtn(object sender, RoutedEventArgs e)
+        {
+            SupportBtn.Foreground = Brushes.Black;
+        }
+        private void HoverSupportBtn_Leave(object sender, RoutedEventArgs e)
+        {
+            SupportBtn.Background = (Brush)new BrushConverter().ConvertFromString("#343030");
+            SupportBtn.Foreground = Brushes.White;
+        }
+        private void HoverExitBtn(object sender, RoutedEventArgs e)
+        {
+            ExitBtn.Foreground = Brushes.Black;
+        }
+        private void HoverExitBtn_Leave(object sender, RoutedEventArgs e)
+        {
+            ExitBtn.Background = (Brush)new BrushConverter().ConvertFromString("#343030");
+            ExitBtn.Foreground = Brushes.White;
+        }
+
+
         private void DashboardBtn_Click(object sender, RoutedEventArgs e)
         {
             ContentDisplay.Content = new Dashboard();
+
         }
+
 
         private void ApplicationFormBtn_Click(object sender, RoutedEventArgs e)
         {
