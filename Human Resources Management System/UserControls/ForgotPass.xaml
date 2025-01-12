@@ -8,7 +8,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\wallpaper.jpg" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\wallpaper.jpg" Stretch="UniformToFill" />
         </Grid.Background>
 
         <Grid.RowDefinitions>
@@ -33,12 +33,12 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="57,23,0,200">
                 <TextBlock FontSize="20" Margin="0,0,10,0">Email</TextBlock>
-                <TextBox Height="20" Width="550"/>
+                <TextBox x:Name="emailTextBox" Height="20" Width="550"/>
             </StackPanel>
             <StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,55,0,0">
                     <TextBlock FontSize="20" Margin="0,0,10,0">OTP</TextBlock>
-                    <TextBox Height="20" Width="350"/>
+                    <TextBox x:Name="otpTextbox" Height="20" Width="350"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="200,0,0,0" >
                     <TextBlock FontSize="10" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,10,0"> SEND OTP</TextBlock>
@@ -46,20 +46,17 @@
                 </StackPanel>
                 
             </StackPanel>
-               <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="70,55,0,0">
-                <TextBlock FontSize="20" Margin="0,0,10,0">OTP</TextBlock>
-                <TextBox Height="20" Width="350"/>
-               </StackPanel>
+         
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,138,0,0">
-                <TextBlock FontSize="20" Margin="0,0,10,0">Password</TextBlock>
-                <PasswordBox Height="20" Width="350"/>
+                <TextBlock FontSize="20" Margin="0,0,10,0">New Password</TextBlock>
+                <PasswordBox x:Name="newpasswordTextBox" Height="20" Width="350"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="23,170,0,0">
                 <StackPanel Orientation="Vertical">
                     <TextBlock FontSize="20" Margin="0,0,10,0">Confirm</TextBlock>
-                    <TextBlock FontSize="20" Margin="0,0,10,0">Password</TextBlock>
+                    <TextBlock FontSize="20" Margin="0,0,10,0">New Password</TextBlock>
                 </StackPanel>
-                <PasswordBox Height="20" Width="350"/>
+                <PasswordBox x:Name="confirmNewPassword" Height="20" Width="350"/>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,20,20" >
