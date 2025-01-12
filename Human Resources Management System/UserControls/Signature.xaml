@@ -19,7 +19,6 @@
         <Grid Grid.Row="2" Background="#3B3B3B">
             <InkCanvas Name="SignatureCanvas" Background="LightGray" Margin="30,27,200,26" />
             <StackPanel Grid.Row="1" Orientation="Vertical" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="10">
-                <Button Height="50" Width="150" Content="Save" Click="SaveButton_Click" Margin="10"/>
                 <Button Height="50" Width="150" Content="Clear" Click="ClearButton_Click" Margin="10"/>
                 <Button Height="50" Width="150" Content="Confirm" Click="ConfirmButton_Click" Margin="10"/>
             </StackPanel>

@@ -41,29 +41,7 @@ namespace Human_Resources_Management_System.UserControls
 
             SignatureCanvas.DefaultDrawingAttributes = drawingAttributes;
         }
-        private void SaveButton_Click(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog saveFileDialog = new SaveFileDialog
-            {
-                Filter = "PNG Image|*.png",
-                Title = "Save Signature"
-            };
-
-            if (saveFileDialog.ShowDialog() == true)
-            {
-                using (FileStream fs = new FileStream(saveFileDialog.FileName, FileMode.Create))
-                {
-                    RenderTargetBitmap rtb = new RenderTargetBitmap((int)SignatureCanvas.ActualWidth,
-                                                                     (int)SignatureCanvas.ActualHeight,
-                                                                     96, 96, System.Windows.Media.PixelFormats.Default);
-                    rtb.Render(SignatureCanvas);
-
-                    PngBitmapEncoder encoder = new PngBitmapEncoder();
-                    encoder.Frames.Add(BitmapFrame.Create(rtb));
-                    encoder.Save(fs);
-                }
-            }
-        }
+    
 
         // Clear the signature
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -88,8 +66,7 @@ namespace Human_Resources_Management_System.UserControls
                 _authorizeSignature = CaptureSignature();
             }
 
-            // Close or hide the signature control
-            this.Visibility = Visibility.Hidden;
+            
         }
 
 
