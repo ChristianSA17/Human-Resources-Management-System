@@ -6,6 +6,7 @@ using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using System.Windows.Media.Animation;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
@@ -21,6 +22,7 @@ namespace Human_Resources_Management_System
         {
             InitializeComponent();
             ContentDisplay.Content = new Login();
+            Loaded += OnWindowLoaded;
         }
 
         /* Function para mashow yung login usercontrol at mahide yung signup user control, then vise versa sa function na nasa baba*/
@@ -44,6 +46,50 @@ namespace Human_Resources_Management_System
         {
             ContentDisplay.Content = new ForgotPass();
 
+        }
+
+        private void OnWindowLoaded(object sender, RoutedEventArgs e)
+        {
+            // Create animations for LogoImage
+            var fadeInLogo = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = new Duration(TimeSpan.FromSeconds(1))
+            };
+            LogoImage.BeginAnimation(UIElement.OpacityProperty, fadeInLogo);
+
+            var scaleUpLogoWidth = new DoubleAnimation
+            {
+                From = 0,
+                To = 300,
+                Duration = new Duration(TimeSpan.FromSeconds(1))
+            };
+            var scaleUpLogoHeight = new DoubleAnimation
+            {
+                From = 0,
+                To = 200,
+                Duration = new Duration(TimeSpan.FromSeconds(1))
+            };
+            LogoImage.BeginAnimation(FrameworkElement.WidthProperty, scaleUpLogoWidth);
+            LogoImage.BeginAnimation(FrameworkElement.HeightProperty, scaleUpLogoHeight);
+
+            // Create animations for WelcomeText
+            var fadeInText = new DoubleAnimation
+            {
+                From = 0,
+                To = 1,
+                Duration = new Duration(TimeSpan.FromSeconds(1))
+            };
+            WelcomeText.BeginAnimation(UIElement.OpacityProperty, fadeInText);
+
+            var fontSizeText = new DoubleAnimation
+            {
+                From = 0,
+                To = 25,
+                Duration = new Duration(TimeSpan.FromSeconds(1))
+            };
+            WelcomeText.BeginAnimation(TextBlock.FontSizeProperty, fontSizeText);
         }
 
 
