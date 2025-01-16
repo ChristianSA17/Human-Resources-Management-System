@@ -41,10 +41,10 @@
                 <TextBlock HorizontalAlignment="Center" Foreground="#DCD1D1" FontSize="20"> Reed Elsevier
                 </TextBlock>
 
-                <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20">Main Menu</TextBlock>
+                <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20" FontSize="20">Main Menu</TextBlock>
 
-                <Button x:Name="DashboardBtn" Margin="0,0,30,0" Style="{StaticResource SideMenuButtonStyle}" Click="DashboardBtn_Click"  >
-                    <StackPanel  Orientation="Horizontal">
+                <Button x:Name="DashboardBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="DashboardBtn_Click"  >
+                    <StackPanel  Orientation="Horizontal" Margin="0,0,30,0">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeDashboardIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="Dashboard" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
@@ -55,28 +55,32 @@
                         <TextBlock Text="Application Form" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="ProfileBtn" Margin="0,0,30,0" Style="{StaticResource SideMenuButtonStyle}" Click="ProfileBtn_Click">
-                    <StackPanel Orientation="Horizontal">
+                <Button x:Name="ProfileBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="ProfileBtn_Click">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,30,0">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeProfileIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="View Profile" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="PayrollBtn" Margin="0,0,55,0" Style="{StaticResource SideMenuButtonStyle}" Click="PayrollBtn_Click" >
-                    <StackPanel  Orientation="Horizontal">
+                <Button x:Name="PayrollBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="PayrollBtn_Click" >
+                    <StackPanel  Orientation="Horizontal" Margin="0,0,50,0">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeDashboardIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="Payroll" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
 
-                <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20">Tools</TextBlock>
+                <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20" FontSize="20">Tools</TextBlock>
 
-                <Button x:Name="SupportBtn" Margin="0,0,60,0" Style="{StaticResource SideMenuButtonStyle}" Click="SupportBtn_Click">
-                    <StackPanel Orientation="Horizontal">
+                <Button x:Name="SupportBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="SupportBtn_Click">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,50,0">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeSupportIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="Support" Margin="5,0,0,0" VerticalAlignment="Center"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="ExitBtn" Margin="0,0,80,0" Style="{StaticResource SideMenuButtonStyle}" Click="SignOutBtn_Click">Sign Out</Button>
+                <Button x:Name="ExitBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="SignOutBtn_Click">
+                    <StackPanel Margin="0,0,50,0">
+                        <TextBlock>Sign Out</TextBlock>
+                    </StackPanel>
+                </Button>
 
             </StackPanel>
 

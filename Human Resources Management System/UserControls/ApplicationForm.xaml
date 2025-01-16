@@ -7,6 +7,96 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1200">
 
+    <UserControl.Resources>
+        <!-- Style for ComboBox -->
+        <Style TargetType="ComboBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ComboBox">
+                        <Grid>
+                            <!-- Closed state: the ToggleButton for ComboBox -->
+                            <ToggleButton Name="ToggleButton"
+              Foreground="White"
+              FontSize="15"
+              Background="#3B3B3B"
+              BorderBrush="Gray"
+              BorderThickness="1"
+              Focusable="False"
+              IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+                                <ToggleButton.Template>
+                                    <ControlTemplate TargetType="ToggleButton">
+                                        <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    CornerRadius="8">
+                                            <!-- Set the CornerRadius here -->
+                                            <Grid>
+                                                <ContentPresenter Content="{TemplateBinding Content}"
+                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                      ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                      Margin="0"/>
+                                            </Grid>
+                                        </Border>
+                                    </ControlTemplate>
+                                </ToggleButton.Template>
+
+                                <ContentPresenter Content="{TemplateBinding SelectionBoxItem}"
+                      ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                      ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"
+                      HorizontalAlignment="Left"
+                      VerticalAlignment="Center"
+                      Margin="0"/>
+                            </ToggleButton>
+                            <!-- Popup for dropdown items -->
+                            <Popup Name="Popup"
+                               Placement="Bottom"
+                               IsOpen="{TemplateBinding IsDropDownOpen}"
+                               AllowsTransparency="True"
+                               Focusable="False"
+                               PopupAnimation="Slide">
+                                <Grid Name="DropDown"
+                                  SnapsToDevicePixels="True"
+                                  MinWidth="{TemplateBinding ActualWidth}"
+                                  MaxHeight="{TemplateBinding MaxDropDownHeight}">
+                                    <Border x:Name="DropDownBorder"
+                                        Background="#3B3B3B"
+                                        BorderBrush="Gray"
+                                        BorderThickness="1" />
+                                    <ScrollViewer Margin="4,6,4,6"
+                                              SnapsToDevicePixels="True">
+                                        <StackPanel IsItemsHost="True"
+                                                KeyboardNavigation.DirectionalNavigation="Contained">
+                                            <!-- Style for ComboBox items -->
+                                            <StackPanel.Resources>
+                                                <Style TargetType="ComboBoxItem">
+                                                    <Setter Property="Background" Value="#3B3B3B" />
+                                                    <Setter Property="Foreground" Value="White" />
+                                                    <!-- Ensure text is white for items -->
+                                                    <Style.Triggers>
+                                                        <Trigger Property="IsSelected" Value="True">
+                                                            <Setter Property="Background" Value="Gray" />
+                                                            <Setter Property="Foreground" Value="White" />
+                                                        </Trigger>
+                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                            <Setter Property="Background" Value="DarkGray" />
+                                                            <Setter Property="Foreground" Value="White" />
+                                                        </Trigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </StackPanel.Resources>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </Grid>
+                            </Popup>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
@@ -30,35 +120,92 @@
 
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
-                <TextBlock  Foreground="LightGray" FontSize="14">First Name <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsFirstName" Foreground="LightGray" Background="Transparent" Width="190" Height="20"/>
+                <TextBlock Foreground="LightGray" FontSize="14">
+        First Name <Span Foreground="Red">*</Span>
+                </TextBlock>
+                <TextBox x:Name="ApplicantsFirstName" Foreground="LightGray" Background="Transparent" Width="190" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="1"
+                        CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
 
             <!-- Surname TextBox -->
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220,11,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray"> Surname <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsSurname" Foreground="LightGray" Background="Transparent" Width="190" Height="20"/>
+                <TextBox x:Name="ApplicantsSurname" Foreground="LightGray" Background="Transparent" Width="190" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                 BorderThickness="1"
+                                CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox> 
             </StackPanel>
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="433,10,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray"> Middle Name <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsMiddleName"  Foreground="LightGray" Background="Transparent" Width="190" Height="20" />
+                <TextBox x:Name="ApplicantsMiddleName"  Foreground="LightGray" Background="Transparent" Width="190" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                 BorderThickness="1"
+                                CornerRadius="10"> 
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox >
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="640,10,0,0">
                 <TextBlock Foreground="LightGray">Sex<Span Foreground="Red">*</Span></TextBlock>
-                <ComboBox x:Name="ApplicantsSex" Width="90" Height="22" >
-                    <ComboBoxItem Content="Male" />
-                    <ComboBoxItem Content="Female" />
+                <ComboBox x:Name="ApplicantsSex" Width="90" Height="40" FontSize="30" >
+                    <ComboBoxItem Foreground="White" Content="Male" />
+                    <ComboBoxItem  Foreground="White" Content="Female" />
                 </ComboBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,50,0,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,80,0,0">
                 <TextBlock Foreground="LightGray">Date of Birth<Span Foreground="Red">*</Span></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBox x:Name="BirthDateTextBox" Foreground="LightGray" Background="Transparent" Width="150" Height="30"/>
+                    <TextBox x:Name="BirthDateTextBox" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border Background="{TemplateBinding                                        Background}"
+                                    BorderBrush="{TemplateBinding                                   BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="10,0,0,10">
+                                    <ScrollViewer x:Name="PART_ContentHost" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox>
 
                     <!-- Button with Calendar Icon -->
-                    <Button Width="40" Height="30" Margin="0,0,0,0" Click="ShowCalendar_Click">
+                    <Button Width="40" Height="40" Margin="0,0,0,0" Click="ShowCalendar_Click"  Background="Transparent" Foreground="LightGray">
                         <Image Width="20" Height="20" Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Calendar-Icon.png"/>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="0,10,10,0">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                  VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
                     </Button>
 
                     <!-- Popup for Calendar -->
@@ -67,37 +214,103 @@
                     </Popup>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="220,55,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="220,80,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Age <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsAge" Foreground="LightGray" Background="Transparent" Width="50" Height="20"/>
+                <TextBox x:Name="ApplicantsAge" Foreground="LightGray" Background="Transparent" Width="50" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="287,54,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="287,80,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Email <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsEmail" Foreground="LightGray" Background="Transparent" Width="200" Height="20"/>
+                <TextBox x:Name="ApplicantsEmail" Foreground="LightGray" Background="Transparent" Width="200" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="516,54,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="516,80,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Address <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsAddress" Foreground="LightGray" Background="Transparent" Width="200" Height="20"/>
+                <TextBox x:Name="ApplicantsAddress" Foreground="LightGray" Background="Transparent" Width="200" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,100,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,150,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Contact No. <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsContactNo" Foreground="LightGray" Background="Transparent" Width="180" Height="20"/>
+                <TextBox x:Name="ApplicantsContactNo" Foreground="LightGray" Background="Transparent" Width="180" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="210,100,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="210,150,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Requirements <Span Foreground="red">*</Span></TextBlock>
-                <ComboBox x:Name="ApplicantsRequirements" Width="200" Height="22" >
-                    <ComboBoxItem Foreground="LightGray">Complete</ComboBoxItem>
-                    <ComboBoxItem Foreground="LightGray">Incomplete</ComboBoxItem>
+                <ComboBox x:Name="ApplicantsRequirements" Width="200" Height="40" FontSize="30" >
+                    <ComboBoxItem Foreground="White">Complete</ComboBoxItem>
+                    <ComboBoxItem Foreground="White">Incomplete</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="433,96,0,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="433,153,0,0">
                 <TextBlock Foreground="LightGray">Date Hired<Span Foreground="Red">*</Span></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBox x:Name="HiredDateTextBox" Foreground="LightGray" Background="Transparent" Width="150" Height="30" />
+                    <TextBox x:Name="HiredDateTextBox" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                        <TextBox.Template>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border Background="{TemplateBinding Background}"
+                                 BorderBrush="{TemplateBinding BorderBrush}"
+                                 BorderThickness="1"
+                                CornerRadius="10,0,0,10">
+                                    <ScrollViewer x:Name="PART_ContentHost" />
+                                </Border>
+                            </ControlTemplate>
+                        </TextBox.Template>
+                    </TextBox> 
 
                     <!-- Button with Calendar Icon -->
-                    <Button Width="40" Height="30" Margin="0,0,0,0" Click="ShowDateHired_Click">
+                    <Button Width="40" Height="40" Margin="0,0,0,0" Click="ShowDateHired_Click"  Background="Transparent" Foreground="LightGray">
                         <Image Width="20" Height="20" Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Calendar-Icon.png"/>
+                        <Button.Template>
+                            <ControlTemplate TargetType="Button">
+                                <Border Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="1"
+                                        CornerRadius="0,10,10,0">
+                                    <ContentPresenter HorizontalAlignment="Center"
+                                            VerticalAlignment="Center" />
+                                </Border>
+                            </ControlTemplate>
+                        </Button.Template>
                     </Button>
 
                     <!-- Popup for Calendar -->
@@ -106,45 +319,112 @@
                     </Popup>
                 </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="640,100,0,0">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="640,150,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Shuttle Code<Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsShuttleCode" Foreground="LightGray" Background="Transparent" Width="100" Height="20"/>
+                <TextBox x:Name="ApplicantsShuttleCode" Foreground="LightGray" Background="Transparent" Width="100" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,150,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,210,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Applicant's Signature<Span Foreground="red">*</Span></TextBlock>
-                <Button Height="20" Click="OpenSignature_Click" >GET YOUR SIGNATURE</Button>
+                <Button Height="40" Click="OpenSignature_Click" Background="#141414" Foreground="LightGray">GET YOUR SIGNATURE</Button>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="170,150,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="170,210,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Authorized Signatory<Span Foreground="red">*</Span></TextBlock>
-                <Button Height="20" Click="AuthoritySig_Click" >GET YOUR SIGNATURE</Button>
+                <Button Height="40" Click="AuthoritySig_Click"  Background="#141414" Foreground="LightGray" >GET YOUR SIGNATURE</Button>
             </StackPanel>
 
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,216,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,290,0,0">
                 <TextBlock FontSize="15" Foreground="LightGray">Emergency Contact</TextBlock>
                 <TextBlock  FontSize="14" Foreground="LightGray">First Name<Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="EmergencyContactName" Foreground="LightGray" Background="Transparent" Width="150" Height="20"/>
+                <TextBox x:Name="EmergencyContactName" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,280,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,380,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Contact No.<Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="EmergencyContactNo" Foreground="LightGray" Background="Transparent" Width="150" Height="20"/>
+                <TextBox x:Name="EmergencyContactNo" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,242,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,308,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Surname<Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="EmergencyContactSurname" Foreground="LightGray" Background="Transparent" Width="150" Height="20"/>
+                <TextBox x:Name="EmergencyContactSurname" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                 BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,280,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Address</TextBlock>
-                <TextBox x:Name="EmergencyContactAddress" Foreground="LightGray" Background="Transparent" Width="150" Height="20"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,380,0,0">
+                <TextBlock  FontSize="14" Foreground="LightGray">Address<Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="EmergencyContactAddress" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                    BorderThickness="1"
+                                CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,242,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,308,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Middle Initial<Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="EmergencyContactMiddleName" Foreground="LightGray" Background="Transparent" Width="100" Height="20"/>
+                <TextBox x:Name="EmergencyContactMiddleName" Foreground="LightGray" Background="Transparent" Width="100" Height="40" FontSize="20">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,280,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,380,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Sex<Span Foreground="red">*</Span></TextBlock>
-                <ComboBox x:Name="EmergencyContactSex"  Width="100" Height="22" >
-                    <ComboBoxItem Foreground="LightGray">Male</ComboBoxItem>
-                    <ComboBoxItem Foreground="LightGray">Female</ComboBoxItem>
+                <ComboBox x:Name="EmergencyContactSex"  Width="100" Height="40" FontSize="30" >
+                    
+                    <ComboBoxItem Foreground="White">Male</ComboBoxItem>
+                    <ComboBoxItem Foreground="White">Female</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,15,136,0" >
@@ -153,12 +433,12 @@
                 </Border>
 
                 <!-- Upload Button -->
-                <Button Content="Upload Image" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="100" Click="FormUploadButton_Click" Background="#141414" Foreground="LightGray"/>
+                <Button Content="Upload Image" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="110" FontSize="15" Height="50" Click="FormUploadButton_Click" Background="#141414" Foreground="LightGray"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,50" Grid.ColumnSpan="2">
 
-                <Button Margin="0,0,20,0" Background="#141414" Height="25" Click="OpenEditForm_Click" Foreground="LightGray">Edit Form</Button>
-                <Button Margin="0,0,0,0" Height="25" Foreground="LightGray" Background="#141414" Click="ConfirmApplicationButton_Click">Confirm</Button>
+                <Button Margin="0,0,20,0" Background="#141414" Width="110" FontSize="15" Height="50" Click="OpenEditForm_Click" Foreground="LightGray">Edit Form</Button>
+                <Button Margin="0,0,0,0" Width="110" FontSize="15" Height="50" Foreground="LightGray" Background="#141414" Click="ConfirmApplicationButton_Click">Confirm</Button>
             </StackPanel>
 
 

@@ -10,7 +10,7 @@
     <!-- Login Content -->
 <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\wallpaper.jpg" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\wallpaper.jpg" Stretch="UniformToFill" />
         </Grid.Background>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
 
@@ -18,17 +18,17 @@
 
 <TextBlock FontSize="15">Username</TextBlock>
 
-<TextBox x:Name="LoginTextBox" Margin="0,6,30,0" Width="470" Height="25" FontSize="18"></TextBox>
+<TextBox x:Name="LoginTextBox" Margin="0,6,30,0" Width="470" Height="40" FontSize="30"></TextBox>
 
 <TextBlock FontSize="15" Margin="0,6,0,0" >Password</TextBlock>
             <StackPanel Orientation="Vertical" Margin="10">
                 <!-- StackPanel for Password Field -->
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <!-- PasswordBox -->
-                    <PasswordBox x:Name="LoginPasswordBox" Margin="0,0,6,0" PasswordChar="*" Width="470" Height="25" FontSize="18" />
+                    <PasswordBox x:Name="LoginPasswordBox" Margin="0,0,6,0" PasswordChar="*" Width="470" Height="40" FontSize="30" />
 
                     <!-- TextBox for visible password (initially hidden) -->
-                    <TextBox x:Name="PasswordTextBox" Margin="0,0,6,0" Width="470" Height="25" Visibility="Collapsed" FontSize="18" />
+                    <TextBox x:Name="PasswordTextBox" Margin="0,0,6,0" Width="470"  Visibility="Collapsed" Height="40" FontSize="30"/>
 
                     <!-- Eye Icon -->
                     <Button Content="👁" Width="30" Height="30" Click="TogglePasswordVisibility_Click" />

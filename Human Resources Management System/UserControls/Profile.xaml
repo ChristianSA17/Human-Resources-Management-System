@@ -91,12 +91,24 @@
                  BorderThickness="1" 
                  Background="Transparent" 
                  Foreground="White" 
-                 FontSize="16" 
+                 Height="40"
+                 FontSize="30" 
                  VerticalAlignment="Center" 
                  HorizontalAlignment="Center" 
-                 Width="250" TextChanged="TextBox_TextChanged_2" />
+                 Width="250" TextChanged="TextBox_TextChanged_2">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+    BorderBrush="{TemplateBinding BorderBrush}"
+    BorderThickness="1"
+    CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox> 
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,112,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="15,130,0,0">
                 <TextBlock Foreground="LightGray">Contact No.</TextBlock>
                 <TextBox 
                  x:Name="ContactNoTextBox"
@@ -105,10 +117,22 @@
                  BorderThickness="1" 
                  Background="Transparent" 
                  Foreground="White" 
-                 FontSize="16" 
+                 Height="40"
+                 FontSize="30" 
                  VerticalAlignment="Center" 
                  HorizontalAlignment="Center" 
-                 Width="250" TextChanged="TextBox_TextChanged_1" />
+                 Width="250" TextChanged="TextBox_TextChanged_1">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+    BorderBrush="{TemplateBinding BorderBrush}"
+    BorderThickness="1"
+    CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox> 
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="282,68,0,0">
                 <TextBlock Foreground="LightGray">Last Name</TextBlock>
@@ -119,12 +143,24 @@
                  BorderThickness="1" 
                  Background="Transparent" 
                  Foreground="White" 
-                 FontSize="16" 
+                 Height="40"
+                    FontSize="30"  
                  VerticalAlignment="Center" 
                  HorizontalAlignment="Center" 
-                 Width="250" />
+                 Width="250" >
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+    BorderBrush="{TemplateBinding BorderBrush}"
+    BorderThickness="1"
+    CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="282,112,0,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="282,130,0,0">
                 <TextBlock Foreground="LightGray">Email</TextBlock>
                 <TextBox 
                  x:Name="EmailTextBox"
@@ -133,8 +169,20 @@
                  BorderThickness="1" 
                  Background="Transparent" 
                  Foreground="White" 
-                 FontSize="16" 
-                 Width="350" />
+                 Height="40"
+                    FontSize="30" 
+                 Width="350">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+    BorderBrush="{TemplateBinding BorderBrush}"
+    BorderThickness="1"
+    CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox> 
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="547,68,0,0">
                 <TextBlock Foreground="LightGray">Middle Name</TextBlock>
@@ -145,17 +193,34 @@
                  BorderThickness="1" 
                  Background="Transparent" 
                  Foreground="White" 
-                 FontSize="16" 
+                 Height="40"
+                    FontSize="30" 
                  VerticalAlignment="Center" 
                  HorizontalAlignment="Center" 
-                 Width="240" TextChanged="TextBox_TextChanged" />
+                 Width="240" TextChanged="TextBox_TextChanged">
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+    BorderBrush="{TemplateBinding BorderBrush}"
+    BorderThickness="1"
+    CornerRadius="10">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox> 
             </StackPanel>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,23,10">
-                
-                <Button x:Name="EditButton"  Margin="0,0,30,0" Width="100" Height="25" Foreground="LightGray" Background="#141414" Click="EditButton_Click">Edit</Button>
-                <Button x:Name="CancelButton" Visibility="Collapsed" Margin="0,0,30,0" Width="100" Height="25" Foreground="LightGray" Background="#141414" Click="CancelEditButton_Click"> Cancel Edit</Button>
-                
-                <Button Margin="0,0,0,0" Width="100" Height="25" Foreground="LightGray" Background="#141414" Click="SaveButton_Click">Save</Button>
+
+                <Button x:Name="EditButton"  Margin="0,0,30,0" Width="100" Height="40" Foreground="LightGray" Background="#141414" Click="EditButton_Click" FontSize="25">Edit</Button>
+                <Button x:Name="CancelButton" Visibility="Collapsed" Margin="0,0,30,0" Width="100"  Foreground="LightGray" Background="#141414" Click="CancelEditButton_Click">
+                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock FontSize="17">Cancel</TextBlock>
+                        <TextBlock Margin="10,0,0,0"  FontSize="17">Edit</TextBlock>
+                    </StackPanel>
+                </Button>
+
+                <Button Margin="0,0,0,0" Width="100" Height="40" FontSize="25" Foreground="LightGray" Background="#141414" Click="SaveButton_Click" >Save</Button>
             </StackPanel>
             
         </Grid>
