@@ -20,6 +20,8 @@ namespace Human_Resources_Management_System
     /// </summary>
     public partial class HomeDesign : Window
     {
+       
+       
         public HomeDesign()
         {
             InitializeComponent();
@@ -102,7 +104,8 @@ namespace Human_Resources_Management_System
 
         private void DashboardBtn_Click(object sender, RoutedEventArgs e)
         {
-            ContentDisplay.Content = new Dashboard();
+            
+                ContentDisplay.Content = new Dashboard();
 
         }
 
@@ -139,6 +142,14 @@ namespace Human_Resources_Management_System
         {
 
             ContentDisplay.Content = new Payroll();
+        }
+     
+
+        private void SignOut()
+        {
+            // Example sign-out logic
+            // Clear user session, tokens, or notify the server
+            MessageBox.Show("You have been signed out.", "Sign Out", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }
