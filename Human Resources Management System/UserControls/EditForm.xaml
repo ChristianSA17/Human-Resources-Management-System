@@ -118,6 +118,13 @@
                 <TextBlock  FontSize="14">Authorized Signatory<Span Foreground="red">*</Span></TextBlock>
                 <TextBox Width="150" Height="20"/>
             </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="350,141,0,0">
+                <TextBlock  FontSize="14" Foreground="LightGray">Employment Status <Span Foreground="red">*</Span></TextBlock>
+                <ComboBox x:Name="EmpApp" Width="200" Height="40" FontSize="30" >
+                    <ComboBoxItem Foreground="White">Employed</ComboBoxItem>
+                    <ComboBoxItem Foreground="White">Applicant</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,216,0,0">
                 <TextBlock FontSize="15">Emergency Contact</TextBlock>
@@ -149,7 +156,7 @@
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,50">
                 <Button Margin="300,0,20,0" Height="25">Upload Photo</Button>
-                
+
                 <Button Margin="0,0,0,0" Height="25">Confirm</Button>
             </StackPanel>
 
