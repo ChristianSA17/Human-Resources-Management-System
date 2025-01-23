@@ -9,29 +9,18 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
-            <RowDefinition Height="1" />
-            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
+
+        <!-- Top Row -->
         <Grid Grid.Row="0" Background="#3B3B3B">
             <TextBlock FontSize="20" Margin="30,0,0,0" Foreground="LightGray">Payroll</TextBlock>
         </Grid>
-        <Grid Grid.Row="1" Background="LightGray"/>
-        <Grid Grid.Row="2" Background="#3B3B3B">
-            <StackPanel Background="DarkGray" Height="60" Width="620" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="30,10,0,0" >
-                <TextBox x:Name="SearchTextBox" 
-                 Width="520" Margin="10"
-                 Text="🔍 Seacrh employee"
-                 TextChanged='SearchTextBox_TextChanged'
-                 Background="#3B3B3B"
-                 Foreground="white"
-                 Height="40"
-                 FontSize="20"
-                 Padding="10,5,0,0"
-                 
-                 
-                 />
-            </StackPanel>
-            <ListView x:Name="ListViewUsers" Margin="10,10,229,10" Background="#3B3B3B" Foreground="White" Height="400" Width="800">
+
+        <!-- Main content with ListView -->
+        <Grid Grid.Row="1" Background="#3B3B3B">
+            <ListView x:Name="ListViewUsers" Margin="10,10,10,9" Background="#3B3B3B" Foreground="White" Height="400" Width="780">
                 <ListView.Resources>
                     <!-- Style for ListViewItem -->
                     <Style TargetType="ListViewItem">
@@ -41,20 +30,15 @@
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="#141414"/>
-                                <!-- Selected row background color -->
                                 <Setter Property="Foreground" Value="White"/>
-                                <!-- Optional: Text color for selected row -->
                             </Trigger>
                         </Style.Triggers>
                     </Style>
-
                     <!-- Style for GridViewColumnHeader -->
                     <Style TargetType="GridViewColumnHeader">
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                         <Setter Property="Background" Value="DarkGray"/>
-                        <!-- Header background color -->
                         <Setter Property="Foreground" Value="White"/>
-                        <!-- Header text color -->
                         <Setter Property="FontWeight" Value="Bold"/>
                         <Setter Property="Padding" Value="5,3"/>
                     </Style>
@@ -62,7 +46,6 @@
 
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
-                        <!-- Prevents column reordering -->
                         <GridViewColumn Header="ID No" DisplayMemberBinding="{Binding IdNo}" Width="100"/>
                         <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" Width="150"/>
                         <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="150"/>
@@ -71,32 +54,30 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+
+            <!-- Total Employee and Payroll information -->
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,154,100,0">
                 <StackPanel x:Name="Total_Employee" Orientation="Horizontal">
-                    <TextBlock Foreground="LightGray">Total Employee:</TextBlock>
-                    <TextBox
-                        IsReadOnly="True"
-                        Background="Transparent"
-                        Width="50"
-                        BorderThickness="0"
-                        Focusable="False"
-                        />
-
-
+                    <TextBlock x:Name="Total_Employee1" Foreground="LightGray">Total Employee:</TextBlock>
+                    <TextBox IsReadOnly="True" Background="Transparent" Width="50" BorderThickness="0" Focusable="False"/>
                 </StackPanel>
                 <StackPanel x:Name="Total_Payroll" Orientation="Horizontal" Margin="0,25,0,0">
-                    <TextBlock Foreground="LightGray">Total Payroll:</TextBlock>
-                    <TextBox
-                        IsReadOnly="True"
-                        Background="Transparent"
-                         Width="50"
-                        BorderThickness="0"
-                        Focusable="False"
-                        />
-
+                    <TextBlock x:Name="Total_Payroll1" Foreground="LightGray">Total Payroll:</TextBlock>
+                    <TextBox IsReadOnly="True" Background="Transparent" Width="50" BorderThickness="0" Focusable="False"/>
                 </StackPanel>
             </StackPanel>
-
         </Grid>
+
+        <!-- Buttons StackPanel -->
+        <Border Grid.Row="2" BorderBrush="Red" BorderThickness="1" Margin="10">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
+                <TextBlock Text="Payslip System" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
+                <Button Name="GeneratePayslipButton" Content="Generate Payslip" Click="GeneratePayslipButton_Click" Margin="0,5"/>
+                <Button Name="ExportPayslipButton" Content="Export Payslip to PDF" Click="ExportPayslipButton_Click" Margin="0,5"/>
+                <Button Name="ViewPayslipButton" Content="View Payslip" Click="ViewPayslipButton_Click" Margin="0,5"/>
+                <Button Name="OpenPayrollInput" Content="Calculate Payslip" Click="OpenPayrollInput_Click" Margin="0,5"/>
+            </StackPanel>
+        </Border>
     </Grid>
+
 </UserControl>
