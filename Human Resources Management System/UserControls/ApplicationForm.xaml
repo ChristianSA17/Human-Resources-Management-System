@@ -151,7 +151,7 @@
                             </Border>
                         </ControlTemplate>
                     </TextBox.Template>
-                </TextBox> 
+                </TextBox>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="433,10,0,0">
@@ -162,7 +162,7 @@
                             <Border Background="{TemplateBinding Background}"
                                 BorderBrush="{TemplateBinding BorderBrush}"
                                  BorderThickness="1"
-                                CornerRadius="10"> 
+                                CornerRadius="10">
                                 <ScrollViewer x:Name="PART_ContentHost" />
                             </Border>
                         </ControlTemplate>
@@ -295,7 +295,7 @@
                                 </Border>
                             </ControlTemplate>
                         </TextBox.Template>
-                    </TextBox> 
+                    </TextBox>
 
                     <!-- Button with Calendar Icon -->
                     <Button Width="40" Height="40" Margin="0,0,0,0" Click="ShowDateHired_Click"  Background="Transparent" Foreground="LightGray">
@@ -341,6 +341,13 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="170,210,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Authorized Signatory<Span Foreground="red">*</Span></TextBlock>
                 <Button Height="40" Click="AuthoritySig_Click"  Background="#141414" Foreground="LightGray" >GET YOUR SIGNATURE</Button>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="328,209,0,0">
+                <TextBlock  FontSize="14" Foreground="LightGray">Employment Status <Span Foreground="red">*</Span></TextBlock>
+                <ComboBox x:Name="EmpApp" Width="200" Height="40" FontSize="30" >
+                    <ComboBoxItem Foreground="White">Employed</ComboBoxItem>
+                    <ComboBoxItem Foreground="White">Applicant</ComboBoxItem>
+                </ComboBox>
             </StackPanel>
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,290,0,0">
@@ -422,7 +429,7 @@
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,380,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Sex<Span Foreground="red">*</Span></TextBlock>
                 <ComboBox x:Name="EmergencyContactSex"  Width="100" Height="40" FontSize="30" >
-                    
+
                     <ComboBoxItem Foreground="White">Male</ComboBoxItem>
                     <ComboBoxItem Foreground="White">Female</ComboBoxItem>
                 </ComboBox>
