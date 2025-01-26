@@ -55,6 +55,58 @@ namespace Human_Resources_Management_System.UserControls
             ListViewUsers.ItemsSource = users;
         }
 
+        public ICommand EditItemCommand { get; set; }
+
+
+        private void SetupListViewEvents()
+        {
+            ListViewUsers.MouseDoubleClick += ListViewUsers_MouseDoubleClick;
+        }
+
+        private void ListViewUsers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            if (ListViewUsers.SelectedItem is PeoplesModel selectedItem)
+            {
+                // Fetch the full document from the database
+                var peoplesCollection = _connection.GetPeoplesCollection();
+                var detailedItem = peoplesCollection.Find(x => x.Id == selectedItem.Id).FirstOrDefault();
+
+                if (detailedItem != null)
+                {
+                    // Pass the full PeoplesModel to EditForm
+                    EditForm editForm = new EditForm(detailedItem);
+
+                    
+                    // Show the EditForm window
+                    Window editWindow = new Window
+                    {
+                        Content = editForm,
+                        Title = "Edit Item",
+                        Width = 1200,
+                        Height = 600
+                    };
+
+                    // Register for the Closed event of the EditForm window
+                    editWindow.Closed += (s, args) => RefreshData();
+
+                    editWindow.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Failed to fetch item details.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select an item to edit.");
+            }
+        }
+
+
+
+
+
+
         private void HolidayEvents()
         {
             // Example events (replace with your data source)
@@ -128,7 +180,13 @@ namespace Human_Resources_Management_System.UserControls
 
         }
 
+        public void RefreshData()
+        {
+            LoadData();
+        }
+
     }
+
     public class Event
     {
         public string Name { get; set; }

@@ -4,6 +4,8 @@
              xmlns:local="clr-namespace:Human_Resources_Management_System"
              StartupUri="LoginAndSignup.xaml">
     <Application.Resources>
-         
+        <local:ByteArrayToImageConverter x:Key="ByteArrayToImageConverter" 
+                                         xmlns:local="clr-namespace:Human_Resources_Management_System.Converters" />
+
     </Application.Resources>
 </Application>

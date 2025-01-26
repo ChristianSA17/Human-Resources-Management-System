@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Human_Resources_Management_System.UserControls"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
@@ -17,7 +18,7 @@
         </Grid>
         <Grid Grid.Row="1" Background="LightGray"/>
         <Grid Grid.Row="2" Background="#3B3B3B">
-            <ListView x:Name="ListViewUsers" Margin="10,10,229,23" Background="#3B3B3B" Foreground="White">
+            <ListView x:Name="ListViewUsers" MouseDoubleClick="ListViewUsers_MouseDoubleClick" SelectionMode="Single" Margin="10,10,229,23" Background="#3B3B3B" Foreground="White">
                 <ListView.Resources>
                     <!-- Style for ListViewItem -->
                     <Style TargetType="ListViewItem">
@@ -49,26 +50,26 @@
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
                         <!-- Prevents column reordering -->
-                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}"/>
-                        <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Surname}"/>
-                        <GridViewColumn Header="Middle Name" DisplayMemberBinding="{Binding MiddleName}"/>
-                        <GridViewColumn Header="Sex" DisplayMemberBinding="{Binding Sex}"/>
-                        <GridViewColumn Header="Birthday" DisplayMemberBinding="{Binding Birthday,StringFormat=MM-dd-yyyy}"/>
-                        <GridViewColumn Header="Age" DisplayMemberBinding="{Binding Age}"/>
-                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}"/>
-                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}"/>
-                        <GridViewColumn Header="Contact No" DisplayMemberBinding="{Binding ContactNo}"/>
-                        <GridViewColumn Header="Requirements" DisplayMemberBinding="{Binding Requirements}"/>
-                        <GridViewColumn Header="Date Hired" DisplayMemberBinding="{Binding DateHired, StringFormat=MM-dd-yyyy}"/>
-                        <GridViewColumn Header="Shuttle Code" DisplayMemberBinding="{Binding ShuttleCode}"/>
-                        <GridViewColumn Header="Picture">
+                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" Width="Auto"/>
+                        <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Surname}" Width="Auto"/>
+                        <GridViewColumn Header="Middle Name" DisplayMemberBinding="{Binding MiddleName}" Width="Auto"/>
+                        <GridViewColumn Header="Sex" DisplayMemberBinding="{Binding Sex}" Width="Auto"/>
+                        <GridViewColumn Header="Birthday" DisplayMemberBinding="{Binding Birthday,StringFormat=MM-dd-yyyy}" Width="Auto"/>
+                        <GridViewColumn Header="Age" DisplayMemberBinding="{Binding Age}" Width="Auto"/>
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="Auto"/>
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="Auto"/>
+                        <GridViewColumn Header="Contact No" DisplayMemberBinding="{Binding ContactNo}" Width="Auto"/>
+                        <GridViewColumn Header="Requirements" DisplayMemberBinding="{Binding Requirements}" Width="Auto"/>
+                        <GridViewColumn Header="Date Hired" DisplayMemberBinding="{Binding DateHired, StringFormat=MM-dd-yyyy}" Width="Auto"/>
+                        <GridViewColumn Header="Shuttle Code" DisplayMemberBinding="{Binding ShuttleCode}" Width="Auto"/>
+                        <GridViewColumn Header="Picture" Width="Auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding ProfileImage}" Width="50" Height="50" Stretch="UniformToFill"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Signature">
+                        <GridViewColumn Header="Signature" Width="Auto">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding ApplicantSignature}" Width="50" Height="50" Stretch="UniformToFill"/>
@@ -77,6 +78,8 @@
                         </GridViewColumn>
                     </GridView>
                 </ListView.View>
+                
+                
             </ListView>
 
 
@@ -108,6 +111,13 @@
             </Grid>
         </Grid>
 
+        <!-- Popup for Edit_Form -->
+        <Popup x:Name="EditFormPopup" IsOpen="False" StaysOpen="False" Placement="Center" 
+               HorizontalOffset="0" VerticalOffset="0">
+            <UserControl x:Name="EditFormContainer">
+                <!-- Edit Form will be added dynamically here -->
+            </UserControl>
+        </Popup>
 
     </Grid>
 </UserControl>

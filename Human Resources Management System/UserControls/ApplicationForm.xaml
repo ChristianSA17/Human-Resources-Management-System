@@ -412,7 +412,7 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,308,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Middle Initial<Span Foreground="red">*</Span></TextBlock>
+                <TextBlock  FontSize="14" Foreground="LightGray">Middle Name<Span Foreground="red">*</Span></TextBlock>
                 <TextBox x:Name="EmergencyContactMiddleName" Foreground="LightGray" Background="Transparent" Width="100" Height="40" FontSize="20">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
@@ -443,8 +443,6 @@
                 <Button Content="Upload Image" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="110" FontSize="15" Height="50" Click="FormUploadButton_Click" Background="#141414" Foreground="LightGray"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,50" Grid.ColumnSpan="2">
-
-                <Button Margin="0,0,20,0" Background="#141414" Width="110" FontSize="15" Height="50" Click="OpenEditForm_Click" Foreground="LightGray">Edit Form</Button>
                 <Button Margin="0,0,0,0" Width="110" FontSize="15" Height="50" Foreground="LightGray" Background="#141414" Click="ConfirmApplicationButton_Click">Confirm</Button>
             </StackPanel>
 

@@ -75,10 +75,7 @@ namespace Human_Resources_Management_System.UserControls
             HiredDatePopup.IsOpen = false;
         }
 
-        private void OpenEditForm_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
+        
 
         private void OpenSignature_Click(object sender, RoutedEventArgs e)
         {
@@ -180,6 +177,7 @@ namespace Human_Resources_Management_System.UserControls
                 string selectedSex = null;
                 string selectedRequirements = null;
                 string selectedEmergencyContactsSex = null;
+                string selectedEmploymentStatus = null;
 
                 //
                 var dateofBirth = _selectedBirthDate.Value;
@@ -202,6 +200,11 @@ namespace Human_Resources_Management_System.UserControls
                     selectedEmergencyContactsSex = emergencyItem.Content as string;
                 }
 
+                if (EmpApp.SelectedItem is ComboBoxItem EmStatusItem)
+                {
+                    selectedEmploymentStatus = EmStatusItem.Content as string;
+                }
+
                 //checks of the no combobox was selected
 
                 if (string.IsNullOrEmpty(selectedSex))
@@ -222,6 +225,11 @@ namespace Human_Resources_Management_System.UserControls
                     return;
                 }
 
+                if (string.IsNullOrEmpty(selectedEmploymentStatus))
+                {
+                    MessageBox.Show("Please select a sex forthe emergency contact.");
+                    return;
+                }
 
 
                 //checks all the textbox is empty or whitespace
@@ -266,6 +274,7 @@ namespace Human_Resources_Management_System.UserControls
                     DateHired = dateHired,
                     ProfileImage = _uploadedImageBytes,
                     ApplicantSignature = _applicantsSignature,
+                    EmploymentStatus = selectedEmploymentStatus
 
 
                 };
