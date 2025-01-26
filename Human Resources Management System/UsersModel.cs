@@ -109,8 +109,8 @@ namespace Human_Resources_Management_System
         // for authorize signature
         [BsonElement("AuthorizeSignature")]
         public byte[] AuthorizeSignature { get; set; }
-        // for the application status
-        [BsonElement("EmploymentStatus")]
-        public string EmploymentStatus { get; set; }
+        // for the EmployeeId
+        [BsonElement("EmployeeId")]
+        public string EmployeeId { get; set; }
     }
 }

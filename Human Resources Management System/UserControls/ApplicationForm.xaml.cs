@@ -151,6 +151,10 @@ namespace Human_Resources_Management_System.UserControls
             {
                 _authorizeSignature = signature._authorizeSignature; // Store the authorization signature in the main window
             }
+            else
+            {
+                MessageBox.Show("Authorization signature not captured.");
+            }
         }
 
 
@@ -158,11 +162,22 @@ namespace Human_Resources_Management_System.UserControls
         {
             try
             {
-                // collects data from TextBoxes
+                if (_applicantsSignature == null)
+                {
+                    MessageBox.Show("Applicant signature is missing.");
+                    return; // Prevent insertion if signature is missing
+                }
+
+                if (_authorizeSignature == null)
+                {
+                    MessageBox.Show("Authorization signature is missing.");
+                    return; // Prevent insertion if authorization signature is missing
+                }
+                // Collects data from TextBoxes
                 var firstName = ApplicantsFirstName.Text;
                 var surname = ApplicantsSurname.Text;
                 var middleName = ApplicantsMiddleName.Text;
-                var age = ApplicantsAge.Text;
+                var ageText = ApplicantsAge.Text;
                 var email = ApplicantsEmail.Text;
                 var address = ApplicantsAddress.Text;
                 var contactNo = ApplicantsContactNo.Text;
@@ -172,19 +187,18 @@ namespace Human_Resources_Management_System.UserControls
                 var emergencyMiddleName = EmergencyContactMiddleName.Text;
                 var emergencyContact = EmergencyContactNo.Text;
                 var emergencyAddress = EmergencyContactAddress.Text;
-               
-                //string container where the datas from comboxes will be stored and will be used to add data to the database
+
+                // String container where the data from ComboBoxes will be stored
                 string selectedSex = null;
                 string selectedRequirements = null;
                 string selectedEmergencyContactsSex = null;
-                string selectedEmploymentStatus = null;
+               
 
-                //
+                // Date validation
                 var dateofBirth = _selectedBirthDate.Value;
                 var dateHired = _selectedHiredDate.Value;
 
-
-                //takes the item from the comboboxes and add to the string containers above
+                // Takes the item from ComboBoxes and adds to string containers
                 if (ApplicantsSex.SelectedItem is ComboBoxItem sexItem)
                 {
                     selectedSex = sexItem.Content as string;
@@ -200,13 +214,9 @@ namespace Human_Resources_Management_System.UserControls
                     selectedEmergencyContactsSex = emergencyItem.Content as string;
                 }
 
-                if (EmpApp.SelectedItem is ComboBoxItem EmStatusItem)
-                {
-                    selectedEmploymentStatus = EmStatusItem.Content as string;
-                }
+               
 
-                //checks of the no combobox was selected
-
+                // Validate ComboBox selections
                 if (string.IsNullOrEmpty(selectedSex))
                 {
                     MessageBox.Show("Please select a sex.");
@@ -215,7 +225,7 @@ namespace Human_Resources_Management_System.UserControls
 
                 if (string.IsNullOrEmpty(selectedRequirements))
                 {
-                    MessageBox.Show("Please select a requirements info.");
+                    MessageBox.Show("Please select requirements info.");
                     return;
                 }
 
@@ -225,20 +235,16 @@ namespace Human_Resources_Management_System.UserControls
                     return;
                 }
 
-                if (string.IsNullOrEmpty(selectedEmploymentStatus))
+               
+
+                // Validate TextBox inputs
+                if (new[] { firstName, surname, middleName, ageText, email, address, contactNo, shuttleCode, emergencyName, emergencySurname, emergencyMiddleName, emergencyContact, emergencyAddress }.Any(string.IsNullOrWhiteSpace))
                 {
-                    MessageBox.Show("Please select a sex forthe emergency contact.");
-                    return;
-                }
-
-
-                //checks all the textbox is empty or whitespace
-                if (new[] {firstName, surname, middleName, age, email, address, contactNo, shuttleCode, emergencyName, emergencySurname, emergencyMiddleName, emergencyContact, emergencyAddress}.Any(string.IsNullOrWhiteSpace)) {
                     MessageBox.Show("Fill up all the fields.");
                     return;
                 }
 
-                // Validate the selected date
+                // Validate selected date
                 if (!_selectedBirthDate.HasValue)
                 {
                     MessageBox.Show("Please select a Date of Birth.");
@@ -251,43 +257,87 @@ namespace Human_Resources_Management_System.UserControls
                     return;
                 }
 
+                // Validate Age matches Date of Birth
+                if (int.TryParse(ageText, out int age))
+                {
+                    var calculatedAge = DateTime.Now.Year - dateofBirth.Year;
+                    if (DateTime.Now.DayOfYear < dateofBirth.DayOfYear)
+                    {
+                        calculatedAge--; // Adjust if birthday hasn't occurred yet this year
+                    }
+
+                    if (calculatedAge != age)
+                    {
+                        MessageBox.Show("The age does not match the Date of Birth.");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid age input.");
+                    return;
+                }
+
+
                 var peoplesCollection = _connection.GetPeoplesCollection();
 
-                var newPerson = new PeoplesModel { 
-                    FirstName = firstName, 
-                    Surname = surname, 
-                    MiddleName = middleName, 
-                    Age = age, 
-                    Email = email, 
-                    Address = address, 
-                    ContactNo = contactNo, 
-                    ShuttleCode = shuttleCode, 
-                    ContactsFirstName = emergencyName, 
-                    ContactsSurname = emergencySurname, 
-                    ContactsMiddleName = emergencyMiddleName, 
-                    ContactsNo = emergencyContact, 
-                    ContactsAddress = emergencyAddress, 
-                    Sex = selectedSex, 
-                    Requirements = selectedRequirements, 
+                // Generate ID
+                string currentYear = dateHired.Year.ToString(); // Extract hiring year
+                var latestPerson = peoplesCollection
+                    .Find(_ => true)
+                    .SortByDescending(p => p.EmployeeId) // Sort by EmployeeId
+                    .FirstOrDefault();
+
+                string newEmployeeId;
+                if (latestPerson != null && !string.IsNullOrEmpty(latestPerson.EmployeeId))
+                {
+                    // Increment the sequential part
+                    var lastSequential = int.Parse(latestPerson.EmployeeId.Split('-')[2]);
+                    newEmployeeId = $"{currentYear}-EMP-{(lastSequential + 1):D2}";
+                }
+                else
+                {
+                    // Start with 01 for the new year
+                    newEmployeeId = $"{currentYear}-EMP-01";
+                }
+
+                var newPerson = new PeoplesModel
+                {
+                    EmployeeId = newEmployeeId, // Assign the new ID
+                    FirstName = firstName,
+                    Surname = surname,
+                    MiddleName = middleName,
+                    Age = ageText,
+                    Email = email,
+                    Address = address,
+                    ContactNo = contactNo,
+                    ShuttleCode = shuttleCode,
+                    ContactsFirstName = emergencyName,
+                    ContactsSurname = emergencySurname,
+                    ContactsMiddleName = emergencyMiddleName,
+                    ContactsNo = emergencyContact,
+                    ContactsAddress = emergencyAddress,
+                    Sex = selectedSex,
+                    Requirements = selectedRequirements,
                     ContactsSex = selectedEmergencyContactsSex,
                     Birthday = dateofBirth,
                     DateHired = dateHired,
                     ProfileImage = _uploadedImageBytes,
                     ApplicantSignature = _applicantsSignature,
-                    EmploymentStatus = selectedEmploymentStatus
-
-
+                    AuthorizeSignature = _authorizeSignature,
+                    
                 };
+
                 peoplesCollection.InsertOne(newPerson);
 
-                MessageBox.Show("Person added successfully!");
-
-
+                MessageBox.Show($"Person added successfully with ID: {newEmployeeId}");
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 MessageBox.Show($"Error adding user: {ex.Message}");
                 return;
             }
+
         }
     }
 }

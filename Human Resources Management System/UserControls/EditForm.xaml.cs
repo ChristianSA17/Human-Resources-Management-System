@@ -138,7 +138,7 @@ namespace Human_Resources_Management_System.UserControls
                 string selectedSex = null;
                 string selectedRequirements = null;
                 string selectedEmergencyContactsSex = null;
-                string selectedEmploymentStatus = null;
+                
 
                 var dateofBirth = _selectedBirthDate ?? item.Birthday;
                 var dateHired = _selectedHiredDate ?? item.DateHired;
@@ -159,16 +159,12 @@ namespace Human_Resources_Management_System.UserControls
                     selectedEmergencyContactsSex = emergencyItem.Content as string;
                 }
 
-                if (EmpApp.SelectedItem is ComboBoxItem emStatusItem)
-                {
-                    selectedEmploymentStatus = emStatusItem.Content as string;
-                }
+               
 
                 // Validation checks
                 if (string.IsNullOrEmpty(selectedSex) ||
                     string.IsNullOrEmpty(selectedRequirements) ||
-                    string.IsNullOrEmpty(selectedEmergencyContactsSex) ||
-                    string.IsNullOrEmpty(selectedEmploymentStatus))
+                    string.IsNullOrEmpty(selectedEmergencyContactsSex))
                 {
                     MessageBox.Show("Please select all required fields from the ComboBoxes.");
                     return;
@@ -207,8 +203,7 @@ namespace Human_Resources_Management_System.UserControls
                     .Set(p => p.ContactsSex, selectedEmergencyContactsSex)
                     .Set(p => p.Birthday, dateofBirth)
                     .Set(p => p.DateHired, dateHired)
-                    .Set(p => p.ProfileImage, _uploadedImageBytes ?? item.ProfileImage)
-                    .Set(p => p.EmploymentStatus, selectedEmploymentStatus);
+                    .Set(p => p.ProfileImage, _uploadedImageBytes ?? item.ProfileImage);
 
                 // Perform the update
                 var result = peoplesCollection.UpdateOne(filter, update);

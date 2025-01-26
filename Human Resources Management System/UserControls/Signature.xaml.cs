@@ -49,7 +49,9 @@ namespace Human_Resources_Management_System.UserControls
             SignatureCanvas.Strokes.Clear();
         }
 
-        private void ConfirmButton_Click(object sender, RoutedEventArgs e)
+        
+
+    private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             if (SignatureCanvas.Strokes.Count == 0)
             {
@@ -64,10 +66,18 @@ namespace Human_Resources_Management_System.UserControls
             else if (SignatureType == "Authorization")
             {
                 _authorizeSignature = CaptureSignature();
+                MessageBox.Show("Authorization signature captured.");
             }
 
-            
+            if (_authorizeSignature == null)
+            {
+                MessageBox.Show("Authorization signature is missing.");
+                return; // Prevent insertion if signature is missing
+            }
+
         }
+
+
 
 
         private byte[] CaptureSignature()

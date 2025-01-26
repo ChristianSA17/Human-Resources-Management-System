@@ -342,13 +342,7 @@
                 <TextBlock  FontSize="14" Foreground="LightGray">Authorized Signatory<Span Foreground="red">*</Span></TextBlock>
                 <Button Height="40" Click="AuthoritySig_Click"  Background="#141414" Foreground="LightGray" >GET YOUR SIGNATURE</Button>
             </StackPanel>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="328,209,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Employment Status <Span Foreground="red">*</Span></TextBlock>
-                <ComboBox x:Name="EmpApp" Width="200" Height="40" FontSize="30" >
-                    <ComboBoxItem Foreground="White">Employed</ComboBoxItem>
-                    <ComboBoxItem Foreground="White">Applicant</ComboBoxItem>
-                </ComboBox>
-            </StackPanel>
+           
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,290,0,0">
                 <TextBlock FontSize="15" Foreground="LightGray">Emergency Contact</TextBlock>
