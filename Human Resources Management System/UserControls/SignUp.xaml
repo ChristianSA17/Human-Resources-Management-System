@@ -29,7 +29,7 @@
         </StackPanel>-->
     <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\wallpaper.jpg" Stretch="UniformToFill" />
+            <ImageBrush ImageSource="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\wallpaper.jpg" Stretch="UniformToFill" />
         </Grid.Background>
 
 

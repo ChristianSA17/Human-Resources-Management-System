@@ -32,6 +32,17 @@ namespace Human_Resources_Management_System.UserControls
           
         }
 
+        //Set what inputs can only be added in the username textboxes
+        private void UsernameTextBox_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Allow only alphanumeric characters and some symbols
+            string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.-_";
+            if (!allowedChars.Contains(e.Text))
+            {
+                e.Handled = true;  // Reject the input
+            }
+        }
+
         /*Function to ng hyperlink na para mapunta sa Signup. Bali trinitrigger nito yung function na nasa LoginAndSignup window para mahide yung login na usercontrol at mashow yung signup na usercontrol*/
         private void SignupHyperlink_Click(object sender, RoutedEventArgs e)
         {
@@ -107,5 +118,6 @@ namespace Human_Resources_Management_System.UserControls
             loginandsignup.ForgotPassHyperlink();
         }
 
+       
     }
 }
