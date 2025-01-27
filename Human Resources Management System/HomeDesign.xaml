@@ -102,7 +102,7 @@
                             <Ellipse Width="20" Height="20" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,0,0,0"
                  Stroke="White" StrokeThickness="1">
                                 <Ellipse.Fill>
-                                    <ImageBrush x:Name="UserIconBrush" Stretch="UniformToFill" />
+                                    <ImageBrush ImageSource="{Binding ProfileImage, Converter={StaticResource ByteArrayToImageConverter}}" Stretch="UniformToFill" />
                                 </Ellipse.Fill>
                             </Ellipse>
 

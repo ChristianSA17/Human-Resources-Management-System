@@ -1,4 +1,5 @@
 ﻿using Human_Resources_Management_System.UserControls;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +24,28 @@ namespace Human_Resources_Management_System
         private const double DailyRate = 300;
         private const double OvertimeRate = 60.70;
         private const double FixedDeduction = 80.21;
-
+        private readonly MongoDbConnection _connection;
         private readonly UserControls.Payroll _payrollUserControl;
+        private readonly PeoplesModel _selectedEmployee;
 
         // Updated Constructor to Accept Payroll User Control
-        public PayrollInput(UserControls.Payroll payrollUserControl)
+        public PayrollInput(UserControls.Payroll payrollUserControl, PeoplesModel selectedEmployee)
         {
             InitializeComponent();
+            _connection = new MongoDbConnection();
             _payrollUserControl = payrollUserControl ?? throw new ArgumentNullException(nameof(payrollUserControl));
+
+            if (selectedEmployee == null)
+            {
+                MessageBox.Show("No employee selected.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                Close(); // Close the window if there's no selected employee
+                return;
+            }
+
+            _selectedEmployee = selectedEmployee;
+
+            // Set the title dynamically based on the selected employee
+            Title = $"Payroll Input - {_selectedEmployee.FirstName} {_selectedEmployee.Surname}";
         }
 
         private void CalculatePayslip_Click(object sender, RoutedEventArgs e)
@@ -54,16 +69,23 @@ namespace Human_Resources_Management_System
                 // Create the payslip object
                 Payslip payslip = new Payslip
                 {
-                    EmployeeId = 1,
-                    EmployeeName = "Lebron James",
+                    EmployeeId = _selectedEmployee.EmployeeId,
+                    EmployeeName = $"{_selectedEmployee.FirstName} {_selectedEmployee.Surname}",
                     BasicSalary = (decimal)attendanceEarnings,
-                    Allowances = (decimal)overtimeEarnings,
+                    OvertimePay = (decimal)overtimeEarnings,
                     Deductions = (decimal)FixedDeduction,
                     PayDate = DateTime.Now
                 };
 
                 // Update the Payroll User Control
                 _payrollUserControl.AddPayslip(payslip);
+
+                
+                                                
+
+                MessageBox.Show("Employee Salary Successfully Updated");
+                
+
             }
             catch (FormatException)
             {

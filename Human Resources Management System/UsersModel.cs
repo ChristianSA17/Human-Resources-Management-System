@@ -112,5 +112,9 @@ namespace Human_Resources_Management_System
         // for the EmployeeId
         [BsonElement("EmployeeId")]
         public string EmployeeId { get; set; }
+        [BsonElement("Pay")]
+        public decimal Pay { get; set; }
+        [BsonElement("DatePaid")]
+        public DateTime DatePaid { get; set; }
     }
 }

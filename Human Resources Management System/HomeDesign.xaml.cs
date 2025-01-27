@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using MongoDB.Driver;
 
 namespace Human_Resources_Management_System
 {
@@ -20,11 +21,13 @@ namespace Human_Resources_Management_System
     /// </summary>
     public partial class HomeDesign : Window
     {
-       
-       
+
+        private readonly MongoDbConnection _connection;
+
         public HomeDesign()
         {
             InitializeComponent();
+            _connection = new MongoDbConnection();
             ContentDisplay.Content = new Dashboard();
             DashboardBtn.MouseEnter += HoverDashboardBtn;
             DashboardBtn.MouseLeave += HoverDashboardBtn_Leave;
