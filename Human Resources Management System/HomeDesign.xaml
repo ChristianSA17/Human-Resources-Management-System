@@ -63,7 +63,7 @@
                 </Button>
                 <Button x:Name="PayrollBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="PayrollBtn_Click" Height="60" >
                     <StackPanel  Orientation="Horizontal" Margin="0,0,50,0">
-                        <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeDashboardIcon.png" Width="20" Height="20"/>
+                        <Image Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\OrangeDashboardIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="Payroll" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                 </Button>
@@ -78,7 +78,7 @@
 
                 <Button x:Name="SupportBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="SupportBtn_Click" Height="60" >
                     <StackPanel Orientation="Horizontal" Margin="0,0,50,0">
-                        <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeSupportIcon.png" Width="20" Height="20"/>
+                        <Image Source="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\OrangeSupportIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="Support" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                 </Button>

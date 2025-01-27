@@ -26,29 +26,25 @@
             <ListView x:Name="ListViewUsers" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <ListView.View>
                     <GridView>
-                        <!-- Email Column -->
-                        <GridViewColumn Header="Email" Width="400">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Email}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" Width="Auto"/>
+                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="Auto"/>
+                        <GridViewColumn Header="Username" DisplayMemberBinding="{Binding Username}" Width="Auto"/>
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="Auto"/>
 
                         <!-- Approval Column -->
                         <GridViewColumn Header="Approval" Width="200">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                                        <!-- Check Button -->
-                                        <Button Width="30" Height="30" Margin="5" ToolTip="Approve">
+                                        <!-- Approve Button -->
+                                        <Button Width="30" Height="30" Margin="5" ToolTip="Approve" Click="ApproveButton_Click">
                                             <Button.Content>
                                                 <Image Source="/YourNamespace;component/Resources/check_icon.png" Width="16" Height="16" />
                                             </Button.Content>
                                         </Button>
 
                                         <!-- Reject Button -->
-                                        <Button Width="30" Height="30" Margin="5" ToolTip="Reject">
+                                        <Button Width="30" Height="30" Margin="5" ToolTip="Reject" Click="RejectButton_Click">
                                             <Button.Content>
                                                 <Image Source="/YourNamespace;component/Resources/cross_icon.png" Width="16" Height="16" />
                                             </Button.Content>
@@ -67,14 +63,12 @@
             <ListView x:Name="ListViewApproved" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <ListView.View>
                     <GridView>
-                        <!-- Email Column -->
-                        <GridViewColumn Header="Email" Width="300">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Email}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        
+                        <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" Width="Auto"/>
+                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="Auto"/>
+                        <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="Auto"/>
+                        <GridViewColumn Header="Approval Status" DisplayMemberBinding="{Binding ApprovalStatus}" Width="Auto"/>
+
                     </GridView>
                 </ListView.View>
             </ListView>
