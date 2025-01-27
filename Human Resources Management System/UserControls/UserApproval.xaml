@@ -41,14 +41,14 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                         <!-- Check Button -->
-                                        <Button Width="30" Height="30" Margin="5" ToolTip="Approve" Click="ApproveButton_Click">
+                                        <Button Width="30" Height="30" Margin="5" ToolTip="Approve">
                                             <Button.Content>
                                                 <Image Source="/YourNamespace;component/Resources/check_icon.png" Width="16" Height="16" />
                                             </Button.Content>
                                         </Button>
 
                                         <!-- Reject Button -->
-                                        <Button Width="30" Height="30" Margin="5" ToolTip="Reject" Click="RejectButton_Click">
+                                        <Button Width="30" Height="30" Margin="5" ToolTip="Reject">
                                             <Button.Content>
                                                 <Image Source="/YourNamespace;component/Resources/cross_icon.png" Width="16" Height="16" />
                                             </Button.Content>
