@@ -154,5 +154,10 @@ namespace Human_Resources_Management_System
             // Clear user session, tokens, or notify the server
             MessageBox.Show("You have been signed out.", "Sign Out", MessageBoxButton.OK, MessageBoxImage.Information);
         }
+
+        private void ApprovalBtn_Click(object sender, RoutedEventArgs e)
+        {
+            ContentDisplay.Content = new UserApproval();
+        }
     }
 }
