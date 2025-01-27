@@ -49,11 +49,14 @@
 
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
-                        <GridViewColumn Header="ID No" DisplayMemberBinding="{Binding IdNo}" Width="100"/>
+                        <GridViewColumn Header="ID No" DisplayMemberBinding="{Binding EmployeeId}" Width="100"/>
                         <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" Width="150"/>
-                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding LastName}" Width="150"/>
+                        <GridViewColumn Header="Last Name" DisplayMemberBinding="{Binding Surname}" Width="150"/>
                         <GridViewColumn Header="Email" DisplayMemberBinding="{Binding Email}" Width="200"/>
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="200"/>
+                        <GridViewColumn Header="Address" DisplayMemberBinding="{Binding Address}" Width="200"/>
                         <GridViewColumn Header="Pay" DisplayMemberBinding="{Binding Pay}" Width="100"/>
+                        <GridViewColumn Header="Paid Date" DisplayMemberBinding="{Binding PaidDate}" Width="200"/>
                     </GridView>
                 </ListView.View>
             </ListView>

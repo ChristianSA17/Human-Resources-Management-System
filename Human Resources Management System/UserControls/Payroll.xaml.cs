@@ -20,6 +20,8 @@ using System.IO;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
 using Microsoft.Web.WebView2.Core;
+using MongoDB.Driver;
+using System.Data.Common;
 
 namespace Human_Resources_Management_System.UserControls
 {
@@ -30,48 +32,111 @@ namespace Human_Resources_Management_System.UserControls
     public partial class Payroll : UserControl
     {
 
+        private string _recentPayslipPath;
+        private readonly MongoDbConnection _connection;
         public ObservableCollection<Payslip> Payslips { get; set; } = new ObservableCollection<Payslip>();
         public Payroll()
         {
             InitializeComponent();
+            _connection = new MongoDbConnection();
+            LoadData();
             DataContext = this; // Ensures bindings are recognized
-            ListViewUsers.ItemsSource = Payslips; // Bind payslips to the ListView
+            
 
         }
-        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+
+        public void LoadData()
         {
-           
+            try
+            {
+                var peoplesCollection = _connection.GetPeoplesCollection();
+                var users = peoplesCollection.Find(FilterDefinition<PeoplesModel>.Empty).ToList();
+
+                if (users == null || users.Count == 0)
+                {
+                    MessageBox.Show("No records found in the database.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+
+                // Bind the ListView directly to the database data
+                ListViewUsers.ItemsSource = users;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Failed to load data: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
 
         public void AddPayslip(Payslip payslip)
         {
             if (payslip != null)
             {
-                Payslips.Add(payslip);
+                // Store the latest calculated payslip
+              
+                // Update or add the payslip in the ObservableCollection
+                var existingPayslip = Payslips.FirstOrDefault(p => p.EmployeeId == payslip.EmployeeId);
+
+                if (existingPayslip != null)
+                {
+                    // Update existing payslip
+                    existingPayslip.BasicSalary = payslip.BasicSalary;
+                    existingPayslip.OvertimePay = payslip.OvertimePay;
+                    existingPayslip.Deductions = payslip.Deductions;
+                    existingPayslip.PayDate = payslip.PayDate;
+                }
+                else
+                {
+                    // Add a new payslip
+                    Payslips.Add(payslip);
+                }
 
                 // Update Total Employee Count and Total Payroll
                 Total_Employee1.Text = Payslips.Count.ToString();
-                Total_Payroll1.Text = $"{Payslips.Sum(p => p.BasicSalary + p.Allowances - p.Deductions):C}";
+                Total_Payroll1.Text = $"{Payslips.Sum(p => p.NetPay):C}";
+
+                // Refresh ListView to show the updated data
+                ListViewUsers.Items.Refresh();
             }
         }
 
-
         private void GeneratePayslipButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Payslips.Count == 0)
+
+            var selectedEmployee = ListViewUsers.SelectedItem as PeoplesModel;
+
+            if (selectedEmployee == null)
             {
-                MessageBox.Show("No payslips available to generate.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Please select an employee from the list.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
                 return;
             }
 
-            Payslip payslip = Payslips[0];
+            // Find the payslip for the selected employee
+            var payslip = Payslips.FirstOrDefault(p => p.EmployeeId == selectedEmployee.EmployeeId);
 
+            if (payslip == null)
+            {
+                MessageBox.Show("No payslip available for the selected employee.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+
+            }
+
+            // Update the database
+            var peoplesCollection = _connection.GetPeoplesCollection();
+            var filter = Builders<PeoplesModel>.Filter.Eq(e => e.EmployeeId, payslip.EmployeeId);
+            var update = Builders<PeoplesModel>.Update
+                .Set(e => e.Pay, payslip.NetPay)
+                .Set(e => e.DatePaid, DateTime.Now);
+            peoplesCollection.UpdateOne(filter, update);
+
+            // Reload the ListView data in Payroll
+            LoadData(); // Call LoadData to refresh the ListView
 
             // Display payslip details in a MessageBox or new window
             string payslipDetails = $"Employee Name: {payslip.EmployeeName}\n" +
                                     $"Employee ID: {payslip.EmployeeId}\n" +
                                     $"Basic Salary: {payslip.BasicSalary:C}\n" +
-                                    $"Allowances: {payslip.Allowances:C}\n" +
+                                    $"Overtime Pay: {payslip.OvertimePay:C}\n" +
                                     $"Deductions: {payslip.Deductions:C}\n" +
                                     $"Net Pay: {payslip.NetPay:C}\n" +
                                     $"Pay Date: {payslip.PayDate:d}";
@@ -81,25 +146,41 @@ namespace Human_Resources_Management_System.UserControls
 
         private void ExportPayslipButton_Click(object sender, RoutedEventArgs e)
         {
-            if (Payslips.Count == 0)
+            var selectedEmployee = ListViewUsers.SelectedItem as PeoplesModel;
+
+            if (selectedEmployee == null)
             {
-                MessageBox.Show("No payslips available to export.");
+                MessageBox.Show("Please select an employee to export the payslip.");
+                return;
+            }
+
+            // Find the corresponding payslip
+            var payslip = Payslips.FirstOrDefault(p => p.EmployeeId == selectedEmployee.EmployeeId);
+
+            if (payslip == null)
+            {
+                MessageBox.Show("No payslip available for the selected employee.");
                 return;
             }
 
             Microsoft.Win32.SaveFileDialog saveFileDialog = new Microsoft.Win32.SaveFileDialog
             {
                 Filter = "PDF Files (*.pdf)|*.pdf",
-                FileName = "Payslip.pdf"
+                FileName = $"{selectedEmployee.FirstName}_{selectedEmployee.Surname}_Payslip.pdf"
             };
 
             if (saveFileDialog.ShowDialog() == true)
             {
                 string filePath = saveFileDialog.FileName;
-                GeneratePayslipPDF(Payslips[0], filePath);
+                GeneratePayslipPDF(payslip, filePath);
+
+                // Store the recent path
+                _recentPayslipPath = filePath;
+
                 MessageBox.Show($"Payslip exported to {filePath}");
             }
         }
+
 
         private void GeneratePayslipPDF(Payslip payslip, string filePath)
         {
@@ -183,7 +264,7 @@ namespace Human_Resources_Management_System.UserControls
 
             // Second Table Content (Dynamic)
             DrawTableRow(gfx, "Basic Salary", payslip.BasicSalary.ToString("C"), "", xStart, ref yStart, col1Width, col2Width, col3Width, contentFont, rowHeight, true);
-            DrawTableRow(gfx, "Allowances", payslip.Allowances.ToString("C"), "", xStart, ref yStart, col1Width, col2Width, col3Width, contentFont, rowHeight, true);
+            DrawTableRow(gfx, "Overtime Pay", payslip.OvertimePay.ToString("C"), "", xStart, ref yStart, col1Width, col2Width, col3Width, contentFont, rowHeight, true);
             DrawTableRow(gfx, "Deductions", "", payslip.Deductions.ToString("C"), xStart, ref yStart, col1Width, col2Width, col3Width, contentFont, rowHeight, true);
             DrawTableRow(gfx, "Net Pay", payslip.NetPay.ToString("C"), "", xStart, ref yStart, col1Width, col2Width, col3Width, contentFont, rowHeight, true);
 
@@ -232,17 +313,31 @@ namespace Human_Resources_Management_System.UserControls
             string pdfPath = @"C:\Users\ChristianSA\Desktop\Payslip.pdf";
             if (!File.Exists(pdfPath))
             {
-                MessageBox.Show("Payslip file not found!");
+                MessageBox.Show("No recent payslip found or the file was deleted.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            PayslipViewer viewer = new PayslipViewer(pdfPath);
+            // Open the recent payslip
+            PayslipViewer viewer = new PayslipViewer(_recentPayslipPath);
             viewer.ShowDialog();
         }
 
         private void OpenPayrollInput_Click(object sender, RoutedEventArgs e)
         {
-            var payrollInputWindow = new PayrollInput(this); // Pass the current Payroll instance
+            // Get the selected item from the ListView
+            var selectedEmployee = ListViewUsers.SelectedItem as PeoplesModel;
+
+            if (selectedEmployee == null)
+            {
+                MessageBox.Show("Please select an employee from the list.", "No Selection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+           
+            // Debugging: Confirm the selected employee's name
+            MessageBox.Show($"Selected employee: {selectedEmployee.FirstName} {selectedEmployee.Surname}", "Selected Employee");
+
+            // Open PayrollInput with selected employee data
+            var payrollInputWindow = new PayrollInput(this, selectedEmployee); // Pass the current Payroll instance
             payrollInputWindow.ShowDialog();
         }
 
@@ -286,12 +381,12 @@ namespace Human_Resources_Management_System.UserControls
 
     public class Payslip
     {
-        public int EmployeeId { get; set; }
+        public string EmployeeId { get; set; }
         public string EmployeeName { get; set; }
         public decimal BasicSalary { get; set; }
-        public decimal Allowances { get; set; }
+        public decimal OvertimePay { get; set; }
         public decimal Deductions { get; set; }
-        public decimal NetPay => BasicSalary + Allowances - Deductions;
+        public decimal NetPay => BasicSalary + OvertimePay - Deductions;
         public DateTime PayDate { get; set; }
     }
 }
