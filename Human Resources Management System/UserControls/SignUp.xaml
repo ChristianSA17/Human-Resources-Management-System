@@ -40,39 +40,43 @@
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0">
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock>First Name</TextBlock>
-                    <TextBox x:Name="SignUpFirstName" Width="200" Height="30"/>
+                    <TextBox x:Name="SignUpFirstName" Width="200" Height="30" MaxLength="50" PreviewTextInput="Character_PreviewTextInput"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical" Margin="10">
                     <TextBlock>Last Name</TextBlock>
-                    <TextBox x:Name="SignUpLastName" Width="200" Height="30"/>
+                    <TextBox x:Name="SignUpLastName" Width="200" Height="30" MaxLength="50" PreviewTextInput="Character_PreviewTextInput"/>
                 </StackPanel>
                 <StackPanel Orientation="Vertical"  Margin="15,10,0,0">
                     <TextBlock>Middle Name</TextBlock>
-                    <TextBox x:Name="SignUpMiddleName" Width="100" Height="30"/>
+                    <TextBox x:Name="SignUpMiddleName" Width="100" Height="30" MaxLength="50" PreviewTextInput="Character_PreviewTextInput"/>
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,0">
                 <StackPanel Orientation="Horizontal" Margin="10">
                     <StackPanel Orientation="Vertical" Margin="10">
                         <TextBlock>Email</TextBlock>
-                        <TextBox x:Name="SignUpEmail" Width="250" Height="30"/>
+                        <TextBox x:Name="SignUpEmail" Width="250" Height="30" MaxLength="100" TextChanged="SignUpEmail_TextChanged"/>
+                        <!-- Error Message for Invalid Email -->
+                        <TextBlock Name="EmailErrorMessage" Foreground="Red" Visibility="Collapsed" Margin="5" />
                     </StackPanel>
                     <StackPanel Orientation="Vertical" Margin="40,10,0,0">
                         <TextBlock>Contact No.</TextBlock>
-                        <TextBox x:Name="SignUpContactNo" Width="250" Height="30"/>
+                        <TextBox x:Name="SignUpContactNo" Width="250" Height="30" MaxLength="11" PreviewTextInput="Number_PreviewTextInput"/>
+                        <!-- Error Message for Invalid Contact Number -->
+                        <TextBlock Name="ContactNumberErrorMessage" Foreground="Red" Visibility="Collapsed" Margin="5" />
                     </StackPanel>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <StackPanel Margin="20,0,0,0">
                         <TextBlock FontSize="15" >Username</TextBlock>
-                        <TextBox x:Name="SignupUsername" Margin="0,6,6,0" Height="30" Width="250"></TextBox>
+                        <TextBox x:Name="SignupUsername" Margin="0,6,6,0" Height="30" Width="250" MaxLength="20" PreviewTextInput="Username_PreviewTextInput"></TextBox>
                     </StackPanel>
                     <StackPanel Margin="40,0,0,0">
                         <TextBlock FontSize="15" >Password</TextBlock>
-                        <PasswordBox x:Name="SignupPassword" Margin="0,6,6,10" Height="30" Width="250"></PasswordBox>
+                        <PasswordBox x:Name="SignupPassword" Margin="0,6,6,10" Height="30" Width="250" MaxLength="20"></PasswordBox>
 
                         <TextBlock FontSize="15" >Confirm Password</TextBlock>
-                        <PasswordBox x:Name="SignupCPassword" Margin="0,6,6,16" Height="30" Width="250"  ></PasswordBox>
+                        <PasswordBox x:Name="SignupCPassword" Margin="0,6,6,16" Height="30" Width="250" MaxLength="20"></PasswordBox>
                     </StackPanel>
                 </StackPanel>
 

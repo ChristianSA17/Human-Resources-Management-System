@@ -72,6 +72,12 @@ namespace Human_Resources_Management_System.UserControls
             
             if (user != null )
             {
+                if (user.ApprovalStatus != "Approved")
+                {
+                    MessageBox.Show("Your account has not been approved yet.");
+                    return;
+                }
+
                 var homeDesign = new HomeDesign();
                 homeDesign.DataContext = user;
                 homeDesign.Show();

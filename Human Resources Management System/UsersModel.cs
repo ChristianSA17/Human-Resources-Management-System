@@ -38,6 +38,9 @@ namespace Human_Resources_Management_System
         //for profile image
         [BsonElement("ProfileImage")]
         public byte[] ProfileImage { get; set; }
+        //for the approval status
+        [BsonElement("ApprovalStatus")]
+        public string ApprovalStatus { get; set; }
     }
 
     public class PeoplesModel
