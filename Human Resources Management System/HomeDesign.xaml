@@ -43,47 +43,47 @@
 
                 <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20" FontSize="20">Main Menu</TextBlock>
 
-                <Button x:Name="DashboardBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="DashboardBtn_Click" Height="65" >
-                    <StackPanel  Orientation="Horizontal" Margin="0,0,30,0">
+                <Button x:Name="DashboardBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="DashboardBtn_Click" Height="60">
+                    <StackPanel  Orientation="Horizontal" Margin="0,0,10,0">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeDashboardIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="Dashboard" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="ApplicationFormBtn" Style="{StaticResource SideMenuButtonStyle}" Click="ApplicationFormBtn_Click" Height="65">
-                    <StackPanel Orientation="Horizontal">
+                <Button x:Name="ApplicationFormBtn" Style="{StaticResource SideMenuButtonStyle}" Click="ApplicationFormBtn_Click" Height="60">
+                    <StackPanel Orientation="Horizontal" Margin="55,0,0,0">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeApplicationIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="Application Form" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="ProfileBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="ProfileBtn_Click" Height="65">
-                    <StackPanel Orientation="Horizontal" Margin="0,0,30,0">
+                <Button x:Name="ProfileBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="ProfileBtn_Click" Height="60">
+                    <StackPanel Orientation="Horizontal" Margin="0,0,0,0">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeProfileIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="View Profile" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="PayrollBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="PayrollBtn_Click" Height="65" >
+                <Button x:Name="PayrollBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="PayrollBtn_Click" Height="60" >
                     <StackPanel  Orientation="Horizontal" Margin="0,0,50,0">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeDashboardIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="Payroll" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="ApprovalBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="ApprovalBtn_Click" Height="65" >
+                <Button x:Name="ApprovalBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="ApprovalBtn_Click" Height="60" >
                     <StackPanel  Orientation="Horizontal" Margin="0,0,30,0">
-                        <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeDashboardIcon.png" Width="20" Height="20"/>
+                        <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Approvallll-icon-NOBG.png" Width="20" Height="20"/>
                         <TextBlock Text="Approval" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                 </Button>
 
                 <TextBlock Foreground="#AAAAAA" HorizontalAlignment="Left" Margin="20,20" FontSize="20">Tools</TextBlock>
 
-                <Button x:Name="SupportBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="SupportBtn_Click" Height="65">
+                <Button x:Name="SupportBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="SupportBtn_Click" Height="60" >
                     <StackPanel Orientation="Horizontal" Margin="0,0,50,0">
                         <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\OrangeSupportIcon.png" Width="20" Height="20"/>
                         <TextBlock Text="Support" Margin="5,0,0,0" VerticalAlignment="Center" FontSize="25"/>
                     </StackPanel>
                 </Button>
-                <Button x:Name="ExitBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="SignOutBtn_Click" Height="65">
-                    <StackPanel Margin="0,0,50,0">
+                <Button x:Name="ExitBtn" Margin="0,0,0,0" Style="{StaticResource SideMenuButtonStyle}" Click="SignOutBtn_Click" Height="60">
+                    <StackPanel Margin="0,0,30,0">
                         <TextBlock FontSize="25">Sign Out</TextBlock>
                     </StackPanel>
                 </Button>

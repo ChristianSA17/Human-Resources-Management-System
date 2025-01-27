@@ -354,18 +354,26 @@ namespace Human_Resources_Management_System.UserControls
                 SearchBar.Text = string.Empty; // Clear search when hiding
 
                 // Reset the ListView to show all items
-                ListViewUsers.Items.Filter = null;
+                CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewUsers.ItemsSource);
+                view.Filter = null; // Remove any filters
             }
         }
         private void SearchBar_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         {
             string searchText = SearchBar.Text.ToLower();
 
-            // Apply filtering to the ListView
+            // Apply filtering to the ListView based on FirstName
             CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewUsers.ItemsSource);
             if (!string.IsNullOrEmpty(searchText))
             {
-                view.Filter = item => item.ToString().ToLower().Contains(searchText);
+                view.Filter = item =>
+                {
+                    if (item is PeoplesModel person)
+                    {
+                        return person.FirstName.ToLower().Contains(searchText);
+                    }
+                    return false;
+                };
             }
             else
             {

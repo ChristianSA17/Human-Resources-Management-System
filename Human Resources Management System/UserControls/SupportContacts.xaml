@@ -45,6 +45,10 @@
                     <StackPanel.Effect>
                         <DropShadowEffect x:Name="DropShadow1" Color="Black" BlurRadius="15" ShadowDepth="5" Direction="315" Opacity="0.5" />
                     </StackPanel.Effect>
+                    <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Google-Map-Icon.PNG" Width="150" Height="150" Margin="0,20,0,0"/>
+                    <TextBlock FontSize="24" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">Location</TextBlock>
+                    <TextBlock FontSize="20" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">Brgy. Biga I, Silang, Cavite,</TextBlock>
+                    <TextBlock FontSize="20" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">Philippines</TextBlock>
                 </StackPanel>
 
                 <!-- Second Square -->
@@ -53,6 +57,10 @@
                     <StackPanel.Effect>
                         <DropShadowEffect x:Name="DropShadow2" Color="Black" BlurRadius="15" ShadowDepth="5" Direction="315" Opacity="0.5" />
                     </StackPanel.Effect>
+                    <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Telephone-Support.PNG" Width="150" Height="150" Margin="0,20,0,0"/>
+                    <TextBlock FontSize="24" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">Live Support</TextBlock>
+                    <TextBlock FontSize="20" Foreground="Black" Margin="0,20,0,0" HorizontalAlignment="Center" VerticalAlignment="Center">+630 2345 6789</TextBlock>
+                   
                 </StackPanel>
 
                 <!-- Third Square -->
@@ -61,6 +69,10 @@
                     <StackPanel.Effect>
                         <DropShadowEffect x:Name="DropShadow3" Color="Black" BlurRadius="15" ShadowDepth="5" Direction="315" Opacity="0.5" />
                     </StackPanel.Effect>
+                    <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Contact-Support-Icon.PNG" Width="150" Height="150" Margin="0,20,0,0"/>
+                    <TextBlock FontSize="24" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center">Help and Support</TextBlock>
+                    <TextBlock FontSize="15" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,20,0,0" >cs3a2024adtechsupp@gmail.com</TextBlock>
+                    
                 </StackPanel>
             </StackPanel>
         </Grid>

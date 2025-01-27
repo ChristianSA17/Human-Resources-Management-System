@@ -126,17 +126,16 @@ namespace Human_Resources_Management_System.UserControls
         {
             // Example events (replace with your data source)
             _events = new List<Event>
-            {
-                new Event { Name = "Valentine's Day", Date = new DateTime(DateTime.Now.Year, 2, 14) },
-                new Event { Name = "Christmas", Date = new DateTime(DateTime.Now.Year, 12, 25) },
-                new Event { Name = "Halloween", Date = new DateTime(DateTime.Now.Year, 10, 31) },
-                new Event { Name = "New Year", Date = new DateTime(DateTime.Now.Year, 1, 1) },
-                new Event { Name = "Lunar New Year", Date = new DateTime(DateTime.Now.Year, 1, 29) },
-                new Event { Name = "Labour Day", Date = new DateTime(DateTime.Now.Year, 5, 1) },
-                new Event { Name = "Holy Saturday", Date = new DateTime(DateTime.Now.Year, 4, 19) },
-                new Event { Name = "Sembreak Starts", Date = new DateTime(DateTime.Now.Year, 2, 1) },
-                new Event { Name = "Back to School(2nd Sem)", Date = new DateTime(DateTime.Now.Year, 2, 24) }
-            };
+    {
+        new Event { Name = "Valentine's Day", Date = new DateTime(DateTime.Now.Year, 2, 14) },
+        new Event { Name = "Christmas", Date = new DateTime(DateTime.Now.Year, 12, 25) },
+        new Event { Name = "Halloween", Date = new DateTime(DateTime.Now.Year, 10, 31) },
+        new Event { Name = "New Year", Date = new DateTime(DateTime.Now.Year, 1, 1) },
+        new Event { Name = "Lunar New Year", Date = new DateTime(DateTime.Now.Year, 1, 29) },
+        new Event { Name = "Labour Day", Date = new DateTime(DateTime.Now.Year, 5, 1) },
+        new Event { Name = "Holy Saturday", Date = new DateTime(DateTime.Now.Year, 4, 19) },
+      
+    };
         }
 
         private void StartUpdateTimer()
@@ -157,43 +156,43 @@ namespace Human_Resources_Management_System.UserControls
                 return;
             }
 
-            DateTime today = DateTime.Now.Date;
+            DateTime now = DateTime.Now;
+            DateTime today = now.Date;
             DateTime rangeEnd = today.AddDays(60);
 
             // Adjust event dates to the current or next year for recurring events
             var adjustedEvents = _events.Select(ev =>
             {
-                DateTime adjustedDate = new DateTime(today.Year, ev.Date.Month, ev.Date.Day);
+                DateTime adjustedDate = new DateTime(today.Year, ev.Date.Month, ev.Date.Day, ev.Date.Hour, ev.Date.Minute, ev.Date.Second);
 
                 // If the event has already passed this year, move it to next year
-                if (adjustedDate < today)
+                if (adjustedDate < now)
                 {
                     adjustedDate = adjustedDate.AddYears(1);
                 }
-
-                Console.WriteLine($"Event: {ev.Name}, Original Date: {ev.Date}, Adjusted Date: {adjustedDate}");
 
                 return new Event { Name = ev.Name, Date = adjustedDate };
             }).ToList();
 
             // Filter events within the next 60 days
             var upcomingEvents = adjustedEvents
-                .Where(ev => ev.Date >= today && ev.Date <= rangeEnd)
+                .Where(ev => ev.Date >= now && ev.Date <= rangeEnd)
                 .OrderBy(ev => ev.Date)
                 .ToList();
 
             // Update the NotesTextBox
             NotesTextBox.Text = upcomingEvents.Any()
-                ? string.Join(Environment.NewLine, upcomingEvents.Select(ev => $"{ev.Date:MMMM dd}: {ev.Name}"))
+                ? string.Join(Environment.NewLine, upcomingEvents.Select(ev =>
+                {
+                    // Display time for today's events
+                    if (ev.Date.Date == today)
+                        return $"{ev.Date:MMMM dd, h:mm tt}: {ev.Name}";
+                    else
+                        return $"{ev.Date:MMMM dd}: {ev.Name}";
+                }))
                 : "No upcoming events.";
-
-            Console.WriteLine("Upcoming Events:");
-            foreach (var ev in upcomingEvents)
-            {
-                Console.WriteLine($"{ev.Date:MMMM dd}: {ev.Name}");
-            }
-
         }
+
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {

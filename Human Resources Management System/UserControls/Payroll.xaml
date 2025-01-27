@@ -62,12 +62,13 @@
             </ListView>
             <Button x:Name="SearchButton" Width="50" Height="50" 
              HorizontalAlignment="Left" VerticalAlignment="Top" Margin="85,50,0,0"
-             Click="ToggleSearchBar">
+             Click="ToggleSearchBar" Content="🔍">
 
             </Button>
             <!-- Search Bar -->
             
             <TextBox x:Name="SearchBar" 
+             
              HorizontalAlignment="Left" 
              VerticalAlignment="Top" 
              Margin="155,10,10,0" 
@@ -99,10 +100,11 @@
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Name="OpenPayrollInput" Content="Calculate Payslip" Click="OpenPayrollInput_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
                     <Button Name="GeneratePayslipButton" Content="Generate Payslip" Click="GeneratePayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
                     <Button Name="ExportPayslipButton" Content="Export Payslip to PDF" Click="ExportPayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
                     <Button Name="ViewPayslipButton" Content="View Payslip" Click="ViewPayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
-                    <Button Name="OpenPayrollInput" Content="Calculate Payslip" Click="OpenPayrollInput_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
+                   
                 </StackPanel>
             </StackPanel>
            
