@@ -28,6 +28,7 @@ namespace Human_Resources_Management_System.UserControls
         private readonly MongoDbConnection _connection;
         private DispatcherTimer _updateTimer; // Simplified to DispatcherTimer
         private List<Event> _events;
+        private bool isProcessing = false;
         public Dashboard()
         {
 
@@ -37,6 +38,7 @@ namespace Human_Resources_Management_System.UserControls
             LoadData();
             HolidayEvents(); // Ensure events are initialized
             StartUpdateTimer();
+
 
 
         }
@@ -65,6 +67,11 @@ namespace Human_Resources_Management_System.UserControls
 
         private void ListViewUsers_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            // Check if the double-click originated from a CheckBox
+            if (e.OriginalSource is CheckBox)
+            {
+                e.Handled = true; // Suppress the double-click event
+            }
             if (ListViewUsers.SelectedItem is PeoplesModel selectedItem)
             {
                 // Fetch the full document from the database
@@ -99,6 +106,14 @@ namespace Human_Resources_Management_System.UserControls
             else
             {
                 MessageBox.Show("Please select an item to edit.");
+            }
+        }
+        private void ListViewUsers_PreviewMouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // Check if the double-click originated from a CheckBox
+            if (e.OriginalSource is CheckBox)
+            {
+                e.Handled = true; // Suppress the double-click event
             }
         }
 
@@ -180,10 +195,51 @@ namespace Human_Resources_Management_System.UserControls
 
         }
 
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Get the button that triggered the event
+            Button button = sender as Button;
+
+            // Get the associated data context (the clicked item)
+            if (button?.DataContext is PeoplesModel selectedItem)
+            {
+                // Confirm deletion
+                var result = MessageBox.Show($"Are you sure you want to delete {selectedItem.FirstName}?", "Confirm Delete", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        // Delete from MongoDB
+                        var peoplesCollection = _connection.GetPeoplesCollection();
+                        var deleteResult = peoplesCollection.DeleteOne(x => x.Id == selectedItem.Id);
+
+                        // Check if deletion was successful
+                        if (deleteResult.DeletedCount > 0)
+                        {
+                            MessageBox.Show($"{selectedItem.FirstName} was deleted successfully.", "Deleted", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                            // Refresh the ListView
+                            RefreshData();
+                        }
+                        else
+                        {
+                            MessageBox.Show($"Failed to delete {selectedItem.FirstName}.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
+                }
+            }
+        }
+
+
         public void RefreshData()
         {
             LoadData();
         }
+
 
     }
 
@@ -192,7 +248,7 @@ namespace Human_Resources_Management_System.UserControls
         public string Name { get; set; }
         public DateTime Date { get; set; }
     }
-
+    
 
 
 

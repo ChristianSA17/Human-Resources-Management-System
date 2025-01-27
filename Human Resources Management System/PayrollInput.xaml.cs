@@ -33,6 +33,8 @@ namespace Human_Resources_Management_System
             _payrollUserControl = payrollUserControl ?? throw new ArgumentNullException(nameof(payrollUserControl));
         }
 
+       
+       
         private void CalculatePayslip_Click(object sender, RoutedEventArgs e)
         {
             try

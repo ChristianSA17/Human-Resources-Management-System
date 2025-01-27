@@ -112,5 +112,8 @@ namespace Human_Resources_Management_System
         // for the EmployeeId
         [BsonElement("EmployeeId")]
         public string EmployeeId { get; set; }
+        //for the Status
+        [BsonElement("Status")]
+        public string Status { get; set; }
     }
 }

@@ -245,6 +245,38 @@ namespace Human_Resources_Management_System.UserControls
             var payrollInputWindow = new PayrollInput(this); // Pass the current Payroll instance
             payrollInputWindow.ShowDialog();
         }
+
+        private void ToggleSearchBar(object sender, RoutedEventArgs e)
+        {
+            if (SearchBar.Visibility == Visibility.Collapsed)
+            {
+                SearchBar.Visibility = Visibility.Visible;
+                SearchBar.Focus();
+            }
+            else
+            {
+                SearchBar.Visibility = Visibility.Collapsed;
+                SearchBar.Text = string.Empty; // Clear search when hiding
+
+                // Reset the ListView to show all items
+                ListViewUsers.Items.Filter = null;
+            }
+        }
+        private void SearchBar_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
+        {
+            string searchText = SearchBar.Text.ToLower();
+
+            // Apply filtering to the ListView
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewUsers.ItemsSource);
+            if (!string.IsNullOrEmpty(searchText))
+            {
+                view.Filter = item => item.ToString().ToLower().Contains(searchText);
+            }
+            else
+            {
+                view.Filter = null; // Reset the filter when the search box is empty
+            }
+        }
     }
     public class Item
     {

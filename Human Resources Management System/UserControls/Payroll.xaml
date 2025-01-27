@@ -20,6 +20,9 @@
 
         <!-- Main content with ListView -->
         <Grid Grid.Row="1" Background="#3B3B3B">
+
+          
+
             <ListView x:Name="ListViewUsers" Margin="10,10,10,9" Background="#3B3B3B" Foreground="White" Height="400" Width="780">
                 <ListView.Resources>
                     <!-- Style for ListViewItem -->
@@ -54,9 +57,25 @@
                     </GridView>
                 </ListView.View>
             </ListView>
+            <Button x:Name="SearchButton" Width="50" Height="50" 
+             HorizontalAlignment="Left" VerticalAlignment="Top" Margin="85,50,0,0"
+             Click="ToggleSearchBar">
+
+            </Button>
+            <!-- Search Bar -->
+            
+            <TextBox x:Name="SearchBar" 
+             HorizontalAlignment="Left" 
+             VerticalAlignment="Top" 
+             Margin="155,10,10,0" 
+              Width="300" 
+              Visibility="Collapsed"
+            TextChanged="SearchBar_TextChanged"
+            FontSize="10"
+       />
 
             <!-- Total Employee and Payroll information -->
-            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,154,100,0">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,154,0,0">
                 <StackPanel x:Name="Total_Employee" Orientation="Horizontal">
                     <TextBlock x:Name="Total_Employee1" Foreground="LightGray">Total Employee:</TextBlock>
                     <TextBox IsReadOnly="True" Background="Transparent" Width="50" BorderThickness="0" Focusable="False"/>
@@ -69,15 +88,22 @@
         </Grid>
 
         <!-- Buttons StackPanel -->
-        <Border Grid.Row="2" BorderBrush="Red" BorderThickness="1" Margin="10">
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                <TextBlock Text="Payslip System" FontSize="20" FontWeight="Bold" Margin="0,0,0,10"/>
-                <Button Name="GeneratePayslipButton" Content="Generate Payslip" Click="GeneratePayslipButton_Click" Margin="0,5"/>
-                <Button Name="ExportPayslipButton" Content="Export Payslip to PDF" Click="ExportPayslipButton_Click" Margin="0,5"/>
-                <Button Name="ViewPayslipButton" Content="View Payslip" Click="ViewPayslipButton_Click" Margin="0,5"/>
-                <Button Name="OpenPayrollInput" Content="Calculate Payslip" Click="OpenPayrollInput_Click" Margin="0,5"/>
+        <Grid Grid.Row="2" Margin="10">
+            
+            <StackPanel>
+                <StackPanel>
+                    <TextBlock Text="Payslip System" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,0,0,0" Foreground="White"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
+                    <Button Name="GeneratePayslipButton" Content="Generate Payslip" Click="GeneratePayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
+                    <Button Name="ExportPayslipButton" Content="Export Payslip to PDF" Click="ExportPayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
+                    <Button Name="ViewPayslipButton" Content="View Payslip" Click="ViewPayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
+                    <Button Name="OpenPayrollInput" Content="Calculate Payslip" Click="OpenPayrollInput_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
+                </StackPanel>
             </StackPanel>
-        </Border>
+           
+        </Grid>
     </Grid>
 
 </UserControl>

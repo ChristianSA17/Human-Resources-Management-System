@@ -29,14 +29,61 @@ namespace Human_Resources_Management_System.UserControls
         private DateTime? _selectedBirthDate; // Declaring this field for the calender function
         private DateTime? _selectedHiredDate;
         private byte[] _uploadedImageBytes;
+        private PeoplesModel _currentItem; // Store the current item being edited
+
 
         public EditForm(PeoplesModel selectedItem)
         {
             InitializeComponent();
             _connection = new MongoDbConnection();
+            _currentItem = selectedItem;
 
             // Set the DataContext to the selected PeoplesModel
             this.DataContext = selectedItem;
+            // Load the initial radio button status based on MongoDB
+            LoadInitialStatus();
+        }
+        private void LoadInitialStatus()
+        {
+            // Ensure the current item's status is reflected in the radio buttons
+            if (_currentItem != null)
+            {
+                if (_currentItem.Status == "Active")
+                {
+                    ActiveRadioButton.IsChecked = true;
+                }
+                else if (_currentItem.Status == "Inactive")
+                {
+                    InactiveRadioButton.IsChecked = true;
+                }
+            }
+        }
+
+        private async void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            if (_currentItem == null) return;
+
+            var selectedRadioButton = sender as System.Windows.Controls.RadioButton;
+            if (selectedRadioButton != null)
+            {
+                string selectedStatus = selectedRadioButton.Content.ToString();
+
+                // Update the status in MongoDB
+                var peoplesCollection = _connection.GetPeoplesCollection();
+                var filter = Builders<PeoplesModel>.Filter.Eq(p => p.Id, _currentItem.Id);
+                var update = Builders<PeoplesModel>.Update.Set(p => p.Status, selectedStatus);
+
+                var result = await peoplesCollection.UpdateOneAsync(filter, update);
+
+                if (result.ModifiedCount > 0)
+                {
+                    MessageBox.Show($"Status updated to '{selectedStatus}' in MongoDB.");
+                }
+                else
+                {
+                    //MessageBox.Show("Status update failed or no changes made.");
+                }
+            }
         }
 
         private void ShowCalendar_Click(object sender, RoutedEventArgs e)
@@ -223,6 +270,8 @@ namespace Human_Resources_Management_System.UserControls
                 MessageBox.Show($"Error updating user: {ex.Message}");
             }
         }
+
+       
 
     }
 }

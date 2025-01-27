@@ -18,7 +18,7 @@
         </Grid>
         <Grid Grid.Row="1" Background="LightGray"/>
         <Grid Grid.Row="2" Background="#3B3B3B">
-            <ListView x:Name="ListViewUsers" MouseDoubleClick="ListViewUsers_MouseDoubleClick" SelectionMode="Single" Margin="10,10,229,23" Background="#3B3B3B" Foreground="White">
+            <ListView x:Name="ListViewUsers" MouseDoubleClick="ListViewUsers_MouseDoubleClick" SelectionMode="Single" Margin="10,10,229,23" Background="#3B3B3B" Foreground="White" PreviewMouseDoubleClick="ListViewUsers_PreviewMouseDoubleClick">
                 <ListView.Resources>
                     <!-- Style for ListViewItem -->
                     <Style TargetType="ListViewItem">
@@ -28,9 +28,7 @@
                         <Style.Triggers>
                             <Trigger Property="IsSelected" Value="True">
                                 <Setter Property="Background" Value="#141414"/>
-                                <!-- Selected row background color -->
                                 <Setter Property="Foreground" Value="White"/>
-                                <!-- Optional: Text color for selected row -->
                             </Trigger>
                         </Style.Triggers>
                     </Style>
@@ -39,9 +37,7 @@
                     <Style TargetType="GridViewColumnHeader">
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
                         <Setter Property="Background" Value="DarkGray"/>
-                        <!-- Header background color -->
                         <Setter Property="Foreground" Value="White"/>
-                        <!-- Header text color -->
                         <Setter Property="FontWeight" Value="Bold"/>
                         <Setter Property="Padding" Value="5,3"/>
                     </Style>
@@ -49,7 +45,7 @@
 
                 <ListView.View>
                     <GridView AllowsColumnReorder="False">
-                        <!-- Prevents column reordering -->
+                        <!-- Your existing columns -->
                         <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" Width="Auto"/>
                         <GridViewColumn Header="Surname" DisplayMemberBinding="{Binding Surname}" Width="Auto"/>
                         <GridViewColumn Header="Middle Name" DisplayMemberBinding="{Binding MiddleName}" Width="Auto"/>
@@ -62,31 +58,36 @@
                         <GridViewColumn Header="Requirements" DisplayMemberBinding="{Binding Requirements}" Width="Auto"/>
                         <GridViewColumn Header="Date Hired" DisplayMemberBinding="{Binding DateHired, StringFormat=MM-dd-yyyy}" Width="Auto"/>
                         <GridViewColumn Header="Shuttle Code" DisplayMemberBinding="{Binding ShuttleCode}" Width="Auto"/>
-                        <GridViewColumn Header="Picture" Width="Auto">
-                        <GridViewColumn.CellTemplate>
+
+                        <GridViewColumn Header="Signature" Width="80">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Image Source="{Binding ApplicantSignature}" Width="Auto" Height="Auto" Stretch="UniformToFill"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Status" DisplayMemberBinding="{Binding Status}" Width="Auto"/>
+
+                        <GridViewColumn Header="Picture" Width="100">
+                            <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <Image Source="{Binding ProfileImage}" Width="50" Height="50" Stretch="UniformToFill"/>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
-                        <GridViewColumn Header="Signature" Width="Auto">
+                        <GridViewColumn Header=" ">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Image Source="{Binding ApplicantSignature}" Width="50" Height="50" Stretch="UniformToFill"/>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                        <GridViewColumn Header="Authorization Signature" Width="Auto">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Image Source="{Binding AuthorizeSignature}" Width="50" Height="50" Stretch="UniformToFill"/>
+                                    <Button Click="DeleteButton_Click" Margin="5,0,0,0" Background="Transparent" BorderThickness="0" ToolTip="Delete">
+                                        <Button.Content>
+                                            <Image Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images/TrashBin.png" Width="16" Height="16" />
+                                        </Button.Content>
+                                    </Button>
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
                     </GridView>
                 </ListView.View>
-                
-                
             </ListView>
 
 
