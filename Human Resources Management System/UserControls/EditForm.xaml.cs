@@ -62,27 +62,10 @@ namespace Human_Resources_Management_System.UserControls
         private async void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
             if (_currentItem == null) return;
-
             var selectedRadioButton = sender as System.Windows.Controls.RadioButton;
             if (selectedRadioButton != null)
             {
-                string selectedStatus = selectedRadioButton.Content.ToString();
-
-                // Update the status in MongoDB
-                var peoplesCollection = _connection.GetPeoplesCollection();
-                var filter = Builders<PeoplesModel>.Filter.Eq(p => p.Id, _currentItem.Id);
-                var update = Builders<PeoplesModel>.Update.Set(p => p.Status, selectedStatus);
-
-                var result = await peoplesCollection.UpdateOneAsync(filter, update);
-
-                if (result.ModifiedCount > 0)
-                {
-                    MessageBox.Show($"Status updated to '{selectedStatus}' in MongoDB.");
-                }
-                else
-                {
-                    //MessageBox.Show("Status update failed or no changes made.");
-                }
+                _currentItem.Status = selectedRadioButton.Content.ToString();
             }
         }
 
@@ -250,7 +233,8 @@ namespace Human_Resources_Management_System.UserControls
                     .Set(p => p.ContactsSex, selectedEmergencyContactsSex)
                     .Set(p => p.Birthday, dateofBirth)
                     .Set(p => p.DateHired, dateHired)
-                    .Set(p => p.ProfileImage, _uploadedImageBytes ?? item.ProfileImage);
+                    .Set(p => p.ProfileImage, _uploadedImageBytes ?? item.ProfileImage)
+                    .Set(p => p.Status, _currentItem.Status);
 
                 // Perform the update
                 var result = peoplesCollection.UpdateOne(filter, update);

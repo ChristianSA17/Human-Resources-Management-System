@@ -28,6 +28,7 @@ namespace Human_Resources_Management_System.UserControls
         public Login()
         {
             InitializeComponent();
+            BackgroundPicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Images/wallpaper.jpg"));
             _connection = new MongoDbConnection();
           
         }
@@ -87,7 +88,36 @@ namespace Human_Resources_Management_System.UserControls
             }
             else
             {
-                MessageBox.Show("Invalid username or password");
+                var checkUsername = userCollection.AsQueryable().FirstOrDefault(u => u.Username == username);
+                var checkPassword = userCollection.AsQueryable().FirstOrDefault(u => u.Password == hashedPassword);
+
+                if (string.IsNullOrWhiteSpace(username))
+                {
+                    UsernameErrorMessage.Text = "Please enter your username.";
+                    UsernameErrorMessage.Visibility = Visibility.Visible;
+                    return;
+                }
+                else if (checkUsername == null)
+                {
+                    UsernameErrorMessage.Text = "No user found with this username.";
+                    UsernameErrorMessage.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    UsernameErrorMessage.Visibility = Visibility.Collapsed;
+                }
+
+                if (string.IsNullOrWhiteSpace(password))
+                {
+                    PasswordErrorMessage.Text = "Please enter your password.";
+                    PasswordErrorMessage.Visibility = Visibility.Visible;
+                    return;
+                }
+                else if (checkPassword == null)
+                {
+                    PasswordErrorMessage.Text = "Incorrect Password.";
+                    PasswordErrorMessage.Visibility = Visibility.Visible;
+                }
             }
 
         }

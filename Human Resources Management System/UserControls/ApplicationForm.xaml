@@ -22,7 +22,7 @@
               BorderBrush="Gray"
               BorderThickness="1"
               Focusable="False"
-              IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}">
+              IsChecked="{Binding Path=IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}" FontFamily="Segoe UI Light">
                                 <ToggleButton.Template>
                                     <ControlTemplate TargetType="ToggleButton">
                                         <Border Background="{TemplateBinding Background}"
@@ -109,7 +109,7 @@
 
             <Border>
                 <StackPanel>
-                    <TextBlock FontSize="20" Margin="20,0,0,0" Foreground="LightGray">Application Form</TextBlock>
+                    <TextBlock FontSize="20" Margin="20,0,0,0" Foreground="LightGray" FontFamily="Segoe UI Light">Application Form</TextBlock>
                 </StackPanel>
             </Border>
         </Grid>
@@ -120,10 +120,10 @@
 
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,10,0,0">
-                <TextBlock Foreground="LightGray" FontSize="14">
+                <TextBlock Foreground="LightGray" FontSize="14" FontFamily="Segoe UI Light">
         First Name <Span Foreground="Red">*</Span>
                 </TextBlock>
-                <TextBox x:Name="ApplicantsFirstName" Foreground="LightGray" Background="Transparent" Width="190" Height="40" FontSize="20">
+                <TextBox x:Name="ApplicantsFirstName" Foreground="LightGray" Background="Transparent" Width="190" Height="40" FontSize="20" MaxLength="50" PreviewTextInput="Character_PreviewTextInput" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -139,8 +139,8 @@
 
             <!-- Surname TextBox -->
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220,11,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray"> Surname <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsSurname" Foreground="LightGray" Background="Transparent" Width="190" Height="40" FontSize="20">
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light"> Surname <Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="ApplicantsSurname" Foreground="LightGray" Background="Transparent" Width="190" Height="40" FontSize="20" MaxLength="50" PreviewTextInput="Character_PreviewTextInput" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -155,8 +155,8 @@
             </StackPanel>
 
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="433,10,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray"> Middle Name <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsMiddleName"  Foreground="LightGray" Background="Transparent" Width="190" Height="40" FontSize="20">
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light"> Middle Name <Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="ApplicantsMiddleName"  Foreground="LightGray" Background="Transparent" Width="190" Height="40" FontSize="20" MaxLength="50" PreviewTextInput="Character_PreviewTextInput" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -172,14 +172,14 @@
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="640,10,0,0">
                 <TextBlock Foreground="LightGray">Sex<Span Foreground="Red">*</Span></TextBlock>
                 <ComboBox x:Name="ApplicantsSex" Width="90" Height="40" FontSize="30" >
-                    <ComboBoxItem Foreground="White" Content="Male" />
-                    <ComboBoxItem  Foreground="White" Content="Female" />
+                    <ComboBoxItem Foreground="White" Content="Male"  FontFamily="Segoe UI Light"/>
+                    <ComboBoxItem  Foreground="White" Content="Female" FontFamily="Segoe UI Light"/>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,80,0,0">
-                <TextBlock Foreground="LightGray">Date of Birth<Span Foreground="Red">*</Span></TextBlock>
+                <TextBlock Foreground="LightGray" FontFamily="Segoe UI Light">Date of Birth<Span Foreground="Red">*</Span></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBox x:Name="BirthDateTextBox" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                    <TextBox x:Name="BirthDateTextBox" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20" FontFamily="Segoe UI Light" >
                         <TextBox.Template>
                             <ControlTemplate TargetType="TextBox">
                                 <Border Background="{TemplateBinding                                        Background}"
@@ -194,7 +194,7 @@
 
                     <!-- Button with Calendar Icon -->
                     <Button Width="40" Height="40" Margin="0,0,0,0" Click="ShowCalendar_Click"  Background="Transparent" Foreground="LightGray">
-                        <Image Width="20" Height="20" Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Calendar-Icon.png"/>
+                        <Image Width="20" Height="20" x:Name="Calendaricon"/>
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}"
@@ -215,8 +215,8 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="220,80,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Age <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsAge" Foreground="LightGray" Background="Transparent" Width="50" Height="40" FontSize="20">
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Age <Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="ApplicantsAge" Foreground="LightGray" Background="Transparent" Width="50" Height="40" FontSize="20" PreviewTextInput="Number_PreviewTextInput" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -230,8 +230,8 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="287,80,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Email <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsEmail" Foreground="LightGray" Background="Transparent" Width="200" Height="40" FontSize="20">
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Email <Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="ApplicantsEmail" Foreground="LightGray" Background="Transparent" Width="200" Height="40" FontSize="20" MaxLength="100" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -245,8 +245,8 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="516,80,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Address <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsAddress" Foreground="LightGray" Background="Transparent" Width="200" Height="40" FontSize="20">
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Address <Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="ApplicantsAddress" Foreground="LightGray" Background="Transparent" Width="200" Height="40" FontSize="20" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -260,8 +260,8 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,150,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Contact No. <Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="ApplicantsContactNo" Foreground="LightGray" Background="Transparent" Width="180" Height="40" FontSize="20">
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Contact No. <Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="ApplicantsContactNo" Foreground="LightGray" Background="Transparent" Width="180" Height="40" FontSize="20" PreviewTextInput="Number_PreviewTextInput" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -275,16 +275,16 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="210,150,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Requirements <Span Foreground="red">*</Span></TextBlock>
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Requirements <Span Foreground="red">*</Span></TextBlock>
                 <ComboBox x:Name="ApplicantsRequirements" Width="200" Height="40" FontSize="30" >
-                    <ComboBoxItem Foreground="White">Complete</ComboBoxItem>
-                    <ComboBoxItem Foreground="White">Incomplete</ComboBoxItem>
+                    <ComboBoxItem Foreground="White" FontFamily="Segoe UI Light">Complete</ComboBoxItem>
+                    <ComboBoxItem Foreground="White" FontFamily="Segoe UI Light">Incomplete</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="433,153,0,0">
-                <TextBlock Foreground="LightGray">Date Hired<Span Foreground="Red">*</Span></TextBlock>
+                <TextBlock Foreground="LightGray" FontFamily="Segoe UI Light">Date Hired<Span Foreground="Red">*</Span></TextBlock>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                    <TextBox x:Name="HiredDateTextBox" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                    <TextBox x:Name="HiredDateTextBox" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20" FontFamily="Segoe UI Light">
                         <TextBox.Template>
                             <ControlTemplate TargetType="TextBox">
                                 <Border Background="{TemplateBinding Background}"
@@ -299,7 +299,7 @@
 
                     <!-- Button with Calendar Icon -->
                     <Button Width="40" Height="40" Margin="0,0,0,0" Click="ShowDateHired_Click"  Background="Transparent" Foreground="LightGray">
-                        <Image Width="20" Height="20" Source="C:\Users\lenovo\source\repos\Human Resources Management System\Human Resources Management System\Images\Calendar-Icon.png"/>
+                        <Image Width="20" Height="20" x:Name="Calendaricon1"/>
                         <Button.Template>
                             <ControlTemplate TargetType="Button">
                                 <Border Background="{TemplateBinding Background}"
@@ -320,7 +320,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="640,150,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Shuttle Code<Span Foreground="red">*</Span></TextBlock>
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Shuttle Code<Span Foreground="red">*</Span></TextBlock>
                 <TextBox x:Name="ApplicantsShuttleCode" Foreground="LightGray" Background="Transparent" Width="100" Height="40" FontSize="20">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
@@ -335,19 +335,19 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,210,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Applicant's Signature<Span Foreground="red">*</Span></TextBlock>
-                <Button Height="40" Click="OpenSignature_Click" Background="#141414" Foreground="LightGray">GET YOUR SIGNATURE</Button>
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Applicant's Signature<Span Foreground="red">*</Span></TextBlock>
+                <Button Height="40" Click="OpenSignature_Click" Background="#141414" Foreground="LightGray" FontFamily="Segoe UI Light">GET YOUR SIGNATURE</Button>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="170,210,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Authorized Signatory<Span Foreground="red">*</Span></TextBlock>
-                <Button Height="40" Click="AuthoritySig_Click"  Background="#141414" Foreground="LightGray" >GET YOUR SIGNATURE</Button>
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Authorized Signatory<Span Foreground="red">*</Span></TextBlock>
+                <Button Height="40" Click="AuthoritySig_Click"  Background="#141414" Foreground="LightGray" FontFamily="Segoe UI Light" >GET YOUR SIGNATURE</Button>
             </StackPanel>
            
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,290,0,0">
-                <TextBlock FontSize="15" Foreground="LightGray">Emergency Contact</TextBlock>
-                <TextBlock  FontSize="14" Foreground="LightGray">First Name<Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="EmergencyContactName" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                <TextBlock FontSize="15" Foreground="LightGray" FontFamily="Segoe UI Light">Emergency Contact</TextBlock>
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">First Name<Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="EmergencyContactName" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20"  MaxLength="50" PreviewTextInput="Character_PreviewTextInput" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -362,7 +362,7 @@
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,380,0,0">
                 <TextBlock  FontSize="14" Foreground="LightGray">Contact No.<Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="EmergencyContactNo" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                <TextBox x:Name="EmergencyContactNo" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20" PreviewTextInput="Number_PreviewTextInput" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -376,8 +376,8 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,308,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Surname<Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="EmergencyContactSurname" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Surname<Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="EmergencyContactSurname" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20" MaxLength="50" PreviewTextInput="Character_PreviewTextInput" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -391,8 +391,8 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="200,380,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Address<Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="EmergencyContactAddress" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20">
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Address<Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="EmergencyContactAddress" Foreground="LightGray" Background="Transparent" Width="150" Height="40" FontSize="20" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -406,8 +406,8 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,308,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Middle Name<Span Foreground="red">*</Span></TextBlock>
-                <TextBox x:Name="EmergencyContactMiddleName" Foreground="LightGray" Background="Transparent" Width="100" Height="40" FontSize="20">
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Middle Name<Span Foreground="red">*</Span></TextBlock>
+                <TextBox x:Name="EmergencyContactMiddleName" Foreground="LightGray" Background="Transparent" Width="100" Height="40" FontSize="20" MaxLength="50" PreviewTextInput="Character_PreviewTextInput" FontFamily="Segoe UI Light">
                     <TextBox.Template>
                         <ControlTemplate TargetType="TextBox">
                             <Border Background="{TemplateBinding Background}"
@@ -421,23 +421,23 @@
                 </TextBox>
             </StackPanel>
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,380,0,0">
-                <TextBlock  FontSize="14" Foreground="LightGray">Sex<Span Foreground="red">*</Span></TextBlock>
+                <TextBlock  FontSize="14" Foreground="LightGray" FontFamily="Segoe UI Light">Sex<Span Foreground="red">*</Span></TextBlock>
                 <ComboBox x:Name="EmergencyContactSex"  Width="100" Height="40" FontSize="30" >
 
-                    <ComboBoxItem Foreground="White">Male</ComboBoxItem>
-                    <ComboBoxItem Foreground="White">Female</ComboBoxItem>
+                    <ComboBoxItem Foreground="White" FontFamily="Segoe UI Light">Male</ComboBoxItem>
+                    <ComboBoxItem Foreground="White" FontFamily="Segoe UI Light">Female</ComboBoxItem>
                 </ComboBox>
             </StackPanel>
-            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,15,136,0" >
+            <StackPanel VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,15,16,0" >
                 <Border Height="190" Width="200" Background="LightGray" CornerRadius="5"  BorderBrush="Black" BorderThickness="1">
                     <Image x:Name="UploadedImage" Stretch="Uniform" />
                 </Border>
 
                 <!-- Upload Button -->
-                <Button Content="Upload Image" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="110" FontSize="15" Height="50" Click="FormUploadButton_Click" Background="#141414" Foreground="LightGray"/>
+                <Button Content="Upload Image" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10" Width="110" FontSize="15" Height="50" Click="FormUploadButton_Click" Background="#141414" Foreground="LightGray" FontFamily="Segoe UI Light"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,40,50" Grid.ColumnSpan="2">
-                <Button Margin="0,0,0,0" Width="110" FontSize="15" Height="50" Foreground="LightGray" Background="#141414" Click="ConfirmApplicationButton_Click">Confirm</Button>
+                <Button Margin="0,0,0,0" Width="110" FontSize="15" Height="50" Foreground="LightGray" Background="#141414" Click="ConfirmApplicationButton_Click" FontFamily="Segoe UI Light">Confirm</Button>
             </StackPanel>
 
 

@@ -86,7 +86,6 @@ namespace Human_Resources_Management_System.UserControls
 
                     // Convert the image into a byte array
                     byte[] imageBytes = File.ReadAllBytes(imagePath);
-
                     // Store the image in MongoDB
                     var username = PassedUsername;
                     var userCollection = _connection.GetUsersCollection();
@@ -98,7 +97,16 @@ namespace Human_Resources_Management_System.UserControls
                     var update = Builders<UsersModel>.Update.Set(u => u.ProfileImage, imageBytes);
 
                     // Update the user's profile image in MongoDB
-                    userCollection.UpdateOne(filter, update);
+                    var result = userCollection.UpdateOne(filter, update);
+
+                    if (result.ModifiedCount > 0)
+                    {
+                        MessageBox.Show("Image uploaded and updated successfully.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Image upload failed. No records were updated.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                    }
 
                     MessageBox.Show("Image uploaded successfully.");
                 }

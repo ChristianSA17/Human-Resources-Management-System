@@ -30,6 +30,9 @@ namespace Human_Resources_Management_System.UserControls
         {
             InitializeComponent();
             _connection = new MongoDbConnection();
+            LogoImage.Source = new BitmapImage(new Uri("pack://application:,,,/Images/realcompanylogo.png"));
+            BackgroundPicture.ImageSource = new BitmapImage(new Uri("pack://application:,,,/Images/wallpaper.jpg"));
+
         }
 
         //Generates otp

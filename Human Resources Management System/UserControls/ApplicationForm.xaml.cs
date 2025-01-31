@@ -34,7 +34,12 @@ namespace Human_Resources_Management_System.UserControls
             InitializeComponent();
             _connection = new MongoDbConnection();
             Signature signature = new Signature();
-            
+            BirthDateTextBox.IsReadOnly = true;
+            HiredDateTextBox.IsReadOnly = true;
+            Calendaricon.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Calendar-Icon.png"));
+            Calendaricon1.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Calendar-icon.png"));
+
+
         }
 
         private void ShowCalendar_Click(object sender, RoutedEventArgs e)
@@ -85,8 +90,8 @@ namespace Human_Resources_Management_System.UserControls
             Window hostWindow = new Window
             {
                 Content = signature,
-                Width = 400,
-                Height = 300,
+                Width = 800,
+                Height = 500,
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
 
@@ -138,8 +143,8 @@ namespace Human_Resources_Management_System.UserControls
             Window hostWindow = new Window
             {
                 Content = signature,
-                Width = 400,
-                Height = 300,
+                Width = 800,
+                Height = 500,
                 WindowStartupLocation = WindowStartupLocation.CenterScreen
             };
 
@@ -151,10 +156,7 @@ namespace Human_Resources_Management_System.UserControls
             {
                 _authorizeSignature = signature._authorizeSignature; // Store the authorization signature in the main window
             }
-            else
-            {
-                MessageBox.Show("Authorization signature not captured.");
-            }
+           
         }
 
 
@@ -338,6 +340,27 @@ namespace Human_Resources_Management_System.UserControls
                 return;
             }
 
+        }
+
+        private void Number_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Allow only alphanumeric characters and some symbols
+            string allowedChars = "1234567890";
+            if (!allowedChars.Contains(e.Text))
+            {
+                e.Handled = true;  // Reject the input
+            }
+        }
+
+        //Set what inputs can only be added in the username textboxes
+        private void Character_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            // Allow only alphanumeric characters and some symbols
+            string allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-";
+            if (!allowedChars.Contains(e.Text))
+            {
+                e.Handled = true;  // Reject the input
+            }
         }
     }
 }

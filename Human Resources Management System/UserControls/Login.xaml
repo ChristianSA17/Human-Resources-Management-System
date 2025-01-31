@@ -10,44 +10,51 @@
     <!-- Login Content -->
 <Grid>
         <Grid.Background>
-            <ImageBrush ImageSource="C:\Users\ChristianSA\source\repos\Human-Resources-Management-System\Human Resources Management System\Images\wallpaper.jpg" Stretch="UniformToFill" />
+            <ImageBrush x:Name="BackgroundPicture" Stretch="UniformToFill" />
         </Grid.Background>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel>
+                <TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,10" FontFamily="Segoe UI Light">Login to your account</TextBlock>
 
-<TextBlock FontSize="40" FontWeight="Bold" Foreground="Black" HorizontalAlignment="Center" Margin="0,0,0,10">Login to your account</TextBlock>
+                <TextBlock FontSize="20" FontFamily="Segoe UI Light" >Username</TextBlock>
 
-<TextBlock FontSize="15" >Username</TextBlock>
+                <TextBox x:Name="LoginTextBox" Margin="0,6,30,0" Width="470" Height="40" FontSize="30" MaxLength="20" PreviewTextInput="UsernameTextBox_PreviewTextInput" FontFamily="Segoe UI Light"></TextBox>
+            </StackPanel>
+            <TextBlock Name="UsernameErrorMessage" Foreground="Red" Visibility="Collapsed" Margin="15,0,0,0"/>
 
-            <TextBox x:Name="LoginTextBox" Margin="0,6,30,0" Width="470" Height="40" FontSize="30" MaxLength="20" PreviewTextInput="UsernameTextBox_PreviewTextInput"></TextBox>
 
-<TextBlock FontSize="15" Margin="0,6,0,0" >Password</TextBlock>
+
+            <TextBlock FontSize="20" Margin="0,6,0,0" FontFamily="Segoe UI Light" >Password</TextBlock>
             <StackPanel Orientation="Vertical" Margin="10">
                 <!-- StackPanel for Password Field -->
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                     <!-- PasswordBox -->
-                    <PasswordBox x:Name="LoginPasswordBox" Margin="0,0,6,0" PasswordChar="*" Width="470" Height="40" FontSize="30" MaxLength="20"/>
+                    <PasswordBox x:Name="LoginPasswordBox" Margin="0,0,6,0" PasswordChar="*" Width="470" Height="40" FontSize="30" MaxLength="20" FontFamily="Segoe UI Light"/>
 
                     <!-- TextBox for visible password (initially hidden) -->
                     <TextBox x:Name="PasswordTextBox" Margin="0,0,6,0" Width="470"  Visibility="Collapsed" Height="40" FontSize="30"/>
 
+                   
+
                     <!-- Eye Icon -->
                     <Button Content="👁" Width="30" Height="30" Click="TogglePasswordVisibility_Click" />
-                </StackPanel>
+            </StackPanel>
+                <TextBlock Name="PasswordErrorMessage" Foreground="Red" Visibility="Collapsed"/>
 
                 <!-- Forgot Password Link -->
                 <TextBlock Margin="0,6,6,0">
-        <Hyperlink Click="ForgotPassword_Click">Forgot Password?</Hyperlink>
+        <Hyperlink Click="ForgotPassword_Click" FontSize="22" FontFamily="Segoe UI Light">Forgot Password?</Hyperlink>
                 </TextBlock>
             </StackPanel>
 
 
 
 
-            <Button Margin="0,20,0,0" Padding="0,20,0,20" Click="LoginButton_Click" Background="#FFDDDDDD" IsDefault="True" FontSize="25" Width="249">LOGIN
+            <Button Margin="0,20,0,0" Click="LoginButton_Click" Background="#FFDDDDDD" IsDefault="True" FontSize="25" Width="249" Height="50" FontFamily="Segoe UI Light">LOGIN
 </Button>
 
-<TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838" Margin="0,25,0,0">Don't have an account?
-<Hyperlink Click="SignupHyperlink_Click" >Create a new account</Hyperlink>
+            <TextBlock TextAlignment="Center" FontSize="22" Foreground="#383838" Margin="0,25,0,0" FontFamily="Segoe UI Light">Don't have an account?
+<Hyperlink Click="SignupHyperlink_Click" FontFamily="Segoe UI Light">Create a new account</Hyperlink>
 </TextBlock>
 
 </StackPanel>

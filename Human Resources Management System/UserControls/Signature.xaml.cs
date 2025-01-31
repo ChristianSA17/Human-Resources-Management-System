@@ -62,6 +62,7 @@ namespace Human_Resources_Management_System.UserControls
             if (SignatureType == "Applicants")
             {
                 _applicantsSignature = CaptureSignature();
+                MessageBox.Show("Applicant signature captured.");
             }
             else if (SignatureType == "Authorization")
             {
@@ -72,6 +73,12 @@ namespace Human_Resources_Management_System.UserControls
             if (_authorizeSignature == null)
             {
                 MessageBox.Show("Authorization signature is missing.");
+                return; // Prevent insertion if signature is missing
+            }
+
+            if (_applicantsSignature == null)
+            {
+                MessageBox.Show("Applicant signature is missing.");
                 return; // Prevent insertion if signature is missing
             }
 

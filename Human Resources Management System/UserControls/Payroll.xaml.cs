@@ -310,7 +310,7 @@ namespace Human_Resources_Management_System.UserControls
         private void ViewPayslipButton_Click(object sender, RoutedEventArgs e)
         {
             // Pass the path of the generated PDF to the viewer
-            string pdfPath = @"C:\Users\ChristianSA\Desktop\Payslip.pdf";
+            string pdfPath = @"C:\Users\lenovo\Downloads\Payslip.pdf";
             if (!File.Exists(pdfPath))
             {
                 MessageBox.Show("No recent payslip found or the file was deleted.", "Error", MessageBoxButton.OK, MessageBoxImage.Warning);

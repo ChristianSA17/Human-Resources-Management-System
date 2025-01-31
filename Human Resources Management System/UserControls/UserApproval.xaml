@@ -16,14 +16,37 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
-            <TextBlock Foreground="White" FontSize="20">Approval</TextBlock>
+            <TextBlock Foreground="White" FontSize="20" Margin="30,0,0,0" FontFamily="Segoe UI Light">Approval</TextBlock>
         </Grid>
         <Grid Grid.Row="1">
           
         </Grid>
         <Grid Grid.Row="2">
             <!-- ListView -->
-            <ListView x:Name="ListViewUsers" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView x:Name="ListViewUsers" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" SizeChanged="ListViewUsers_SizeChanged" Background="#3B3B3B">
+                <ListView.Resources>
+                    <!-- Style for ListViewItem -->
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#141414"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                    <!-- Style for GridViewColumnHeader -->
+                    <Style TargetType="GridViewColumnHeader">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="Background" Value="Black"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Padding" Value="5,3"/>
+                    </Style>
+                </ListView.Resources>
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="First Name" DisplayMemberBinding="{Binding FirstName}" Width="Auto"/>
@@ -37,17 +60,13 @@
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                                         <!-- Approve Button -->
-                                        <Button Width="30" Height="30" Margin="5" ToolTip="Approve" Click="ApproveButton_Click">
-                                            <Button.Content>
-                                                <Image Source="/YourNamespace;component/Resources/check_icon.png" Width="16" Height="16" />
-                                            </Button.Content>
+                                        <Button Width="30" Height="30" Margin="5" ToolTip="Approve" Click="ApproveButton_Click" Content="✔">
+                                           
                                         </Button>
 
                                         <!-- Reject Button -->
-                                        <Button Width="30" Height="30" Margin="5" ToolTip="Reject" Click="RejectButton_Click">
-                                            <Button.Content>
-                                                <Image Source="/YourNamespace;component/Resources/cross_icon.png" Width="16" Height="16" />
-                                            </Button.Content>
+                                        <Button Width="30" Height="30" Margin="5" ToolTip="Reject" Click="RejectButton_Click" Content="❌">
+                                           
                                         </Button>
                                     </StackPanel>
                                 </DataTemplate>
@@ -60,7 +79,30 @@
         <Grid Grid.Row="3"/>
         <Grid Grid.Row="4">
             <TextBlock Text="Approved Items" FontSize="16" FontWeight="Bold" Margin="0,0,0,10" />
-            <ListView x:Name="ListViewApproved" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <ListView x:Name="ListViewApproved" HorizontalAlignment="Stretch" Background="#3B3B3B" VerticalAlignment="Stretch" SizeChanged="ListViewApproved_SizeChanged">
+                <ListView.Resources>
+                    <!-- Style for ListViewItem -->
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Background" Value="#141414"/>
+                                <Setter Property="Foreground" Value="White"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+
+                    <!-- Style for GridViewColumnHeader -->
+                    <Style TargetType="GridViewColumnHeader">
+                        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                        <Setter Property="Background" Value="Black"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontWeight" Value="Bold"/>
+                        <Setter Property="Padding" Value="5,3"/>
+                    </Style>
+                </ListView.Resources>
                 <ListView.View>
                     <GridView>
                         

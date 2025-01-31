@@ -27,6 +27,7 @@ namespace Human_Resources_Management_System.UserControls
         public UserApproval()
         {
             InitializeComponent();
+          
             _connection = new MongoDbConnection(); // Initialize connection
             _userCollection = _connection.GetUsersCollection();  // Get the "Users" collection from the database
             LoadUsers();
@@ -77,8 +78,33 @@ namespace Human_Resources_Management_System.UserControls
             }
         }
 
-    }
-  
- 
+        private void ListViewUsers_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var gridView = (GridView)ListViewUsers.View;
+            double totalWidth = ListViewUsers.ActualWidth;
+            double columnWidth = totalWidth / gridView.Columns.Count;
 
+            foreach (var column in gridView.Columns)
+            {
+                column.Width = columnWidth;
+            }
+        }
+
+        private void ListViewApproved_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            var gridView = (GridView)ListViewApproved.View;
+            if (gridView != null)
+            {
+                double totalWidth = ListViewApproved.ActualWidth;
+
+                // Assuming equal distribution of columns
+                double columnWidth = totalWidth / gridView.Columns.Count;
+
+                foreach (var column in gridView.Columns)
+                {
+                    column.Width = columnWidth;
+                }
+            }
+        }
+    }
 }

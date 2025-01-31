@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Human_Resources_Management_System"
         mc:Ignorable="d"
-        Title="PayrollInput" Height="200" Width="400">
-    <Grid>
-        <StackPanel Margin="10" VerticalAlignment="Center">
+        Title="PayrollInput" Height="400" Width="400">
+    <Grid MaxWidth="400" MaxHeight="400">
+        <StackPanel Margin="10" VerticalAlignment="Center" HorizontalAlignment="Center">
             <!-- Input for Attendance Days -->
             <TextBlock Text="Enter Attendance Days:" Margin="0,5"/>
             <TextBox x:Name="AttendanceDaysInput" Width="200" Margin="0,5"/>

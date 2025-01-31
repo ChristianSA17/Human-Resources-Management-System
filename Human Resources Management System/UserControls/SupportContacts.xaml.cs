@@ -25,6 +25,9 @@ namespace Human_Resources_Management_System.UserControls
         public SupportContacts()
         {
             InitializeComponent();
+            Phoneicon.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Telephone-Support.PNG"));
+            Humanwithphoneicon.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Contact-Support-Icon.PNG"));
+            Mapicon.Source = new BitmapImage(new Uri("pack://application:,,,/Images/Google-Map-icon.png"));
         }
 
         private void StackPanel_MouseEnter(object sender, MouseEventArgs e)

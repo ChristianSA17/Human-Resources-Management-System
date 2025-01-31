@@ -22,7 +22,9 @@ namespace Human_Resources_Management_System
         {
             InitializeComponent();
             ContentDisplay.Content = new Login();
+            LogoImage.Source = new BitmapImage(new Uri("pack://application:,,,/Images/realcompanylogo.png"));
             Loaded += OnWindowLoaded;
+
         }
 
         /* Function para mashow yung login usercontrol at mahide yung signup user control, then vise versa sa function na nasa baba*/

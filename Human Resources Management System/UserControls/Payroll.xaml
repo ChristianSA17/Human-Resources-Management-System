@@ -15,7 +15,7 @@
 
         <!-- Top Row -->
         <Grid Grid.Row="0" Background="#3B3B3B">
-            <TextBlock FontSize="20" Margin="30,0,0,0" Foreground="LightGray">Payroll</TextBlock>
+            <TextBlock FontSize="20" Margin="30,0,0,0" Foreground="LightGray" FontFamily="Segoe UI Light">Payroll</TextBlock>
         </Grid>
 
         <!-- Main content with ListView -->
@@ -40,7 +40,7 @@
                     <!-- Style for GridViewColumnHeader -->
                     <Style TargetType="GridViewColumnHeader">
                         <Setter Property="HorizontalContentAlignment" Value="Center"/>
-                        <Setter Property="Background" Value="DarkGray"/>
+                        <Setter Property="Background" Value="Black"/>
                         <Setter Property="Foreground" Value="White"/>
                         <Setter Property="FontWeight" Value="Bold"/>
                         <Setter Property="Padding" Value="5,3"/>
@@ -81,11 +81,11 @@
             <!-- Total Employee and Payroll information -->
             <StackPanel Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,154,0,0">
                 <StackPanel x:Name="Total_Employee" Orientation="Horizontal">
-                    <TextBlock x:Name="Total_Employee1" Foreground="LightGray">Total Employee:</TextBlock>
+                    <TextBlock x:Name="Total_Employee1" Foreground="LightGray" FontFamily="Segoe UI Light" FontSize="12">Total Employee:</TextBlock>
                     <TextBox IsReadOnly="True" Background="Transparent" Width="50" BorderThickness="0" Focusable="False"/>
                 </StackPanel>
                 <StackPanel x:Name="Total_Payroll" Orientation="Horizontal" Margin="0,25,0,0">
-                    <TextBlock x:Name="Total_Payroll1" Foreground="LightGray">Total Payroll:</TextBlock>
+                    <TextBlock x:Name="Total_Payroll1" Foreground="LightGray" FontFamily="Segoe UI Light"  FontSize="12">Total Payroll:</TextBlock>
                     <TextBox IsReadOnly="True" Background="Transparent" Width="50" BorderThickness="0" Focusable="False"/>
                 </StackPanel>
             </StackPanel>
@@ -96,14 +96,14 @@
             
             <StackPanel>
                 <StackPanel>
-                    <TextBlock Text="Payslip System" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,0,0,0" Foreground="White"/>
+                    <TextBlock Text="Payslip System" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="20" FontWeight="Bold" Margin="0,0,0,0" Foreground="White" FontFamily="Segoe UI Light"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" >
-                    <Button Name="OpenPayrollInput" Content="Calculate Payslip" Click="OpenPayrollInput_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
-                    <Button Name="GeneratePayslipButton" Content="Generate Payslip" Click="GeneratePayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
-                    <Button Name="ExportPayslipButton" Content="Export Payslip to PDF" Click="ExportPayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
-                    <Button Name="ViewPayslipButton" Content="View Payslip" Click="ViewPayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="White" Background="DarkGray"/>
+                    <Button Name="OpenPayrollInput" Content="Calculate Payslip" Click="OpenPayrollInput_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="Black" Background="DarkGray" FontFamily="Segoe UI Light"/>
+                    <Button Name="GeneratePayslipButton" Content="Generate Payslip" Click="GeneratePayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="Black" Background="DarkGray" FontFamily="Segoe UI Light"/>
+                    <Button Name="ExportPayslipButton" Content="Export Payslip to PDF" Click="ExportPayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="Black" Background="DarkGray" FontFamily="Segoe UI Light"/>
+                    <Button Name="ViewPayslipButton" Content="View Payslip" Click="ViewPayslipButton_Click" Margin="10" FontSize="15" Height="50" Width="150" Foreground="Black" Background="DarkGray" FontFamily="Segoe UI Light"/>
                    
                 </StackPanel>
             </StackPanel>
